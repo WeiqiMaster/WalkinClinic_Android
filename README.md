@@ -1,4 +1,4 @@
-# Forward Inc.
+﻿# Forward Inc.
 
 ## Team Members
 
@@ -7,3 +7,8 @@
 | Andrew Forward | 1484511  |
 | Andrew Forward | 1929204  |
 | Ayana Nurse | 2128439 |
+| Jingyi Pan | 300066475|
+| Eric Gao| 300076901|
+| Virgil Lin| 300076911|
+| dahong he| 300063385|
+
