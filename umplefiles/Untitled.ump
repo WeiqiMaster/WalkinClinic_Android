@@ -1,0 +1,180 @@
+class User
+{
+  name;
+  email;
+  role;
+
+public void User(String name, String email){
+
+}
+
+  
+}
+
+class Employee
+{
+    name;
+email;
+role;
+isA User;
+  
+
+  public void Employee(String name, String email){
+
+}
+
+}
+
+class Admin
+{
+    name;
+email;
+role;
+isA User;
+  
+
+  public void Admin(){
+
+}
+
+}class Hash_256
+{
+    public static byte[] getSHA(){
+  }
+public String toHexString(){
+
+}
+}
+
+class Patient
+{
+  isA User;
+public void Patient(String name, String email){
+  Button bLogin;
+    Switch swIsEmployee;
+    EditText etName, etEmail, etPassword, etConfirmPassword;
+    Button bRegister;
+    User user;
+    DatabaseReference reff
+
+}
+}
+
+class AppCompatActivity
+{
+  * -- 1 User;
+  }
+
+class MainActivity
+{
+  Button bLogin;
+EditText etEmail;
+EditText etPassword;
+TextView tvRegisterLink;
+FirebaseAuth mAuth;
+isA AppCompatActivity;
+  protected void onCreate(){
+  }
+  public void onClick() {
+  }
+  
+}
+
+class RegisterActivity
+{
+    isA AppCompatActivity;
+Button bLogin;
+    Switch swIsEmployee;
+    EditText etName, etEmail, etPassword, etConfirmPassword;
+    Button bRegister;
+    User user;
+    DatabaseReference reff;
+    FirebaseAuth mAuth;
+    FirebaseDatabase mDatabase;
+  long maxId;
+  protected void onCreate() {
+  }
+  public void onClick(View v){
+    public void onDataChange(){
+    }
+     public void onCancelled() {
+     }
+    public void onComplete() {
+    }
+    
+  }
+  
+}
+
+class WelcomeActivity
+{
+     isA AppCompatActivity;
+TextView tvWelcome;
+    DatabaseReference mDatabase;
+   protected void onCreate() {
+   }
+  public void onDataChange() {
+    
+  }
+   public void onCancelled() {
+   }
+}
+
+
+
+namespace -;
+
+
+class User
+{
+  position 207 160 162 231;
+}
+
+class Employee
+{
+  position 239 219 241 76;
+}
+
+class Admin
+{
+  position 508 223 155 76;
+}
+
+class Hash_256
+{
+  position 90 371 182 93;
+  }
+
+class Patient
+{
+  position 1 224 222 76;
+}
+
+class AppCompatActivity
+{
+  position 1125 79 134 61;
+  position.association AppCompatActivity__User 0,8 206,6;
+  }
+
+class MainActivity
+{
+  position 783 208 189 180;
+}
+
+class RegisterActivity
+{
+  position 1014 208 114 61;
+}
+
+class WelcomeActivity
+{
+  position 1308 208 120 61;
+}//$?[End_of_model]$?
+
+namespace -;
+
+
+class User
+{
+  position 50 30 109 45;
+}
