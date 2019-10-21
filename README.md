@@ -2,7 +2,7 @@
 
 ## Team Members
 
-| Name | Student Number |present|
+| Name | Student Number |percentage|
 | --- | --- | ---|
 | Andrew Forward | 1484511  |
 | Andrew Forward | 1929204  |
@@ -10,5 +10,5 @@
 | Jingyi Pan | 300066475|
 | Eric Gao| 300076901|25%|
 | Virgil Lin| 300076911|25%||
-| dahong he| 300063385|25%||
+| dahong he| 300063385|
 
