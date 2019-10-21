@@ -3,16 +3,12 @@ package com.example.seg2105_project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,16 +30,15 @@ import static com.example.seg2105_project.Hash_256.toHexString;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button bLogin;
     Switch swIsEmployee;
     EditText etName, etEmail, etPassword, etConfirmPassword;
     Button bRegister;
     User user;
     DatabaseReference reff;
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
     FirebaseDatabase mDatabase;
 
-    public static long maxId;
+    static long maxId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

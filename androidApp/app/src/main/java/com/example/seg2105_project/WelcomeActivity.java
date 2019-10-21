@@ -14,8 +14,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static com.example.seg2105_project.RegisterActivity.maxId;
-
 public class WelcomeActivity extends AppCompatActivity {
 
     TextView tvWelcome;
