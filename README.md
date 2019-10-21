@@ -10,5 +10,5 @@
 | Jingyi Pan | 300066475|
 | Eric Gao| 300076901|25%|
 | Virgil Lin| 300076911|25%||
-| dahong he| 300063385|
+| dahong he| 300063385|25%||
 
