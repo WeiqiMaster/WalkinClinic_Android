@@ -8,9 +8,7 @@ class Screen
     FristName;
   LastName;
   role;
-  * -- 1 System;
-  * -- 1 User;
-public String Message(){
+  public String Message(){
 
 }
 }
@@ -92,8 +90,7 @@ public void Patient(){
 class AppCompatActivity
 {
   * -- * User;
-  * -- * Screen;
-}
+  }
 
 class MainActivity
 {
@@ -164,9 +161,7 @@ class System
 class Screen
 {
   position 604 132 160 129;
-  position.association Screen__System 42,0 87,61;
-  position.association Screen__User 0,91 162,22;
-}
+  }
 
 class User
 {
@@ -198,8 +193,7 @@ class AppCompatActivity
 {
   position 1125 79 134 61;
   position.association AppCompatActivity__User 0,8 90,0;
-  position.association AppCompatActivity__Screen 0,33 160,34;
-}
+  }
 
 class MainActivity
 {
