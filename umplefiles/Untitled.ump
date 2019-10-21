@@ -1,30 +1,14 @@
-class System
-{
-  1 -- * User;
-}
-
 class User
 {
   name;
   email;
   role;
 
-public void User(){
+public void User(String name, String email){
 
 }
-public void setRole(){
-  }
+
   
-  public String getemail(){
-  }
-  public void setEmail() {
-  }
-  public String getrole(){
-  }  
-  public String getname(){
-  }
-   public void setName() {
-   }
 }
 
 class Employee
@@ -35,7 +19,7 @@ role;
 isA User;
   
 
-  public void Employee(){
+  public void Employee(String name, String email){
 
 }
 
@@ -55,8 +39,7 @@ isA User;
 
 }class Hash_256
 {
-    * -- 1 System;
-public static byte[] getSHA(){
+    public static byte[] getSHA(){
   }
 public String toHexString(){
 
@@ -66,7 +49,7 @@ public String toHexString(){
 class Patient
 {
   isA User;
-public void Patient(){
+public void Patient(String name, String email){
   Button bLogin;
     Switch swIsEmployee;
     EditText etName, etEmail, etPassword, etConfirmPassword;
@@ -137,16 +120,10 @@ TextView tvWelcome;
    }
 }
 
-//$?[End_of_model]$?
+
 
 namespace -;
 
-
-class System
-{
-  position 421 35 109 41;
-  position.association System__User 19,61 74,0;
-}
 
 class User
 {
@@ -155,29 +132,28 @@ class User
 
 class Employee
 {
-  position 253 537 155 78;
+  position 239 219 241 76;
 }
 
 class Admin
 {
-  position 434 538 155 78;
+  position 508 223 155 76;
 }
 
 class Hash_256
 {
-  position 411 267 182 95;
-  position.association Hash_256__System 62,0 54,61;
-}
+  position 90 371 182 93;
+  }
 
 class Patient
 {
-  position 81 537 109 61;
+  position 1 224 222 76;
 }
 
 class AppCompatActivity
 {
   position 1125 79 134 61;
-  position.association AppCompatActivity__User 0,8 90,0;
+  position.association AppCompatActivity__User 0,8 206,6;
   }
 
 class MainActivity
@@ -193,4 +169,12 @@ class RegisterActivity
 class WelcomeActivity
 {
   position 1308 208 120 61;
+}//$?[End_of_model]$?
+
+namespace -;
+
+
+class User
+{
+  position 50 30 109 45;
 }
