@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tvRegisterLink:
                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
                 break;
+
+            case R.id.tvAdminLoginLink:
+                startActivity(new Intent(MainActivity.this, AdministrationActivity.class));
+                break;
         }
     }
 }
