@@ -98,6 +98,7 @@ Switch swIsEmployee;
 class Service
 {
      * -- * User;
+  * -- * ServiceListAdapter;
 private String name;
    private String roleOfPerson;
    public Service(String name, String roleOfPerson) {}
@@ -151,7 +152,7 @@ class WelcomeActivity
 class AppCompatActivity
 {
        
-  * -- 1 User;
+  1 -- 1 User;
 }
 
 class AppCompatDialogFragment
@@ -212,7 +213,8 @@ class RegisterActivity
 class Service
 {
   position 770 80 116 64;
-  position.association Service__User 0,24 214,19;
+  position.association Service__User 0,24 219,19;
+  position.association Service__ServiceListAdapter 181,163 252,0;
 }
 
 class ServiceListAdapter
