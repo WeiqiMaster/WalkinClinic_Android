@@ -38,24 +38,29 @@ public class AdministrationActivity extends AppCompatActivity implements View.On
         serviceList.add(service1);
         serviceList.add(service2);
 
-        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList);
+        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList, this);
         mListView.setAdapter(adapter);
 
     }
 
     @Override
     public void onClick(View v) {
-        String serviceName = etServiceName.getText().toString().trim();
-        String roleOfPerson = etRoleOfPerson.getText().toString().trim();
-        if ( ! (roleOfPerson.equals("nurse") || roleOfPerson.equals("doctor") || roleOfPerson.equals("staff"))) {
-            Toast.makeText(getApplicationContext(),
-                    "Role of Person has to be \"nurse\", \"doctor\" or \"staff\",",
-                    Toast.LENGTH_LONG).show();
-            return;
+        switch (v.getId()) {
+            case R.id.btnAddService:
+                String serviceName = etServiceName.getText().toString().trim();
+                String roleOfPerson = etRoleOfPerson.getText().toString().trim();
+                if (!(roleOfPerson.equals("nurse") || roleOfPerson.equals("doctor") || roleOfPerson.equals("staff"))) {
+                    Toast.makeText(getApplicationContext(),
+                            "Role of Person has to be \"nurse\", \"doctor\" or \"staff\",",
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Service service = new Service(serviceName, roleOfPerson);
+                serviceList.add(service);
+                ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList,this);
+                mListView.setAdapter(adapter);
+
+                break;
         }
-        Service service = new Service(serviceName, roleOfPerson);
-        serviceList.add(service);
-        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList);
-        mListView.setAdapter(adapter);
     }
 }

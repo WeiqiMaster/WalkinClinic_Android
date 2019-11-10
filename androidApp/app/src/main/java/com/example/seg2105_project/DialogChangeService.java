@@ -51,7 +51,7 @@ public class DialogChangeService extends AppCompatDialogFragment {
 
         try {
             listener = (DialogChangeServiceListener) context;
-        } catch (ClassCastException) {
+        } catch (ClassCastException e) {
             throw new ClassCastException(context.toString());
         }
     }

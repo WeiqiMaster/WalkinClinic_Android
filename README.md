@@ -13,4 +13,4 @@
 | dahong he| 300063385|
 
 How to login as Admin:  
-In the main screen, Input "Admin" in the email bar, and "300066475" in the password bar.  
+In the main screen, Input "admin" in the email bar, and "300066475" in the password bar.  

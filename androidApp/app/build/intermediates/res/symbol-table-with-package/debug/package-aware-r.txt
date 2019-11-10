@@ -902,6 +902,7 @@ layout activity_main
 layout activity_register
 layout activity_welcome
 layout adapter_view_layout
+layout dialog_edit_service
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
