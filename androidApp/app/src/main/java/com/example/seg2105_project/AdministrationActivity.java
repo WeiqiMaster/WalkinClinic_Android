@@ -54,6 +54,14 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
 
     @Override
     public void applyText(int position, String serviceName, String roleOfPerson) {
+        for (Service s : serviceList) {
+            if (s.getName().equals(serviceName)) {
+                Toast.makeText(getApplicationContext(),
+                        "Modifying Service Failed!\nService Name already exists.",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
         serviceList.set(position, new Service(serviceName, roleOfPerson));
         ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList,this);
         mListView.setAdapter(adapter);
@@ -67,13 +75,21 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
                 String roleOfPerson = etRoleOfPerson.getText().toString().trim();
                 if (serviceName.equals("")) {
                     Toast.makeText(getApplicationContext(),
-                            "Modifying Service Failed!\nService Name can not be empty.",
+                            "Adding Service Failed!\nService Name can not be empty.",
                             Toast.LENGTH_LONG).show();
                     return;
                 }
+                for (Service s : serviceList) {
+                    if (s.getName().equals(serviceName)) {
+                        Toast.makeText(getApplicationContext(),
+                                "Adding Service Failed!\nService Name already exists.",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                }
                 if (!(roleOfPerson.equals("nurse") || roleOfPerson.equals("doctor") || roleOfPerson.equals("staff"))) {
                     Toast.makeText(getApplicationContext(),
-                            "Role of person has to be \"nurse\", \"doctor\" or \"staff\".",
+                            "Adding Service Failed!\nRole of person has to be \"nurse\", \"doctor\" or \"staff\".",
                             Toast.LENGTH_LONG).show();
                     return;
                 }
