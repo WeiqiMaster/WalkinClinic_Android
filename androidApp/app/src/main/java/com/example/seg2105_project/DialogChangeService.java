@@ -35,6 +35,12 @@ public class DialogChangeService extends AppCompatDialogFragment {
                         dismiss();
                     }
                 })
+                .setNeutralButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        listener.applyText(position, null, null);
+                    }
+                })
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

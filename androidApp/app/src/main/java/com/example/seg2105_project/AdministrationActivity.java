@@ -54,6 +54,12 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
 
     @Override
     public void applyText(int position, String serviceName, String roleOfPerson) {
+        if (serviceName == null) {
+            serviceList.remove(position);
+            ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList,this);
+            mListView.setAdapter(adapter);
+            return;
+        }
         for (Service s : serviceList) {
             if (s.getName().equals(serviceName)) {
                 Toast.makeText(getApplicationContext(),
