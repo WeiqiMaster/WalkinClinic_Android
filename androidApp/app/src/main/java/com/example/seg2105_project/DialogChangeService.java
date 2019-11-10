@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
@@ -31,7 +32,7 @@ public class DialogChangeService extends AppCompatDialogFragment {
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        dismiss();
                     }
                 })
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -39,6 +40,12 @@ public class DialogChangeService extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         String serviceName = etServiceName.getText().toString().trim();
                         String roleOfPerson = etRoleOfPerson.getText().toString().trim();
+                        if (!(roleOfPerson.equals("nurse") || roleOfPerson.equals("doctor") || roleOfPerson.equals("staff"))) {
+                            Toast.makeText(getContext(),
+                                    "Modifying Service Failed!\nRole of Person has to be \"nurse\", \"doctor\" or \"staff\",",
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                        }
                         listener.applyText(position, serviceName, roleOfPerson);
                     }
                 });

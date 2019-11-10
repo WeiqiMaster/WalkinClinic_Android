@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
         android:hint="Service Name"/>
@@ -20,9 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
-        android:hint="password"/>
+        android:hint="Role Of Person"/>
 </LinearLayout>

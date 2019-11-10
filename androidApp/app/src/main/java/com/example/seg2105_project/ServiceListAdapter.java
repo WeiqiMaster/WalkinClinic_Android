@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import java.util.ArrayList;
 
-public class ServiceListAdapter extends ArrayAdapter<Service> implements View.OnClickListener {
+public class ServiceListAdapter extends ArrayAdapter<Service> {
     private Context mContext;
     int mResource;
     private TextView tvName;
@@ -75,17 +75,6 @@ public class ServiceListAdapter extends ArrayAdapter<Service> implements View.On
 //        });
 
         return convertView;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnAddService:
-                Toast.makeText(getContext(),
-                        tvName.getText().toString(),
-                        Toast.LENGTH_LONG).show();
-                break;
-        }
     }
 }
 
