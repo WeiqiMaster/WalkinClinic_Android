@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class AdministrationActivity extends AppCompatActivity implements View.OnClickListener{
+public class AdministrationActivity extends AppCompatActivity implements DialogChangeService.DialogChangeServiceListener, View.OnClickListener{
     ListView mListView;
     EditText etServiceName;
     EditText etRoleOfPerson;
@@ -40,7 +41,22 @@ public class AdministrationActivity extends AppCompatActivity implements View.On
 
         ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList, this);
         mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DialogChangeService dialogChangeService = new DialogChangeService();
+                dialogChangeService.setPosition(position);
+                dialogChangeService.show(getSupportFragmentManager(), "Modify Services");
+            }
+        });
 
+    }
+
+    @Override
+    public void applyText(int position, String serviceName, String roleOfPerson) {
+        serviceList.set(position, new Service(serviceName, roleOfPerson));
+        ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList,this);
+        mListView.setAdapter(adapter);
     }
 
     @Override

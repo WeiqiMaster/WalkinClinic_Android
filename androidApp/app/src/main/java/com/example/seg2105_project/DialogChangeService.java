@@ -15,7 +15,11 @@ public class DialogChangeService extends AppCompatDialogFragment {
     private EditText etServiceName;
     private EditText etRoleOfPerson;
     private DialogChangeServiceListener listener;
+    private int position;
 
+    public void setPosition(int position) {
+        this.position = position;
+    }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -35,7 +39,7 @@ public class DialogChangeService extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         String serviceName = etServiceName.getText().toString().trim();
                         String roleOfPerson = etRoleOfPerson.getText().toString().trim();
-                        listener.applyText(serviceName, roleOfPerson);
+                        listener.applyText(position, serviceName, roleOfPerson);
                     }
                 });
 
@@ -57,6 +61,6 @@ public class DialogChangeService extends AppCompatDialogFragment {
     }
 
     public interface DialogChangeServiceListener{
-        void applyText(String serviceName, String roleOfPerson);
+        void applyText(int positon, String serviceName, String roleOfPerson);
     }
 }
