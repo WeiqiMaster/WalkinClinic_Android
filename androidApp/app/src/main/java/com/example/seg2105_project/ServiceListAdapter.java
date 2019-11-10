@@ -1,6 +1,7 @@
 package com.example.seg2105_project;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ServiceListAdapter extends ArrayAdapter<Service> {
+public class ServiceListAdapter extends ArrayAdapter<Service> implements DialogChangeService.DialogChangeServiceListener {
     private Context mContext;
     int mResource;
 
@@ -21,6 +22,11 @@ public class ServiceListAdapter extends ArrayAdapter<Service> {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
+    }
+
+    @Override
+    public void applyText(String serviceName, String roleOfPerson) {
+
     }
 
     @NonNull
@@ -39,6 +45,21 @@ public class ServiceListAdapter extends ArrayAdapter<Service> {
 
         tvName.setText(name);
         tvRoleOfPerson.setText(roleOfPerson);
+
+        tvName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogChangeService dialogChangeService = new DialogChangeService();
+                //dialogChangeService.show(getSupportFragmentManager(),)
+//                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+//                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        // User clicked OK button
+//                    }
+//                });
+
+            }
+        });
 
         return convertView;
     }

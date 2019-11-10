@@ -728,6 +728,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id btnAddService
 id buttonPanel
 id cancel_action
 id center
@@ -756,6 +757,8 @@ id etConfirmPassword
 id etEmail
 id etName
 id etPassword
+id etRoleOfPerson
+id etServiceName
 id expand_activities_button
 id expanded_menu
 id fill
