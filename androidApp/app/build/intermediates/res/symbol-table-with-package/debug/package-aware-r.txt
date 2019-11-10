@@ -853,7 +853,6 @@ id titleDividerNoCustom
 id title_template
 id top
 id topPanel
-id tvAdminLoginLink
 id tvRegisterLink
 id tvWelcome
 id uniform

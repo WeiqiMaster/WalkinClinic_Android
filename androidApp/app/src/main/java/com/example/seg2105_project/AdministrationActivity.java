@@ -65,9 +65,15 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
             case R.id.btnAddService:
                 String serviceName = etServiceName.getText().toString().trim();
                 String roleOfPerson = etRoleOfPerson.getText().toString().trim();
+                if (serviceName.equals("")) {
+                    Toast.makeText(getApplicationContext(),
+                            "Modifying Service Failed!\nService Name can not be empty.",
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if (!(roleOfPerson.equals("nurse") || roleOfPerson.equals("doctor") || roleOfPerson.equals("staff"))) {
                     Toast.makeText(getApplicationContext(),
-                            "Role of Person has to be \"nurse\", \"doctor\" or \"staff\",",
+                            "Role of person has to be \"nurse\", \"doctor\" or \"staff\".",
                             Toast.LENGTH_LONG).show();
                     return;
                 }

@@ -40,9 +40,15 @@ public class DialogChangeService extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         String serviceName = etServiceName.getText().toString().trim();
                         String roleOfPerson = etRoleOfPerson.getText().toString().trim();
+                        if (serviceName.equals("")) {
+                            Toast.makeText(getContext(),
+                                    "Modifying Service Failed!\nService Name can not be empty.",
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                        }
                         if (!(roleOfPerson.equals("nurse") || roleOfPerson.equals("doctor") || roleOfPerson.equals("staff"))) {
                             Toast.makeText(getContext(),
-                                    "Modifying Service Failed!\nRole of Person has to be \"nurse\", \"doctor\" or \"staff\",",
+                                    "Modifying Service Failed!\nRole of Person has to be \"nurse\", \"doctor\" or \"staff\".",
                                     Toast.LENGTH_LONG).show();
                             return;
                         }

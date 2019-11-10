@@ -48,8 +48,6 @@ public class ServiceListAdapter extends ArrayAdapter<Service> {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        //ViewHolder holder =
-
         tvName = (TextView) convertView.findViewById(R.id.textView1);
         tvRoleOfPerson = (TextView) convertView.findViewById(R.id.textView2);
 
