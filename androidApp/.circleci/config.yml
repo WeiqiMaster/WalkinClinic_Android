@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - f/deliverable02
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
@@ -14,7 +17,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
+    working_directory: ~/Project-SEG2105/androidApp
 
     environment:
       # Customize the JVM maximum heap limit
