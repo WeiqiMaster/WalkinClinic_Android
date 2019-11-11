@@ -16,7 +16,8 @@ ListView mListView;
    Button btnAddService;
   ArrayList<Service> serviceList;
     1 -- * Service;
-   protected void onCreate(Bundle savedInstanceState) {
+     1 -- 1 ServiceListAdapter;
+protected void onCreate(Bundle savedInstanceState) {
      }
    public void applyText(int position, String serviceName, String roleOfPerson) {}
   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
@@ -98,8 +99,7 @@ Switch swIsEmployee;
 class Service
 {
      * -- 1 User;
-  * -- 1 ServiceListAdapter;
-private String name;
+  private String name;
    private String roleOfPerson;
    public Service(String name, String roleOfPerson) {}
     public String getName() {}
@@ -178,6 +178,7 @@ class AdministrationActivity
 {
   position 501 531 388 241;
     position.association AdministrationActivity__Service 119,0 104,143;
+  position.association AdministrationActivity__ServiceListAdapter 248,125 64,0;
 }
 
 class Employee
@@ -214,8 +215,7 @@ class Service
 {
   position 770 80 116 64;
   position.association Service__User 0,24 219,19;
-  position.association Service__ServiceListAdapter 181,163 252,0;
-}
+  }
 
 class ServiceListAdapter
 {
@@ -246,7 +246,7 @@ class AppCompatDialogFragment
 class ArrayAdapter
 {
   position 448 884 116 64;
-}//$?[End_of_model]$?
+}
 
 namespace -;
 
@@ -260,6 +260,7 @@ class AdministrationActivity
 {
   position 501 531 388 241;
     position.association AdministrationActivity__Service 119,0 104,143;
+  position.association AdministrationActivity__ServiceListAdapter 248,125 64,0;
 }
 
 class Employee
