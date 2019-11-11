@@ -15,7 +15,7 @@ ListView mListView;
   EditText etRoleOfPerson;
    Button btnAddService;
   ArrayList<Service> serviceList;
-    * -- * Service;
+    1 -- * Service;
    protected void onCreate(Bundle savedInstanceState) {
      }
    public void applyText(int position, String serviceName, String roleOfPerson) {}
@@ -97,8 +97,8 @@ Switch swIsEmployee;
 
 class Service
 {
-     * -- * User;
-  * -- * ServiceListAdapter;
+     * -- 1 User;
+  * -- 1 ServiceListAdapter;
 private String name;
    private String roleOfPerson;
    public Service(String name, String roleOfPerson) {}
@@ -164,19 +164,19 @@ class ArrayAdapter
 {
 }
 
-//$?[End_of_model]$?
+
 
 namespace -;
 
 
 class Admin
 {
-  position 278 357 190 84;
+  position 281 428 190 84;
 }
 
 class AdministrationActivity
 {
-  position 544 527 388 241;
+  position 501 531 388 241;
     position.association AdministrationActivity__Service 119,0 104,143;
 }
 
@@ -187,7 +187,7 @@ class Employee
 
 class DialogChangeService
 {
-  position 1211 147 294 143;
+  position 1666 163 294 143;
 }
 
 class Hash_256
@@ -224,7 +224,7 @@ class ServiceListAdapter
 
 class User
 {
-  position 268 23 125 123;
+  position 250 11 230 260;
 }
 
 class WelcomeActivity
@@ -236,6 +236,88 @@ class AppCompatActivity
 {
   position 1395 323 149 64;
     position.association AppCompatActivity__User 0,35 230,112;
+}
+
+class AppCompatDialogFragment
+{
+  position 1319 43 209 64;
+}
+
+class ArrayAdapter
+{
+  position 448 884 116 64;
+}//$?[End_of_model]$?
+
+namespace -;
+
+
+class Admin
+{
+  position 281 428 190 84;
+}
+
+class AdministrationActivity
+{
+  position 501 531 388 241;
+    position.association AdministrationActivity__Service 119,0 104,143;
+}
+
+class Employee
+{
+  position 468 289 270 84;
+}
+
+class DialogChangeService
+{
+  position 1666 163 294 143;
+}
+
+class Hash_256
+{
+  position 182 698 250 103;
+}
+
+class MainActivity
+{
+  position 1082 516 224 181;
+}
+
+class Patient
+{
+  position 22 302 249 84;
+}
+
+class RegisterActivity
+{
+  position 1866 494 315 290;
+}
+
+class Service
+{
+  position 770 80 116 64;
+  position.association Service__User 0,24 219,19;
+  position.association Service__ServiceListAdapter 181,163 252,0;
+}
+
+class ServiceListAdapter
+{
+  position 699 901 109 84;
+}
+
+class User
+{
+  position 250 11 230 260;
+}
+
+class WelcomeActivity
+{
+  position 1481 519 316 161;
+}
+
+class AppCompatActivity
+{
+  position 1395 323 149 64;
+    position.association AppCompatActivity__User 0,35 219,112;
 }
 
 class AppCompatDialogFragment
