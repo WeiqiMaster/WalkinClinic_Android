@@ -178,10 +178,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="140" />
-    <option name="y" value="150" />
-    <option name="width" value="1765" />
-    <option name="height" value="1105" />
+    <option name="x" value="120" />
+    <option name="y" value="15" />
+    <option name="width" value="1750" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -263,7 +263,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="192.168.1.20:5555" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-11-10T01:23:33.875Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../LabTesting/LabTesting" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ProductCatalog_v1-master/ProductCatalog_v1-master" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -362,7 +362,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
+    <frame x="55" y="-7" width="1488" height="878" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
