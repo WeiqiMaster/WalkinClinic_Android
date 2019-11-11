@@ -15,23 +15,25 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> myActivityTestRule = new ActivityTestRule(MainActivity.class);
     private MainActivity myActivity = null;
     private TextView text;
+
     @Before
     public void setUp() throws Exception {
         myActivity = myActivityTestRule.getActivity();
     }
+
     @Test
     @UiThreadTest
-
-    public void cheakEmail() throws Exception{
+    public void checkEmail() throws Exception{
         assertNotNull(myActivity.findViewById(R.id.Email));
         text = myActivity.findViewById(R.id.etEmail);
         text.setText("admin");
         String name = text.getText().toString();
         assertNotEquals("Email",name);
     }
+
     @Test
     @UiThreadTest
-    public void cheakPassword() throws Exception{
+    public void checkPassword() throws Exception{
         assertNotNull(myActivity.findViewById(R.id.Password));
         text = myActivity.findViewById(R.id.etPassword);
         text.setText("300066475");
