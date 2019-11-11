@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\86528\\Desktop\\New folder\\Project-SEG2105\\androidApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\86528\\Desktop\\New folder (2)\\Project-SEG2105\\androidApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\86528\\.gradle\\caches\\transforms-2\\files-2.1\\241b89e013db22b59a4d22b3f2fa0913\\core-1.0.1\\res\\values\\values.xml",
@@ -59,24 +59,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\86528\\Desktop\\New folder\\Project-SEG2105\\androidApp\\app\\build\\generated\\res\\google-services\\debug\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,319,401,505,614,734,843",
-                        "endColumns": "143,119,81,103,108,119,108,85",
-                        "endOffsets": "194,314,396,500,609,729,838,924"
-                    },
-                    "to": {
-                        "startLines": "410,411,412,413,414,415,416,417",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "25959,26103,26223,26305,26409,26518,26638,26747",
-                        "endColumns": "143,119,81,103,108,119,108,85",
-                        "endOffsets": "26098,26218,26300,26404,26513,26633,26742,26828"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\86528\\Desktop\\New folder\\Project-SEG2105\\androidApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\86528\\Desktop\\New folder (2)\\Project-SEG2105\\androidApp\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
@@ -93,7 +76,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\86528\\Desktop\\New folder\\Project-SEG2105\\androidApp\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\86528\\Desktop\\New folder (2)\\Project-SEG2105\\androidApp\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",
@@ -169,7 +152,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\86528\\Desktop\\New folder\\Project-SEG2105\\androidApp\\app\\src\\main\\res\\values\\colors.xml",
+                    "source": "C:\\Users\\86528\\Desktop\\New folder (2)\\Project-SEG2105\\androidApp\\app\\build\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,319,401,505,614,734,843",
+                        "endColumns": "143,119,81,103,108,119,108,85",
+                        "endOffsets": "194,314,396,500,609,729,838,924"
+                    },
+                    "to": {
+                        "startLines": "410,411,412,413,414,415,416,417",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "25959,26103,26223,26305,26409,26518,26638,26747",
+                        "endColumns": "143,119,81,103,108,119,108,85",
+                        "endOffsets": "26098,26218,26300,26404,26513,26633,26742,26828"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\86528\\Desktop\\New folder (2)\\Project-SEG2105\\androidApp\\app\\src\\main\\res\\values\\colors.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",

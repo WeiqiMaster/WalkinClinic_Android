@@ -1,0 +1,332 @@
+//Unable to update umple code due to error at [122,0]
+class Admin
+{
+  isA User;
+public void admin(){
+
+}
+}
+
+class AdministrationActivity
+{
+      isA AppCompatActivity;
+ListView mListView;
+  EditText etServiceName;
+  EditText etRoleOfPerson;
+   Button btnAddService;
+  ArrayList<Service> serviceList;
+    1 -- * Service;
+     1 -- 1 ServiceListAdapter;
+protected void onCreate(Bundle savedInstanceState) {
+     }
+   public void applyText(int position, String serviceName, String roleOfPerson) {}
+  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
+   public void applyText(int position, String serviceName, String roleOfPerson) {}
+   public void onClick(View v) {}
+  
+}
+
+class Employee
+{
+       isA User;
+public Employee(String name, String email) {}
+}
+
+class DialogChangeService
+{
+  isA AppCompatDialogFragment;
+   private EditText etServiceName;
+    private EditText etRoleOfPerson;
+    private DialogChangeServiceListener listener;
+    private int position;
+  public void setPosition(int position) {}
+  public Dialog onCreateDialog(Bundle savedInstanceState) {}
+   public void onClick(DialogInterface dialog, int which) {}
+   public void onClick(DialogInterface dialog, int which) {}
+   public void onAttach(Context context) {}
+  
+  
+  
+}
+
+class Hash_256
+{
+   public static byte[] getSHA(String input) throws NoSuchAlgorithmException{}
+    public static String toHexString(byte[] hash)
+    {}
+}
+
+class MainActivity
+  
+{
+    isA AppCompatActivity;
+Button bLogin;
+    EditText etEmail, etPassword;
+    TextView tvRegisterLink;
+    FirebaseAuth mAuth;
+  protected void onCreate(Bundle savedInstanceState) {}
+   public void onClick(View v) {}
+   public void onComplete( Task<AuthResult> task) {}
+  
+  
+}
+
+class Patient
+{
+  isA User;
+  public Patient(String name, String email) {}
+}
+
+class RegisterActivity
+  
+{
+    isA AppCompatActivity;
+Switch swIsEmployee;
+    EditText etName, etEmail, etPassword, etConfirmPassword;
+    Button bRegister;
+    User user;
+    DatabaseReference reff;
+    FirebaseAuth mAuth;
+    FirebaseDatabase mDatabase;
+    protected void onCreate(Bundle savedInstanceState) {}
+  public void onDataChange( DataSnapshot dataSnapshot) {}
+   public void onCancelled( DatabaseError databaseError) {}
+  public void onClick(View v) {}
+  public void onComplete( Task<AuthResult> task) {}
+  
+}
+
+class Service
+{
+     * -- 1 User;
+  private String name;
+   private String roleOfPerson;
+   public Service(String name, String roleOfPerson) {}
+    public String getName() {}
+   public void setName(String name) {}
+    public String getRoleOfPerson() {}
+    public void setRoleOfPerson(String roleOfPerson) {}
+  
+}
+
+class ServiceListAdapter
+{
+       isA ArrayAdapter;
+Context mContext;
+    int mResource;
+     TextView tvName;
+     TextView tvRoleOfPerson;
+    FragmentActivity fragmentActivity;
+  
+  public ServiceListAdapter( Context context, int resource, ArrayList<Service> objects, FragmentActivity c) {}
+  public View getView(int position,  View convertView,  ViewGroup parent) {}
+    }
+
+class User
+{
+   String name;
+   String email;
+   String role;
+  public User(String name, String email) {}
+  public void setRole1(String role) {}
+  public String getEmail1() {}
+  public void setEmail1(String email) {}
+  public String getRole1() {}
+  public String getName1() {}
+  public void setName1(String name) {}
+  
+  
+}
+
+class WelcomeActivity
+{
+   TextView tvWelcome;
+    DatabaseReference mDatabase;
+  isA AppCompatActivity;
+  protected void onCreate(Bundle savedInstanceState) {}
+   public void onDataChange(DataSnapshot dataSnapshot) {}
+   public void onCancelled(DatabaseError databaseError) {}
+  
+}
+
+class AppCompatActivity
+{
+       
+  1 -- 1 User;
+}
+
+class AppCompatDialogFragment
+{
+   
+}
+
+class ArrayAdapter
+{
+}
+
+
+
+namespace -;
+
+
+class Admin
+{
+  position 281 428 190 84;
+}
+
+class AdministrationActivity
+{
+  position 501 531 388 241;
+    position.association AdministrationActivity__Service 119,0 104,143;
+  position.association AdministrationActivity__ServiceListAdapter 248,125 64,0;
+}
+
+class Employee
+{
+  position 468 289 270 84;
+}
+
+class DialogChangeService
+{
+  position 1666 163 294 143;
+}
+
+class Hash_256
+{
+  position 182 698 250 103;
+}
+
+class MainActivity
+{
+  position 1082 516 224 181;
+}
+
+class Patient
+{
+  position 22 302 249 84;
+}
+
+class RegisterActivity
+{
+  position 1866 494 315 290;
+}
+
+class Service
+{
+  position 770 80 116 64;
+  position.association Service__User 0,24 219,19;
+  }
+
+class ServiceListAdapter
+{
+  position 699 901 109 84;
+}
+
+class User
+{
+  position 250 11 230 260;
+}
+
+class WelcomeActivity
+{
+  position 1481 519 316 161;
+}
+
+class AppCompatActivity
+{
+  position 1395 323 149 64;
+    position.association AppCompatActivity__User 0,35 230,112;
+}
+
+class AppCompatDialogFragment
+{
+  position 1319 43 209 64;
+}
+
+class ArrayAdapter
+{
+  position 448 884 116 64;
+}
+
+namespace -;
+
+
+class Admin
+{
+  position 281 428 190 84;
+}
+
+class AdministrationActivity
+{
+  position 501 531 388 241;
+    position.association AdministrationActivity__Service 119,0 104,143;
+  position.association AdministrationActivity__ServiceListAdapter 248,125 64,0;
+}
+
+class Employee
+{
+  position 468 289 270 84;
+}
+
+class DialogChangeService
+{
+  position 1666 163 294 143;
+}
+
+class Hash_256
+{
+  position 182 698 250 103;
+}
+
+class MainActivity
+{
+  position 1082 516 224 181;
+}
+
+class Patient
+{
+  position 22 302 249 84;
+}
+
+class RegisterActivity
+{
+  position 1866 494 315 290;
+}
+
+class Service
+{
+  position 770 80 116 64;
+  position.association Service__User 0,24 219,19;
+  position.association Service__ServiceListAdapter 181,163 252,0;
+}
+
+class ServiceListAdapter
+{
+  position 699 901 109 84;
+}
+
+class User
+{
+  position 250 11 230 260;
+}
+
+class WelcomeActivity
+{
+  position 1481 519 316 161;
+}
+
+class AppCompatActivity
+{
+  position 1395 323 149 64;
+    position.association AppCompatActivity__User 0,35 219,112;
+}
+
+class AppCompatDialogFragment
+{
+  position 1319 43 209 64;
+}
+
+class ArrayAdapter
+{
+  position 448 884 116 64;
+}
