@@ -34,4 +34,15 @@ public class RegisterActivityTest {
         assertNotEquals("Name", name);
     }
 
+
+    @Test
+    @UiThreadTest
+
+    public void cheakEmail() throws Exception{
+        assertNotNull(myActivity.findViewById(R.id.Name));
+        text = myActivity.findViewById(R.id.etName);
+        text.setText("admin");
+        String name = text.getText().toString();
+        assertNotEquals("Name",name);
+    }
 }
