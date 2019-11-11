@@ -2,6 +2,7 @@ package com.example.seg2105_project;
 
 import android.widget.TextView;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Rule;
@@ -25,12 +26,12 @@ public class RegisterActivityTest {
     @UiThreadTest
 
 
-    public void cheakName() throws Exception{
+    public void cheakName() throws Exception {
         assertNotNull(myActivity.findViewById(R.id.Name));
         text = myActivity.findViewById(R.id.etName);
         text.setText("admin");
         String name = text.getText().toString();
-        assertNotEquals("Name",name);
+        assertNotEquals("Name", name);
     }
 
 }
