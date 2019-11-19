@@ -22,6 +22,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.seg2105_project.ModifyEmplProfileActivity" />
+        <activity android:name="com.example.seg2105_project.EmployeeActivity" />
+        <activity android:name="com.example.seg2105_project.ManageAvailabilityActivity" />
         <activity android:name="com.example.seg2105_project.AdministrationActivity" />
         <activity android:name="com.example.seg2105_project.RegisterActivity" />
         <activity android:name="com.example.seg2105_project.WelcomeActivity" />

@@ -669,6 +669,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable custom_button
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_launcher_background
@@ -731,6 +732,7 @@ id beginning
 id blocking
 id bottom
 id btnAddService
+id btnEdit
 id buttonPanel
 id cancel_action
 id center
@@ -755,10 +757,13 @@ id disableHome
 id edit_query
 id end
 id end_padder
+id etAddress
+id etCompany
 id etConfirmPassword
 id etEmail
 id etName
 id etPassword
+id etPhoneNumber
 id etRoleOfPerson
 id etServiceName
 id expand_activities_button
@@ -855,6 +860,9 @@ id titleDividerNoCustom
 id title_template
 id top
 id topPanel
+id tvAddress
+id tvCompany
+id tvPhoneNumber
 id tvRegisterLink
 id tvWelcome
 id uniform
@@ -899,7 +907,10 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_administration
+layout activity_employee
 layout activity_main
+layout activity_manage_availability
+layout activity_modify_empl_profile
 layout activity_register
 layout activity_welcome
 layout adapter_view_layout
