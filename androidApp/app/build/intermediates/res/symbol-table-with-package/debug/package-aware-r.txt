@@ -761,6 +761,7 @@ id end_padder
 id etAddress
 id etCompany
 id etConfirmPassword
+id etDescription
 id etEmail
 id etName
 id etPassword
@@ -845,6 +846,7 @@ id status_bar_latest_event_content
 id submenuarrow
 id submit_area
 id swIsEmployee
+id swLicensed
 id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
@@ -863,6 +865,8 @@ id top
 id topPanel
 id tvAddress
 id tvCompany
+id tvDescription
+id tvLicensed
 id tvPhoneNumber
 id tvRegisterLink
 id tvWelcome

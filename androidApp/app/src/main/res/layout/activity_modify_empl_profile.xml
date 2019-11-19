@@ -81,6 +81,32 @@
             android:layout_weight="30"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Licensed: "
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:layout_weight="70"/>
+
+        <Switch
+            android:id="@+id/swLicensed"
+            android:checked="false"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:layout_marginRight="180dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="30"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/Password"
         android:layout_width="wrap_content"
@@ -89,6 +115,7 @@
         android:text="General Description: " />
 
     <EditText
+        android:id="@+id/etDescription"
         android:background="@drawable/custom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

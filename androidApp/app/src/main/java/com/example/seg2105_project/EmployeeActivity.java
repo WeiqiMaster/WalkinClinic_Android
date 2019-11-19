@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class EmployeeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -13,6 +14,8 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
     TextView tvAddress;
     TextView tvPhoneNumber;
     TextView tvCompany;
+    TextView tvLicensed;
+    TextView tvDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +25,11 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         tvAddress = findViewById(R.id.tvAddress);
         tvPhoneNumber = findViewById(R.id.tvPhoneNumber);
         tvCompany = findViewById(R.id.tvCompany);
+        tvLicensed = findViewById(R.id.tvLicensed);
+        tvDescription = findViewById(R.id.tvDescription);
         btnEdit = findViewById(R.id.btnEdit);
         btnEdit.setOnClickListener(this);
+
     }
 
     @Override
@@ -32,6 +38,8 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra("address", tvAddress.getText().toString().trim());
         intent.putExtra("phoneNumber", tvPhoneNumber.getText().toString().trim());
         intent.putExtra("company", tvCompany.getText().toString().trim());
+        intent.putExtra("licensed", tvLicensed.getText().toString().trim().equals("Yes"));
+        intent.putExtra("description", tvDescription.getText().toString().trim());
         startActivityForResult(intent, 1);
     }
 
@@ -45,6 +53,9 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 tvAddress.setText(address);
                 tvPhoneNumber.setText(phoneNumber);
                 tvCompany.setText(company);
+                String licensed = data.getExtras().getBoolean("licensed", false) ? "Yes" : "No";
+                tvLicensed.setText(licensed);
+                tvDescription.setText(data.getStringExtra(("description")));
             }
         }
     }
