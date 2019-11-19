@@ -31,6 +31,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent(this, ModifyEmplProfileActivity.class);
         intent.putExtra("address", tvAddress.getText().toString().trim());
         intent.putExtra("phoneNumber", tvPhoneNumber.getText().toString().trim());
+        intent.putExtra("company", tvCompany.getText().toString().trim());
         startActivity(intent);
     }
 }

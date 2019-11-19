@@ -27,7 +27,7 @@
             android:id="@+id/etAddress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="d "
+            android:text=""
             android:gravity="center"
             android:textAlignment="textStart"
             android:layout_weight="30"/>
@@ -51,7 +51,7 @@
             android:id="@+id/etPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="34 "
+            android:text=""
             android:gravity="center"
             android:textAlignment="textStart"
             android:layout_weight="30"
@@ -75,7 +75,7 @@
             android:id="@+id/etCompany"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="3456765434 "
+            android:text=""
             android:gravity="center"
             android:textAlignment="textStart"
             android:layout_weight="30"/>
@@ -101,7 +101,7 @@
 <!--        android:textAlignment="textStart"/>-->
 
     <Button
-        android:id="@+id/bLogin"
+        android:id="@+id/btnSaveChanges"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
