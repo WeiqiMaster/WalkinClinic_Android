@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,14 +15,14 @@ import androidx.fragment.app.FragmentActivity;
 
 import java.util.ArrayList;
 
-public class ServiceListAdapter extends ArrayAdapter<Service> {
+public class ServiceListAdapterEmployee extends ArrayAdapter<Service> {
     private Context mContext;
     int mResource;
-    private TextView tvName;
+    private CheckedTextView tvName;
     private TextView tvRoleOfPerson;
     FragmentActivity fragmentActivity;
 
-    public ServiceListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Service> objects, FragmentActivity c) {
+    public ServiceListAdapterEmployee(@NonNull Context context, int resource, @NonNull ArrayList<Service> objects, FragmentActivity c) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -39,7 +40,7 @@ public class ServiceListAdapter extends ArrayAdapter<Service> {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        tvName = (TextView) convertView.findViewById(R.id.textView1);
+        tvName = convertView.findViewById(R.id.textView1);
         tvRoleOfPerson = (TextView) convertView.findViewById(R.id.textView2);
 
         tvName.setText(name);
