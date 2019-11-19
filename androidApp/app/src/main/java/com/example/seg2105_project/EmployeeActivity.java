@@ -32,6 +32,20 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra("address", tvAddress.getText().toString().trim());
         intent.putExtra("phoneNumber", tvPhoneNumber.getText().toString().trim());
         intent.putExtra("company", tvCompany.getText().toString().trim());
-        startActivity(intent);
+        startActivityForResult(intent, 1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                String address = data.getStringExtra("address");
+                String phoneNumber = data.getStringExtra("phoneNumber");
+                String company = data.getStringExtra("company");
+                tvAddress.setText(address);
+                tvPhoneNumber.setText(phoneNumber);
+                tvCompany.setText(company);
+            }
+        }
     }
 }

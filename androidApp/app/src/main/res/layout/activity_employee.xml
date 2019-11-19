@@ -33,7 +33,7 @@
             android:id="@+id/tvAddress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="sfgfgngrefgfb "
+            android:text=""
             android:gravity="center"
             android:textAlignment="textStart"
             android:layout_weight="30"/>
@@ -57,7 +57,7 @@
             android:id="@+id/tvPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="3456765434 "
+            android:text=""
             android:gravity="center"
             android:textAlignment="textStart"
             android:layout_weight="30"
@@ -81,7 +81,7 @@
             android:id="@+id/tvCompany"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="3456765434 "
+            android:text=""
             android:gravity="center"
             android:textAlignment="textStart"
             android:layout_weight="30"/>

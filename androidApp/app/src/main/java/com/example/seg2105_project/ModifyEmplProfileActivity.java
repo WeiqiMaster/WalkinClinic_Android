@@ -2,6 +2,7 @@ package com.example.seg2105_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +33,11 @@ public class ModifyEmplProfileActivity extends AppCompatActivity implements View
 
     @Override
     public void onClick(View v) {
-        
+        Intent intent = new Intent();
+        intent.putExtra("address", etAddress.getText().toString().trim());
+        intent.putExtra("phoneNumber", etPhoneNumber.getText().toString().trim());
+        intent.putExtra("company", etCompany.getText().toString().trim());
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

@@ -733,6 +733,7 @@ id blocking
 id bottom
 id btnAddService
 id btnEdit
+id btnSaveChanges
 id buttonPanel
 id cancel_action
 id center
