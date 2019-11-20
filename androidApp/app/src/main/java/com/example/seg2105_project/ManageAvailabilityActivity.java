@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class ManageAvailabilityActivity extends AppCompatActivity implements View.OnClickListener {
+public class ManageAvailabilityActivity extends AppCompatActivity implements View.OnClickListener, DialogEditAvailability.DialogUpdateAvailabilityListener {
     ListView mListView;
     ArrayList<MyTime> timeList;
     Button btnAddAvailability;
@@ -43,15 +43,18 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TimePickerFragment timePickerFragment2 = new TimePickerFragment();
-                timePickerFragment2.setPosition(position);
-                timePickerFragment2.setIsAdding(false, 1);
-                timePickerFragment2.show(getFragmentManager(), "TIME");
-
-                TimePickerFragment timePickerFragment = new TimePickerFragment();
-                timePickerFragment.setPosition(position);
-                timePickerFragment.setIsAdding(false, 0);
-                timePickerFragment.show(getFragmentManager(), "TIME");
+                DialogEditAvailability dialogEditAvailability = new DialogEditAvailability();
+                dialogEditAvailability.setPosition(position);
+                dialogEditAvailability.show(getSupportFragmentManager(),"Update Availability");
+//                TimePickerFragment timePickerFragment2 = new TimePickerFragment();
+//                timePickerFragment2.setPosition(position);
+//                timePickerFragment2.setIsAdding(false, 1);
+//                timePickerFragment2.show(getFragmentManager(), "TIME");
+//
+//                TimePickerFragment timePickerFragment = new TimePickerFragment();
+//                timePickerFragment.setPosition(position);
+//                timePickerFragment.setIsAdding(false, 0);
+//                timePickerFragment.show(getFragmentManager(), "TIME");
 
 //                final int position1 = position;
 //
@@ -137,4 +140,22 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         mListView.setAdapter(adapter);
     }
 
+    @Override
+    public void apply(int position, boolean isDelete) {
+        if (isDelete) {
+            timeList.remove(position);
+            TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList,this);
+            mListView.setAdapter(adapter);
+        } else {
+            TimePickerFragment timePickerFragment2 = new TimePickerFragment();
+            timePickerFragment2.setPosition(position);
+            timePickerFragment2.setIsAdding(false, 1);
+            timePickerFragment2.show(getFragmentManager(), "TIME");
+
+            TimePickerFragment timePickerFragment = new TimePickerFragment();
+            timePickerFragment.setPosition(position);
+            timePickerFragment.setIsAdding(false, 0);
+            timePickerFragment.show(getFragmentManager(), "TIME");
+        }
+    }
 }
