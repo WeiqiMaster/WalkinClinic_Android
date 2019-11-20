@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
 
-                if (email.equals("admin") && password.equals("300066475")) {
+                if (email.equals("admin") && password.equals("123")) {
                     startActivity(new Intent(MainActivity.this, AdministrationActivity.class));
                     break;
                 }

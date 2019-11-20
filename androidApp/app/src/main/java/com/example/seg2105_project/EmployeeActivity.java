@@ -1,7 +1,9 @@
 package com.example.seg2105_project;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -27,6 +36,10 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
     EditText etRoleOfPerson;
     Button btnAddService;
     ArrayList<Service> serviceList;
+
+    ArrayList<String> services;
+    DatabaseReference mDatabase;
+    boolean[] checkedItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +94,63 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 startActivityForResult(intent, 1);
                 break;
             case R.id.btnAddService:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Choose Services");
+
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("Service");
+
+                // add a radio button list
+                services = new ArrayList<String>();
+                mDatabase.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            //User user = snapshot.getValue(User.class);
+                            String s = snapshot.child("name").getValue().toString()
+                                    + "  " + snapshot.child("roleOfPerson").getValue().toString();
+                            Toast.makeText(getApplicationContext(),
+                                    s,
+                                    Toast.LENGTH_LONG).show();
+                            services.add(s);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+                checkedItems = new boolean[2];
+                String[] ss = new String[services.size()];
+                for (int i = 0; i < services.size(); i++) {
+                    ss[i] = services.get(i);
+                }
+                //services.toArray(new String[services.size()]);
+                String[] ss2 = {"hehe", "fgfr"};
+                builder.setMultiChoiceItems(ss2, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                        //checkedItems[which] = isChecked;
+                    }
+                });
+
+                // add OK and Cancel buttons
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        for (int i = 0; i < services.size(); i++) {
+                            if (checkedItems[i]) {
+                                String[] temp = services.get(i).split("  ", 2);
+                                Service service = new Service(temp[0], temp[1]);
+                                serviceList.add(service);
+                            }
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", null);
+
+                // create and show the alert dialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
                 break;
         }
     }
