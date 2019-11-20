@@ -34,6 +34,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
     EditText etServiceName;
     EditText etRoleOfPerson;
     Button btnAddService;
+    Button btnManageAvailability;
     ArrayList<Service> serviceList;
 
     ArrayList<String> services;
@@ -57,8 +58,10 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         etServiceName = (EditText) findViewById(R.id.etServiceName);
         etRoleOfPerson = (EditText) findViewById(R.id.etRoleOfPerson);
         btnAddService = (Button) findViewById(R.id.btnAddService);
-
         btnAddService.setOnClickListener(this);
+
+        btnManageAvailability = findViewById(R.id.btnManageAvailability);
+        btnManageAvailability.setOnClickListener(this);
 
 
         serviceList = new ArrayList<>();
@@ -146,6 +149,9 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
 //                AlertDialog dialog = builder.create();
 //                dialog.show();
 
+                break;
+            case R.id.btnManageAvailability:
+                startActivity(new Intent(this, ManageAvailabilityActivity.class));
                 break;
         }
     }

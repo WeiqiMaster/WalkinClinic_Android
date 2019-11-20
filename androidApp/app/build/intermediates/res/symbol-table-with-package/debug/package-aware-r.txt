@@ -731,8 +731,10 @@ id barrier
 id beginning
 id blocking
 id bottom
+id btnAddAvailability
 id btnAddService
 id btnEdit
+id btnManageAvailability
 id btnSaveChanges
 id buttonPanel
 id cancel_action
