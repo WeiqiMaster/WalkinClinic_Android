@@ -7,11 +7,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class EmployeeActivity extends AppCompatActivity implements View.OnClickListener {
+public class EmployeeActivity extends AppCompatActivity implements View.OnClickListener, DialogEmployeeAddService.DialogEmployeeServiceListener {
     Button btnEdit;
     TextView tvAddress;
     TextView tvPhoneNumber;
@@ -61,21 +59,29 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
 
         btnAddService.setOnClickListener(this);
 
-        Service service1 = new Service("clean", "nurse");
-        Service service2 = new Service("clean2", "nurse");
-
         serviceList = new ArrayList<>();
-        serviceList.add(service1);
-        serviceList.add(service2);
+//        Service service1 = new Service("clean", "nurse");
+//        Service service2 = new Service("clean2", "nurse");
+//        serviceList.add(service1);
+//        serviceList.add(service2);
 
         ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
         mListView.setAdapter(adapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Service");
+        services = new ArrayList<String>();
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DialogChangeService dialogChangeService = new DialogChangeService();
-                dialogChangeService.setPosition(position);
-                dialogChangeService.show(getSupportFragmentManager(), "Modify Services");
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    //User user = snapshot.getValue(User.class);
+                    String s = snapshot.child("name").getValue().toString()
+                            + "  " + snapshot.child("roleOfPerson").getValue().toString();
+                    services.add(s);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
             }
         });
 
@@ -94,64 +100,65 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 startActivityForResult(intent, 1);
                 break;
             case R.id.btnAddService:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Choose Services");
 
-                mDatabase = FirebaseDatabase.getInstance().getReference().child("Service");
-
-                // add a radio button list
-                services = new ArrayList<String>();
-                mDatabase.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            //User user = snapshot.getValue(User.class);
-                            String s = snapshot.child("name").getValue().toString()
-                                    + "  " + snapshot.child("roleOfPerson").getValue().toString();
-                            Toast.makeText(getApplicationContext(),
-                                    s,
-                                    Toast.LENGTH_LONG).show();
-                            services.add(s);
-                        }
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
-                checkedItems = new boolean[2];
+                checkedItems = new boolean[services.size()];
                 String[] ss = new String[services.size()];
-                for (int i = 0; i < services.size(); i++) {
-                    ss[i] = services.get(i);
-                }
-                //services.toArray(new String[services.size()]);
-                String[] ss2 = {"hehe", "fgfr"};
-                builder.setMultiChoiceItems(ss2, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                        //checkedItems[which] = isChecked;
-                    }
-                });
 
-                // add OK and Cancel buttons
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        for (int i = 0; i < services.size(); i++) {
-                            if (checkedItems[i]) {
-                                String[] temp = services.get(i).split("  ", 2);
-                                Service service = new Service(temp[0], temp[1]);
-                                serviceList.add(service);
-                            }
-                        }
-                    }
-                });
-                builder.setNegativeButton("Cancel", null);
+//                Toast.makeText(getApplicationContext(),
+//                        Integer.toString(services.size()),
+//                        Toast.LENGTH_LONG).show();
 
-                // create and show the alert dialog
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                services.toArray(new String[services.size()]);
+
+                DialogEmployeeAddService dialogUpdateServices = new DialogEmployeeAddService();
+                dialogUpdateServices.passValues(ss, checkedItems, services, serviceList);
+                dialogUpdateServices.show(getSupportFragmentManager(), "Choose Services");
+
+
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                builder.setTitle("Choose Services");
+//                builder.setMultiChoiceItems(ss, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+//                        checkedItems[which] = isChecked;
+//                    }
+//                });
+//
+//                // add OK and Cancel buttons
+//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        for (int i = 0; i < services.size(); i++) {
+//                            if (checkedItems[i]) {
+//                                String[] temp = services.get(i).split("     ", 2);
+//                                Service service = new Service(temp[0], temp[1]);
+//                                serviceList.add(service);
+//                                ServiceListAdapter adapter = new ServiceListAdapter(EmployeeActivity.this,  R.layout.adapter_view_checked, serviceList, this);
+//                                mListView.setAdapter(adapter);
+//                            }
+//                        }
+//                    }
+//                });
+//                builder.setNegativeButton("Cancel", null);
+//
+//                // create and show the alert dialog
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
 
                 break;
+        }
+    }
+
+    @Override
+    public void applyResult(boolean[] checkedItems) {
+        for (int i = 0; i < services.size(); i++) {
+            if (checkedItems[i]) {
+                String[] temp = services.get(i).split("  ", 2);
+                Service service = new Service(temp[0], temp[1]);
+                serviceList.add(service);
+                ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
+                mListView.setAdapter(adapter);
+            }
         }
     }
 
