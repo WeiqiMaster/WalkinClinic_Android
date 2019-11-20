@@ -76,7 +76,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     //User user = snapshot.getValue(User.class);
                     String s = snapshot.child("name").getValue().toString()
-                            + "  " + snapshot.child("roleOfPerson").getValue().toString();
+                            + "    " + snapshot.child("roleOfPerson").getValue().toString();
                     services.add(s);
                 }
             }
@@ -102,13 +102,13 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btnAddService:
 
                 checkedItems = new boolean[services.size()];
-                String[] ss = new String[services.size()];
+                String[] ss = services.toArray(new String[services.size()]);
 
 //                Toast.makeText(getApplicationContext(),
 //                        Integer.toString(services.size()),
 //                        Toast.LENGTH_LONG).show();
 
-                services.toArray(new String[services.size()]);
+
 
                 DialogEmployeeAddService dialogUpdateServices = new DialogEmployeeAddService();
                 dialogUpdateServices.passValues(ss, checkedItems, services, serviceList);
@@ -153,7 +153,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
     public void applyResult(boolean[] checkedItems) {
         for (int i = 0; i < services.size(); i++) {
             if (checkedItems[i]) {
-                String[] temp = services.get(i).split("  ", 2);
+                String[] temp = services.get(i).split("    ", 2);
                 Service service = new Service(temp[0], temp[1]);
                 serviceList.add(service);
                 ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
