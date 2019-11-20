@@ -3,18 +3,7 @@ package com.example.seg2105_project;
 public class MyTime {
     int month;
     int day;
-    int hour;
-    int minute;
     String timeInterval;
-
-//    public MyTime(int month, int day,
-//                  int hour,
-//                  int minute){
-//        this.month = month;
-//        this.day = day;
-//        this.hour = hour;
-//        this.minute = minute;
-//    }
 
     public MyTime(int month, int day,
                   String timeInterval){
@@ -47,19 +36,4 @@ public class MyTime {
         this.day = day;
     }
 
-    public int getHour() {
-        return hour;
-    }
-
-    public void setHour(int hour) {
-        this.hour = hour;
-    }
-
-    public int getMinute() {
-        return minute;
-    }
-
-    public void setMinute(int minute) {
-        this.minute = minute;
-    }
 }
