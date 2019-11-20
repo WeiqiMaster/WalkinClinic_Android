@@ -156,13 +156,14 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         serviceList = new ArrayList<Service>();
         for (int i = 0; i < services.size(); i++) {
             if (checkedItems[i]) {
+                //isAllFalse = false;
                 String[] temp = services.get(i).split("      ", 2);
                 Service service = new Service(temp[0], temp[1]);
                 serviceList.add(service);
-                ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
-                mListView.setAdapter(adapter);
             }
         }
+        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
+        mListView.setAdapter(adapter);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
