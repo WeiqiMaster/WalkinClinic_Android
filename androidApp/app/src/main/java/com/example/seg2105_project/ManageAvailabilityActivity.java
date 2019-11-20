@@ -141,21 +141,35 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
     }
 
     @Override
-    public void apply(int position, boolean isDelete) {
+    public void apply(final int position, boolean isDelete) {
         if (isDelete) {
             timeList.remove(position);
             TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList,this);
             mListView.setAdapter(adapter);
         } else {
-            TimePickerFragment timePickerFragment2 = new TimePickerFragment();
-            timePickerFragment2.setPosition(position);
-            timePickerFragment2.setIsAdding(false, 1);
-            timePickerFragment2.show(getFragmentManager(), "TIME");
+            final Calendar currentDate = Calendar.getInstance();
+            date = Calendar.getInstance();
+            new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    date.set(year, monthOfYear, dayOfMonth);
+                    month = date.get(Calendar.MONTH);
+                    day = date.get(Calendar.DAY_OF_MONTH);
 
-            TimePickerFragment timePickerFragment = new TimePickerFragment();
-            timePickerFragment.setPosition(position);
-            timePickerFragment.setIsAdding(false, 0);
-            timePickerFragment.show(getFragmentManager(), "TIME");
+                    TimePickerFragment timePickerFragment2 = new TimePickerFragment();
+                    timePickerFragment2.setPosition(position);
+                    timePickerFragment2.setIsAdding(false, 1);
+                    timePickerFragment2.show(getFragmentManager(), "TIME");
+
+                    TimePickerFragment timePickerFragment = new TimePickerFragment();
+                    timePickerFragment.setPosition(position);
+                    timePickerFragment.setIsAdding(false, 0);
+                    timePickerFragment.show(getFragmentManager(), "TIME");
+
+                    //currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE);
+                }
+            }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
+
         }
     }
 }
