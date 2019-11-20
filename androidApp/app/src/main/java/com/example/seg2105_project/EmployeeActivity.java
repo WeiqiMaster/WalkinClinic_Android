@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -59,13 +60,14 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
 
         btnAddService.setOnClickListener(this);
 
+
         serviceList = new ArrayList<>();
 //        Service service1 = new Service("clean", "nurse");
 //        Service service2 = new Service("clean2", "nurse");
 //        serviceList.add(service1);
 //        serviceList.add(service2);
 
-        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
+        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList, this);
         mListView.setAdapter(adapter);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Service");
@@ -76,14 +78,18 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     //User user = snapshot.getValue(User.class);
                     String s = snapshot.child("name").getValue().toString()
-                            + "    " + snapshot.child("roleOfPerson").getValue().toString();
+                            + "      " + snapshot.child("roleOfPerson").getValue().toString();
                     services.add(s);
                 }
+                checkedItems = new boolean[services.size()];
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+//        Toast.makeText(getApplicationContext(),
+//                Integer.toString(services.size()),
+//                Toast.LENGTH_LONG).show();
 
     }
 
@@ -100,20 +106,15 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 startActivityForResult(intent, 1);
                 break;
             case R.id.btnAddService:
-
-                checkedItems = new boolean[services.size()];
-                String[] ss = services.toArray(new String[services.size()]);
-
 //                Toast.makeText(getApplicationContext(),
 //                        Integer.toString(services.size()),
 //                        Toast.LENGTH_LONG).show();
-
-
+                //checkedItems = new boolean[services.size()];
+                String[] ss = services.toArray(new String[services.size()]);
 
                 DialogEmployeeAddService dialogUpdateServices = new DialogEmployeeAddService();
                 dialogUpdateServices.passValues(ss, checkedItems, services, serviceList);
                 dialogUpdateServices.show(getSupportFragmentManager(), "Choose Services");
-
 
 //                AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //                builder.setTitle("Choose Services");
@@ -151,9 +152,11 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void applyResult(boolean[] checkedItems) {
+        this.checkedItems = checkedItems;
+        serviceList = new ArrayList<Service>();
         for (int i = 0; i < services.size(); i++) {
             if (checkedItems[i]) {
-                String[] temp = services.get(i).split("    ", 2);
+                String[] temp = services.get(i).split("      ", 2);
                 Service service = new Service(temp[0], temp[1]);
                 serviceList.add(service);
                 ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);

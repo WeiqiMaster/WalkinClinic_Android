@@ -171,6 +171,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Add Service" />
+        android:text="Update Service" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Uncheck the service to remove that service." />
+
 
 </LinearLayout>
