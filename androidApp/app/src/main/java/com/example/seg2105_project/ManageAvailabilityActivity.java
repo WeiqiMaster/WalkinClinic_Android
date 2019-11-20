@@ -25,6 +25,7 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
     Calendar date;
     int month;
     int day;
+    //public int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +43,43 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TimePickerFragment timePickerFragment2 = new TimePickerFragment();
+                timePickerFragment2.setPosition(position);
+                timePickerFragment2.setIsAdding(false, 1);
+                timePickerFragment2.show(getFragmentManager(), "TIME");
+
                 TimePickerFragment timePickerFragment = new TimePickerFragment();
                 timePickerFragment.setPosition(position);
                 timePickerFragment.setIsAdding(false, 0);
                 timePickerFragment.show(getFragmentManager(), "TIME");
 
-                TimePickerFragment timePickerFragment2 = new TimePickerFragment();
-                timePickerFragment2.setPosition(position);
-                timePickerFragment2.setIsAdding(false, 1);
-                timePickerFragment2.show(getFragmentManager(), "TIME");
+//                final int position1 = position;
+//
+//                //final int position1 = position;
+//                final Calendar currentDate = Calendar.getInstance();
+//                date = Calendar.getInstance();
+//                new DatePickerDialog(getApplicationContext(), new DatePickerDialog.OnDateSetListener() {
+//                    @Override
+//                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                        date.set(year, monthOfYear, dayOfMonth);
+//                        month = date.get(Calendar.MONTH);
+//                        day = date.get(Calendar.DAY_OF_MONTH);
+//
+////                        TimePickerFragment timePickerFragment = new TimePickerFragment();
+////                        //timePickerFragment.setPosition(position1);
+////                        timePickerFragment.setIsAdding(false, 0);
+////                        timePickerFragment.show(getFragmentManager(), "TIME");
+////
+////                        TimePickerFragment timePickerFragment2 = new TimePickerFragment();
+////                        //timePickerFragment2.setPosition(position1);
+////                        timePickerFragment2.setIsAdding(false, 1);
+////                        timePickerFragment2.show(getFragmentManager(), "TIME");
+//
+//                        //currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE);
+//                    }
+//                }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
+
+
             }
         });
     }
@@ -66,13 +95,13 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
                 month = date.get(Calendar.MONTH);
                 day = date.get(Calendar.DAY_OF_MONTH);
 
-                TimePickerFragment timePickerFragment = new TimePickerFragment();
-                timePickerFragment.setIsAdding(true, 0);
-                timePickerFragment.show(getFragmentManager(), "TIME");
-
                 TimePickerFragment timePickerFragment2 = new TimePickerFragment();
                 timePickerFragment2.setIsAdding(true, 1);
                 timePickerFragment2.show(getFragmentManager(), "TIME");
+
+                TimePickerFragment timePickerFragment = new TimePickerFragment();
+                timePickerFragment.setIsAdding(true, 0);
+                timePickerFragment.show(getFragmentManager(), "TIME");
 
                 //currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE);
             }
@@ -82,6 +111,9 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
     }
 
     public void addTime0(int hour, int minute) {
+        Toast.makeText(getApplicationContext(),
+                Integer.toString(hour) + ":" + Integer.toString(minute),
+                Toast.LENGTH_LONG).show();
         timeInterval = hour + ":" + minute;
     }
 

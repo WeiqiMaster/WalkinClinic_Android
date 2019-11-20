@@ -91,34 +91,34 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         //Set a message for user
 
         //Get the AM or PM for current time
-        String aMpM = "AM";
-        if(hourOfDay >11)
-        {
-            aMpM = "PM";
-        }
-
-        //Make the 24 hour time format to 12 hour time format
-        int currentHour;
-        if(hourOfDay>11)
-        {
-            currentHour = hourOfDay - 12;
-        }
-        else
-        {
-            currentHour = hourOfDay;
-        }
+//        String aMpM = "AM";
+//        if(hourOfDay >11)
+//        {
+//            aMpM = "PM";
+//        }
+//
+//        //Make the 24 hour time format to 12 hour time format
+//        int currentHour;
+//        if(hourOfDay>11)
+//        {
+//            currentHour = hourOfDay - 12;
+//        }
+//        else
+//        {
+//            currentHour = hourOfDay;
+//        }
 
 
         if (isAdding) {
             if (index == 0)
-                listener.addTime0(currentHour, minute);
+                listener.addTime0(hourOfDay, minute);
             else
-                listener.addTime(currentHour, minute);
+                listener.addTime(hourOfDay, minute);
         } else {
             if (index == 0)
-                listener.applyTime0(position, currentHour, minute);
+                listener.applyTime0(position, hourOfDay, minute);
             else
-                listener.applyTime(position, currentHour, minute);
+                listener.applyTime(position, hourOfDay, minute);
         }
 
         //tv.setText("Your chosen time is...\n\n");
