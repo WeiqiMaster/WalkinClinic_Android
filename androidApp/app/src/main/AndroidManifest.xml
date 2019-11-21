@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdministrationActivity"></activity>
+        <activity android:name=".ModifyEmplProfileActivity"></activity>
+        <activity android:name=".EmployeeActivity" />
+        <activity android:name=".ManageAvailabilityActivity" />
+        <activity android:name=".AdministrationActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".MainActivity">

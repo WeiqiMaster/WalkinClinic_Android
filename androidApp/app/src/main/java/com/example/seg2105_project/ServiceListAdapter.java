@@ -1,7 +1,6 @@
 package com.example.seg2105_project;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import java.util.ArrayList;
@@ -30,12 +27,6 @@ public class ServiceListAdapter extends ArrayAdapter<Service> {
         mResource = resource;
         fragmentActivity = c;
     }
-
-//    @Override
-//    public void applyText(String serviceName, String roleOfPerson) {
-//        tvName.setText(serviceName);
-//        tvRoleOfPerson.setText(roleOfPerson);
-//    }
 
     @NonNull
     @Override

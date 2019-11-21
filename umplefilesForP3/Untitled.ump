@@ -1,0 +1,579 @@
+class Admin
+{
+  isA User;
+public void admin(){
+
+}
+}
+
+class AdministrationActivity
+{
+      isA AppCompatActivity;
+ListView mListView;
+  EditText etServiceName;
+  EditText etRoleOfPerson;
+   Button btnAddService;
+  ArrayList<Service> serviceList;
+   DatabaseReference reff;
+    1 -- * Service;
+     1 -- 1 ServiceListAdapter;
+  1 -- 1 ServiceListAdapterEmployee;
+  1 -- 1 TimeListAdapter;
+protected void onCreate(Bundle savedInstanceState) {
+     }
+   public void applyText(int position, String serviceName, String roleOfPerson) {}
+  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
+   public void applyText(int position, String serviceName, String roleOfPerson) {}
+   public void onClick(View v) {}
+  
+}
+
+class Employee
+{
+       isA User;
+public Employee(String name, String email) {}
+}
+
+class DialogChangeService
+{
+  isA AppCompatDialogFragment;
+   private EditText etServiceName;
+    private EditText etRoleOfPerson;
+    private DialogChangeServiceListener listener;
+    private int position;
+  public void setPosition(int position) {}
+  public Dialog onCreateDialog(Bundle savedInstanceState) {}
+   public void onClick(DialogInterface dialog, int which) {}
+   public void onClick(DialogInterface dialog, int which) {}
+   public void onAttach(Context context) {}
+  
+  
+  
+}
+
+class Hash_256
+{
+   public static byte[] getSHA(String input) throws NoSuchAlgorithmException{}
+    public static String toHexString(byte[] hash)
+    {}
+}
+
+class MainActivity
+  
+{
+    isA AppCompatActivity;
+Button bLogin;
+    EditText etEmail, etPassword;
+    TextView tvRegisterLink;
+    FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
+  protected void onCreate(Bundle savedInstanceState) {}
+   public void onClick(View v) {}
+   public void onComplete( Task<AuthResult> task) {}
+  public void onDataChange(DataSnapshot dataSnapshot) {}
+  public void onCancelled(DatabaseError databaseError) {}
+  
+  
+}
+
+class Patient
+{
+  isA User;
+  public Patient(String name, String email) {}
+}
+
+class RegisterActivity
+  
+{
+    isA AppCompatActivity;
+Switch swIsEmployee;
+    EditText etName, etEmail, etPassword, etConfirmPassword;
+    Button bRegister;
+    User user;
+    DatabaseReference reff;
+    FirebaseAuth mAuth;
+    FirebaseDatabase mDatabase;
+    protected void onCreate(Bundle savedInstanceState) {}
+  public void onDataChange( DataSnapshot dataSnapshot) {}
+   public void onCancelled( DatabaseError databaseError) {}
+  public void onClick(View v) {}
+  public void onComplete( Task<AuthResult> task) {}
+  
+}
+
+class Service
+{
+     * -- 1 User;
+  private String name;
+   private String roleOfPerson;
+   public Service(String name, String roleOfPerson) {}
+    public String getName() {}
+   public void setName(String name) {}
+    public String getRoleOfPerson() {}
+    public void setRoleOfPerson(String roleOfPerson) {}
+  
+}
+
+class ServiceListAdapter
+{
+       isA ArrayAdapter;
+Context mContext;
+    int mResource;
+     TextView tvName;
+     TextView tvRoleOfPerson;
+    FragmentActivity fragmentActivity;
+  
+  public ServiceListAdapter( Context context, int resource, ArrayList<Service> objects, FragmentActivity c) {}
+  public View getView(int position,  View convertView,  ViewGroup parent) {}
+    }
+
+class User
+{
+   String name;
+   String email;
+   String role;
+  public User(String name, String email) {}
+  public void setRole1(String role) {}
+  public String getEmail1() {}
+  public void setEmail1(String email) {}
+  public String getRole1() {}
+  public String getName1() {}
+  public void setName1(String name) {}
+  
+  
+}
+
+class WelcomeActivity
+{
+   TextView tvWelcome;
+    DatabaseReference mDatabase;
+  isA AppCompatActivity;
+  protected void onCreate(Bundle savedInstanceState) {}
+   public void onDataChange(DataSnapshot dataSnapshot) {}
+   public void onCancelled(DatabaseError databaseError) {}
+  
+}
+
+class AppCompatActivity
+{
+       
+     
+1 -- 1 User;
+}
+
+class AppCompatDialogFragment
+{
+   
+  
+}
+
+class ArrayAdapter
+{
+}
+
+
+
+
+
+
+class DialogEditAvailability
+{
+      isA AppCompatDialogFragment, DialogUpdateAvailabilityListener;
+int position;
+     DialogUpdateAvailabilityListener listener;
+     
+  public void setPosition(int position) {}
+  public Dialog onCreateDialog(Bundle savedInstanceState) {}
+   public void onAttach(Context context) {}
+ public interface DialogUpdateAvailabilityListener(){}
+   
+    
+  
+}
+
+
+
+class DialogEmployeeAddService
+{
+    isA AppCompatDialogFragment,DialogEmployeeServiceListener;
+String[] ss;
+    boolean[] checkedItems;
+    ArrayList<String> services;
+    ArrayList<Service> serviceList;
+    private DialogEmployeeServiceListener listener;
+    public void passValues(String[] ss,
+            boolean[] checkedItems,
+            ArrayList<String> services,
+                           ArrayList<Service> serviceList) {}
+  public Dialog onCreateDialog(Bundle savedInstanceState) {}
+  public void onClick(DialogInterface dialog, int which, boolean isChecked) {}
+  public void onAttach(Context context) {}
+  public interface DialogEmployeeServiceListener {
+        (void applyResult(boolean[] checkedItems);)
+    }
+  
+}
+
+ interface DialogEmployeeServiceListener {
+   void applyResult();
+   
+   
+}
+
+
+
+class EmployeeActivity 
+{
+  isA AppCompatActivity;
+   Button btnEdit;
+    TextView tvAddress;
+    TextView tvPhoneNumber;
+    TextView tvCompany;
+    TextView tvLicensed;
+    TextView tvDescription;
+
+    ListView mListView;
+    EditText etServiceName;
+    EditText etRoleOfPerson;
+    Button btnAddService;
+    Button btnManageAvailability;
+    ArrayList<Service> serviceList;
+  protected void onCreate(Bundle savedInstanceState) {}
+  public void onDataChange(DataSnapshot dataSnapshot) {}
+  public void onClick(View v) {}
+  public void applyResult(boolean[] checkedItems) {}
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {}
+}
+
+class ModifyEmplProfileActivity
+{
+    isA AppCompatActivity;
+Button btnSaveChanges;
+    TextView etAddress;
+    TextView etPhoneNumber;
+    TextView etCompany;
+    Switch swLicensed;
+    EditText etDescription;
+   protected void onCreate(Bundle savedInstanceState) {}
+ public void onClick(View v) {}
+}
+
+class ManageAvailabilityActivity
+{
+    isA AppCompatActivity;
+ListView mListView;
+    ArrayList<MyTime> timeList;
+    Button btnAddAvailability;
+    String timeInterval;
+    Calendar date;
+    int month;
+    int day;
+  protected void onCreate(Bundle savedInstanceState) {}
+  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
+  public void onClick(View v) {}
+  public void addTime0(int hour, int minute) {}
+  public void addTime(int hour, int minute) {}
+  public void applyTime0(int position, int hour, int minute) {}
+  public void applyTime(int position, int hour, int minute) {}
+  public void apply(final int position, boolean isDelete) {
+  }
+  public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {}
+  
+}
+
+class MyTime
+{
+   int month;
+    int day;
+    String timeInterval;
+     * -- * TimePickerFragment;
+  * -- * TimeListAdapter;
+public MyTime(int month, int day){}
+
+    public String getTimeInterva1() {}
+
+    public void setTimeInterval1(String timeInterval) {}
+
+    public int getMonth1() {}
+
+    public void setMonth1(int month) {}
+
+    public int getDay1() {}
+
+    public void setDay1(int day) {}
+
+}
+
+class ServiceListAdapterEmployee
+{
+      isA ArrayAdapter;
+private Context mContext;
+    int mResource;
+     CheckedTextView tvName;
+     TextView tvRoleOfPerson;
+    FragmentActivity fragmentActivity;
+  
+    public ServiceListAdapterEmployee(Context context, int resource, ArrayList<Service> objects, FragmentActivity c) {}
+	 public View getView(int position, View convertView, ViewGroup parent) {}
+}
+
+class TimeListAdapter
+{
+      isA ArrayAdapter;
+private Context mContext;
+    int mResource;
+    private TextView tvDay;
+    private TextView tvTime;
+    FragmentActivity fragmentActivity;
+        public TimeListAdapter(Context context, int resource, ArrayList<MyTime> objects, FragmentActivity c) {}
+      public View getView(int position, View convertView, ViewGroup parent) {}
+}
+
+class DialogFragment
+{
+}
+
+class TimePickerFragment
+{
+     isA DialogFragment;
+ManageAvailabilityActivity listener;
+     int position;
+     boolean isAdding;
+     int index;
+   public void setIsAdding(boolean b, int n) {}
+ public void setPosition(int position) {}
+ public Dialog onCreateDialog(Bundle savedInstanceState){}
+  public void onAttach(Context context) {}
+  public void onTimeSet(TimePicker view, int hourOfDay, int minute){}
+}
+
+
+
+
+interface DialogUpdateAvailabilityListener
+{
+  void apply();
+}
+
+class Admin
+{
+  position 281 428 190 84;
+}
+
+class AdministrationActivity
+{
+  position 716 825 388 261;
+    position.association AdministrationActivity__Service 299,0 34,163;
+  position.association AdministrationActivity__ServiceListAdapter 258,261 64,0;
+  position.association AdministrationActivity__ServiceListAdapterEmployee 62,261 502,0;
+  position.association AdministrationActivity__TimeListAdapter 366,261 134,0;
+}
+
+class Employee
+{
+  position 468 289 270 84;
+}
+
+class DialogChangeService
+{
+  position 2139 264 294 143;
+}
+
+class Hash_256
+{
+  position 11 91 250 103;
+}
+
+class MainActivity
+{
+  position 1456 822 316 241;
+}
+
+class Patient
+{
+  position 5 283 249 84;
+}
+
+class RegisterActivity
+{
+  position 2133 831 315 281;
+}
+
+class Service
+{
+  position 603 0 268 163;
+  position.association Service__User 0,24 219,19;
+  }
+
+class ServiceListAdapter
+{
+  position 727 1252 530 201;
+}
+
+class User
+{
+  position 268 1 230 260;
+}
+
+class WelcomeActivity
+{
+  position 1783 841 316 161;
+}
+
+class AppCompatActivity
+{
+  position 1200 678 149 64;
+    position.association AppCompatActivity__User 0,35 230,112;
+}
+
+class AppCompatDialogFragment
+{
+  position 1815 -1 209 64;
+}
+
+class ArrayAdapter
+{
+  position 784 1104 116 64;
+}
+
+namespace -;
+
+
+class Admin
+{
+  position 281 428 190 84;
+}
+
+class AdministrationActivity
+{
+  position 716 825 388 261;
+    position.association AdministrationActivity__Service 299,0 34,163;
+  position.association AdministrationActivity__ServiceListAdapter 258,261 64,0;
+  position.association AdministrationActivity__ServiceListAdapterEmployee 62,261 502,0;
+  position.association AdministrationActivity__TimeListAdapter 366,261 134,0;
+}
+
+class Employee
+{
+  position 468 289 270 84;
+}
+
+class DialogChangeService
+{
+  position 2139 264 294 143;
+}
+
+class Hash_256
+{
+  position 11 91 250 103;
+}
+
+class MainActivity
+{
+  position 1456 822 316 241;
+}
+
+class Patient
+{
+  position 5 283 249 84;
+}
+
+class RegisterActivity
+{
+  position 2133 831 315 281;
+}
+
+class Service
+{
+  position 603 0 268 163;
+  position.association Service__User 0,24 219,19;
+  position.association Service__ServiceListAdapter 181,163 252,0;
+}
+
+class ServiceListAdapter
+{
+  position 727 1252 530 201;
+}
+
+class User
+{
+  position 268 1 230 260;
+}
+
+class WelcomeActivity
+{
+  position 1783 841 316 161;
+}
+
+class AppCompatActivity
+{
+  position 1200 678 149 64;
+    position.association AppCompatActivity__User 0,35 219,112;
+}
+
+class AppCompatDialogFragment
+{
+  position 1815 -1 209 64;
+}
+
+class ArrayAdapter
+{
+  position 784 1104 116 64;
+}
+
+namespace -;
+
+class DialogEditAvailability
+{
+  position 1808 496 376 201;
+  position.association DialogEditAvailability__DialogUpdateAvailabilityListener 0,4 221,101;
+}
+
+class DialogEmployeeAddService
+{
+  position 1241 190 465 241;
+}
+
+class EmployeeActivity
+{
+  position 1122 812 316 399;
+}
+
+class ModifyEmplProfileActivity
+{
+  position 52 798 225 221;
+}
+
+class ManageAvailabilityActivity
+{
+  position 302 807 388 359;
+}
+
+class MyTime
+{
+  position 490 430 274 260;
+  position.association MyTime__TimePickerFragment 275,131 0,81;
+  position.association MyTime__TimeListAdapter 141,260 3,0;
+}
+
+class ServiceListAdapterEmployee
+{
+  position 38 1277 603 181;
+}
+
+class TimeListAdapter
+{
+  position 1470 1255 511 141;
+}
+
+class DialogFragment
+{
+  position 947 299 130 64;
+}
+
+class TimePickerFragment
+{
+  position 878 424 310 241;
+}//$?[End_of_model]$?
+
+namespace -;

@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class AdministrationActivity extends AppCompatActivity implements DialogChangeService.DialogChangeServiceListener, View.OnClickListener{
@@ -19,6 +22,7 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
     EditText etRoleOfPerson;
     Button btnAddService;
     ArrayList<Service> serviceList;
+    DatabaseReference reff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +107,9 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
                 serviceList.add(service);
                 ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList,this);
                 mListView.setAdapter(adapter);
+
+                reff = FirebaseDatabase.getInstance().getReference().child("Service");
+                reff.child(service.getName()).setValue(service);
 
                 break;
         }

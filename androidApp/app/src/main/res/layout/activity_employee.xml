@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Your Profile" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Address: "
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:layout_weight="70"/>
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:layout_weight="30"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Phone Number: "
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:layout_weight="70"/>
+
+        <TextView
+            android:id="@+id/tvPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:layout_weight="30"
+            android:inputType="phone"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Company: "
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:layout_weight="70"/>
+
+        <TextView
+            android:id="@+id/tvCompany"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:layout_weight="30"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Licensed: "
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:layout_weight="70"/>
+
+        <TextView
+            android:id="@+id/tvLicensed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:layout_weight="30"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="General Description: " />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Edit" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Your Services" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Service Name"
+            android:gravity="center"
+            android:paddingLeft="60dp"
+            android:textAlignment="textStart"
+            android:layout_weight="30"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Role Of Person"
+            android:gravity="center"
+            android:layout_weight="50"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/btnAddService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Update Service" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Uncheck the service in the dialog to remove that service." />
+
+    <Button
+        android:id="@+id/btnManageAvailability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Manage Availability" />
+
+</LinearLayout>
