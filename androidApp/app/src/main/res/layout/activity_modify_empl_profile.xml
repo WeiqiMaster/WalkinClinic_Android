@@ -119,7 +119,7 @@
         android:background="@drawable/custom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="text6 demo" />
+        android:hint="text demo" />
 <!--    <TextView-->
 <!--        android:id="@+id/tvCompany"-->
 <!--        android:layout_width="match_parent"-->

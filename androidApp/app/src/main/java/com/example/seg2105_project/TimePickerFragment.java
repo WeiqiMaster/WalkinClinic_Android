@@ -11,6 +11,7 @@ import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -85,27 +86,25 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     //onTimeSet() callback method
     public void onTimeSet(TimePicker view, int hourOfDay, int minute){
         final Calendar c = Calendar.getInstance();
-        int mDay = c.get(Calendar.DAY_OF_MONTH);
         //int mMonth = c.get(Calendar.MONTH);
         //Do something with the user chosen time
         //Set a message for user
 
-        //Get the AM or PM for current time
-//        String aMpM = "AM";
-//        if(hourOfDay >11)
-//        {
-//            aMpM = "PM";
-//        }
+//        final int currentHour = c.get(Calendar.HOUR_OF_DAY);
+//        final int currentMinute = c.get(Calendar.MINUTE);
 //
-//        //Make the 24 hour time format to 12 hour time format
-//        int currentHour;
-//        if(hourOfDay>11)
-//        {
-//            currentHour = hourOfDay - 12;
-//        }
-//        else
-//        {
-//            currentHour = hourOfDay;
+//        if (hourOfDay < currentHour) {
+//            Toast.makeText(listener,
+//                    "Failed! Can not choose time before current time",
+//                    Toast.LENGTH_LONG).show();
+//            listener.isFailing = true;
+//            return;
+//        } else if (minute < currentMinute) {
+//            Toast.makeText(listener,
+//                    "Failed! Can not choose time before current time",
+//                    Toast.LENGTH_LONG).show();
+//            listener.isFailing = true;
+//            return;
 //        }
 
 

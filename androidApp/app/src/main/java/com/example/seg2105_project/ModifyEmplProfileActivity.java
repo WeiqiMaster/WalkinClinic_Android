@@ -39,7 +39,6 @@ public class ModifyEmplProfileActivity extends AppCompatActivity implements View
         } else {
             swLicensed.setChecked(isCheckedText.equals("Yes"));
         }
-        //swLicensed.setChecked(getIntent().getStringExtra("licensed").equals("Yes"));
         etDescription.setText(getIntent().getStringExtra("description"));
 
         btnSaveChanges = findViewById(R.id.btnSaveChanges);
@@ -49,16 +48,30 @@ public class ModifyEmplProfileActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View v) {
         String address = etAddress.getText().toString().trim();
+        String phoneNumber = etPhoneNumber.getText().toString().trim();
+        String company = etCompany.getText().toString().trim();
         if (address.equals("")) {
             Toast.makeText(getApplicationContext(),
                     "Address can not be empty.",
                     Toast.LENGTH_LONG).show();
             return;
         }
+        if (phoneNumber.equals("")) {
+            Toast.makeText(getApplicationContext(),
+                    "Phone Number can not be empty.",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (company.equals("")) {
+            Toast.makeText(getApplicationContext(),
+                    "Company can not be empty.",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
         Intent intent = new Intent();
         intent.putExtra("address", address);
-        intent.putExtra("phoneNumber", etPhoneNumber.getText().toString().trim());
-        intent.putExtra("company", etCompany.getText().toString().trim());
+        intent.putExtra("phoneNumber", phoneNumber);
+        intent.putExtra("company", company);
         intent.putExtra("licensed", swLicensed.isChecked());
         intent.putExtra("description", etDescription.getText().toString().trim());
         setResult(RESULT_OK, intent);
