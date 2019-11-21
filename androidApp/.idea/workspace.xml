@@ -402,7 +402,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android Instrumented Tests.checkAddress()">
+  <component name="RunManager" selected="Android Instrumented Tests.ModifyEmplProfileAct...">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -516,12 +516,12 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainActivityTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+    <configuration name="ModifyEmplProfileAct..." type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <option name="TESTING_TYPE" value="2" />
       <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
       <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="com.example.seg2105_project.MainActivityTest" />
+      <option name="CLASS_NAME" value="com.example.seg2105_project.ModifyEmplProfileActivityTest" />
       <option name="PACKAGE_NAME" value="" />
       <option name="EXTRA_OPTIONS" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
@@ -714,11 +714,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android Instrumented Tests.ModifyEmplProfileAct..." />
         <item itemvalue="Android Instrumented Tests.checkAddress()" />
         <item itemvalue="Android Instrumented Tests.checkCompany()" />
         <item itemvalue="Android App.EmployeeActivity" />
         <item itemvalue="Android Instrumented Tests.RegisterActivityTest" />
-        <item itemvalue="Android Instrumented Tests.MainActivityTest" />
       </list>
     </recent_temporary>
   </component>

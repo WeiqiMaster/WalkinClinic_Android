@@ -34,7 +34,7 @@ public class ModifyEmplProfileActivityTest {
     @Test
     @UiThreadTest
     public void checkCompany() throws Exception{
-        //assertNotNull(myActivity.findViewById(R.id.Company));
+        assertNotNull(myActivity.findViewById(R.id.etCompany));
         text = myActivity.findViewById(R.id.etCompany);
         text.setText("xxxxxxx");
         String name = text.getText().toString();
@@ -44,7 +44,7 @@ public class ModifyEmplProfileActivityTest {
     @Test
     @UiThreadTest
     public void checkPhoneNumber() throws Exception{
-        //assertNotNull(myActivity.findViewById(R.id.PhoneNumber));
+        assertNotNull(myActivity.findViewById(R.id.etPhoneNumber));
         text = myActivity.findViewById(R.id.etPhoneNumber);
         text.setText("123456789");
         String name = text.getText().toString();
