@@ -3,7 +3,7 @@
 ## Team Members
 
 | Name | Student Number |Part1 - percentage|Part2 - percentage|Part3 - percentage|
-| --- | --- | ---| ---|
+| --- | --- | ---| ---|---|
 | Andrew Forward | 1484511  |
 | Andrew Forward | 1929204  |
 | Ayana Nurse | 2128439 |
