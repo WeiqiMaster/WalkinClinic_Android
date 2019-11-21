@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ModifyEmplProfileActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnSaveChanges;
@@ -32,7 +33,13 @@ public class ModifyEmplProfileActivity extends AppCompatActivity implements View
         etAddress.setText(getIntent().getStringExtra("address"));
         etPhoneNumber.setText(getIntent().getStringExtra("phoneNumber"));
         etCompany.setText(getIntent().getStringExtra("company"));
-        swLicensed.setChecked(getIntent().getExtras().getBoolean("licensed"));
+        String isCheckedText = getIntent().getStringExtra("licensed");
+        if (isCheckedText == null){
+            swLicensed.setChecked(false);
+        } else {
+            swLicensed.setChecked(isCheckedText.equals("Yes"));
+        }
+        //swLicensed.setChecked(getIntent().getStringExtra("licensed").equals("Yes"));
         etDescription.setText(getIntent().getStringExtra("description"));
 
         btnSaveChanges = findViewById(R.id.btnSaveChanges);
@@ -41,8 +48,15 @@ public class ModifyEmplProfileActivity extends AppCompatActivity implements View
 
     @Override
     public void onClick(View v) {
+        String address = etAddress.getText().toString().trim();
+        if (address.equals("")) {
+            Toast.makeText(getApplicationContext(),
+                    "Address can not be empty.",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
         Intent intent = new Intent();
-        intent.putExtra("address", etAddress.getText().toString().trim());
+        intent.putExtra("address", address);
         intent.putExtra("phoneNumber", etPhoneNumber.getText().toString().trim());
         intent.putExtra("company", etCompany.getText().toString().trim());
         intent.putExtra("licensed", swLicensed.isChecked());
