@@ -1,6 +1,3 @@
-//Unable to update umple code due to error at [179,5]
-//Unable to update umple code due to error at [178,5]
-//Unable to update umple code due to error at [122,0]
 class Admin
 {
   isA User;
@@ -167,7 +164,7 @@ class AppCompatActivity
 class AppCompatDialogFragment
 {
    
-  isA DialogEmployeeServiceListener;
+  
 }
 
 class ArrayAdapter
@@ -181,7 +178,7 @@ class ArrayAdapter
 
 class DialogEditAvailability
 {
-      isA AppCompatDialogFragment;
+      isA AppCompatDialogFragment, DialogUpdateAvailabilityListener;
 int position;
      DialogUpdateAvailabilityListener listener;
      
@@ -198,7 +195,7 @@ int position;
 
 class DialogEmployeeAddService
 {
-    isA AppCompatDialogFragment;
+    isA AppCompatDialogFragment,DialogEmployeeServiceListener;
 String[] ss;
     boolean[] checkedItems;
     ArrayList<String> services;
@@ -219,9 +216,10 @@ String[] ss;
 
  interface DialogEmployeeServiceListener {
    void applyResult();
-   void apply();
+   
    
 }
+
 
 
 class EmployeeActivity 
@@ -349,6 +347,14 @@ ManageAvailabilityActivity listener;
   public void onTimeSet(TimePicker view, int hourOfDay, int minute){}
 }
 
+
+
+
+interface DialogUpdateAvailabilityListener
+{
+  void apply();
+}
+
 class Admin
 {
   position 281 428 190 84;
@@ -390,7 +396,7 @@ class Patient
 
 class RegisterActivity
 {
-  position 2110 847 315 281;
+  position 2133 831 315 281;
 }
 
 class Service
@@ -406,7 +412,7 @@ class ServiceListAdapter
 
 class User
 {
-  position 274 13 230 260;
+  position 268 1 230 260;
 }
 
 class WelcomeActivity
@@ -416,18 +422,18 @@ class WelcomeActivity
 
 class AppCompatActivity
 {
-  position 1332 681 149 64;
+  position 1200 678 149 64;
     position.association AppCompatActivity__User 0,35 230,112;
 }
 
 class AppCompatDialogFragment
 {
-  position 1912 13 209 64;
+  position 1815 -1 209 64;
 }
 
 class ArrayAdapter
 {
-  position 816 1134 116 64;
+  position 784 1104 116 64;
 }
 
 namespace -;
@@ -474,7 +480,7 @@ class Patient
 
 class RegisterActivity
 {
-  position 2110 847 315 281;
+  position 2133 831 315 281;
 }
 
 class Service
@@ -491,7 +497,7 @@ class ServiceListAdapter
 
 class User
 {
-  position 274 13 230 260;
+  position 268 1 230 260;
 }
 
 class WelcomeActivity
@@ -501,31 +507,31 @@ class WelcomeActivity
 
 class AppCompatActivity
 {
-  position 1332 681 149 64;
+  position 1200 678 149 64;
     position.association AppCompatActivity__User 0,35 219,112;
 }
 
 class AppCompatDialogFragment
 {
-  position 1912 13 209 64;
+  position 1815 -1 209 64;
 }
 
 class ArrayAdapter
 {
-  position 816 1134 116 64;
-}//$?[End_of_model]$?
+  position 784 1104 116 64;
+}
 
 namespace -;
 
 class DialogEditAvailability
 {
-  position 1743 312 376 181;
+  position 1808 496 376 201;
   position.association DialogEditAvailability__DialogUpdateAvailabilityListener 0,4 221,101;
 }
 
 class DialogEmployeeAddService
 {
-  position 1235 257 465 221;
+  position 1241 190 465 241;
 }
 
 class EmployeeActivity
@@ -557,15 +563,17 @@ class ServiceListAdapterEmployee
 
 class TimeListAdapter
 {
-  position 1352 1272 511 141;
+  position 1470 1255 511 141;
 }
 
 class DialogFragment
 {
-  position 939 255 130 64;
+  position 947 299 130 64;
 }
 
 class TimePickerFragment
 {
-  position 910 472 310 183;
-}
+  position 878 424 310 241;
+}//$?[End_of_model]$?
+
+namespace -;
