@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-27:12
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-28:12
 MERGED from [com.google.firebase:firebase-database:16.0.4] C:\Users\86528\.gradle\caches\transforms-2\files-2.1\c0a17b2ff09d8a5b05c07fff8307f019\jetified-firebase-database-16.0.4\AndroidManifest.xml:15:1-25:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\86528\.gradle\caches\transforms-2\files-2.1\85e257a6babe96d3b8085bcd76499598\appcompat-1.0.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\86528\.gradle\caches\transforms-2\files-2.1\6d16290c97378708d50718ed6ea0b1c0\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
@@ -42,25 +42,25 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\86528\.gradle
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\86528\.gradle\caches\transforms-2\files-2.1\f5e5093a6d2ffb564f346d2769a020dc\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\86528\.gradle\caches\transforms-2\files-2.1\c92e9c6549150a4bd8eb347f54ac769d\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\86528\.gradle\caches\transforms-2\files-2.1\e542a78b280a084fd48769af2f842423\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-28:12
 	package
 		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:3:5-42
 		INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-27:12
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-28:12
 		INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-27:12
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:1-28:12
 		INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:5:5-25:19
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:5:5-26:19
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\86528\.gradle\caches\transforms-2\files-2.1\6d16290c97378708d50718ed6ea0b1c0\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\86528\.gradle\caches\transforms-2\files-2.1\6d16290c97378708d50718ed6ea0b1c0\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-auth:16.0.5] C:\Users\86528\.gradle\caches\transforms-2\files-2.1\2a967c60648ec36ebf6b7742797d4d1a\jetified-firebase-auth-16.0.5\AndroidManifest.xml:23:5-40:19
@@ -93,44 +93,48 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\86
 		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
 		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:11:9-40
+activity#com.example.seg2105_project.SearchClinicActivity
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:12:9-67
+	android:name
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:12:19-55
 activity#com.example.seg2105_project.ModifyEmplProfileActivity
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:12:9-72
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:13:9-63
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:12:19-60
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:13:19-60
 activity#com.example.seg2105_project.EmployeeActivity
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:13:9-54
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:14:9-54
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:13:19-51
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:14:19-51
 activity#com.example.seg2105_project.ManageAvailabilityActivity
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:14:9-64
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:15:9-64
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:14:19-61
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:15:19-61
 activity#com.example.seg2105_project.AdministrationActivity
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:15:9-60
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:16:9-60
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:15:19-57
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:16:19-57
 activity#com.example.seg2105_project.RegisterActivity
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:16:9-54
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:17:9-54
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:16:19-51
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:17:19-51
 activity#com.example.seg2105_project.WelcomeActivity
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:17:9-53
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:18:9-53
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:17:19-50
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:18:19-50
 activity#com.example.seg2105_project.MainActivity
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:18:9-24:20
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:19:9-25:20
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:18:19-47
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:19:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:19:13-23:29
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:20:13-24:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:20:17-69
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:21:17-69
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:20:25-66
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:21:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:22:17-77
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:23:17-77
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:22:27-74
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:23:27-74
 uses-sdk
 INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml

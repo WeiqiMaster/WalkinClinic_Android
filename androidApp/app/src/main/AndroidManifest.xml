@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ModifyEmplProfileActivity"></activity>
+        <activity android:name=".SearchClinicActivity"></activity>
+        <activity android:name=".ModifyEmplProfileActivity" />
         <activity android:name=".EmployeeActivity" />
         <activity android:name=".ManageAvailabilityActivity" />
         <activity android:name=".AdministrationActivity" />

@@ -74,6 +74,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         mListView.setAdapter(adapter);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Service");
+
         services = new ArrayList<String>();
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -85,6 +86,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                     services.add(s);
                 }
                 checkedItems = new boolean[services.size()];
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

@@ -4,10 +4,12 @@ public class Service {
     private String name;
     //int hourlyRate;
     private String roleOfPerson;
+    private double rate;
 
     public Service(String name, String roleOfPerson) {
         this.name = name;
         this.roleOfPerson = roleOfPerson;
+
     }
 
     public String getName() {
