@@ -1,19 +1,22 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.activities;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.seg2105_project.DialogEmployeeAddService;
+import com.example.seg2105_project.objects.Employee;
+import com.example.seg2105_project.R;
+import com.example.seg2105_project.objects.Service;
+import com.example.seg2105_project.adapters.ServiceListAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +41,10 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
     ArrayList<Service> serviceList;
 
     ArrayList<String> services;
-    DatabaseReference mDatabase;
+    DatabaseReference databaseServiceList;
+    DatabaseReference databaseUserList;
+    DatabaseReference currentClinic;
+    Employee currentEmployee;
     boolean[] checkedItems;
 
     @Override
@@ -65,18 +71,20 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
 
 
         serviceList = new ArrayList<>();
-//        Service service1 = new Service("clean", "nurse");
-//        Service service2 = new Service("clean2", "nurse");
-//        serviceList.add(service1);
-//        serviceList.add(service2);
 
         ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList, this);
         mListView.setAdapter(adapter);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Service");
+
+        databaseServiceList = FirebaseDatabase.getInstance().getReference().child("Service");
+        databaseUserList = FirebaseDatabase.getInstance().getReference().child("User");
+
+        FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
+        String email = fbUser.getEmail().replace(".", "");
+        currentClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(email);
 
         services = new ArrayList<String>();
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        databaseServiceList.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -92,6 +100,23 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+//        databaseUserList.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    //User user = snapshot.getValue(User.class);
+//                    if (snapshot.child("email").getValue().toString().equals(email)) {
+//                        currentEmployee = snapshot.getValue(Employee.class);
+//                        break;
+//                    }
+//                }
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+
 //        Toast.makeText(getApplicationContext(),
 //                Integer.toString(services.size()),
 //                Toast.LENGTH_LONG).show();
@@ -170,6 +195,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 serviceList.add(service);
             }
         }
+        currentClinic.child("serviceList").setValue(serviceList);
         ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
         mListView.setAdapter(adapter);
     }

@@ -795,6 +795,7 @@ id line1
 id line3
 id listMode
 id listView
+id listViewSearch
 id list_item
 id media_actions
 id message
@@ -847,6 +848,7 @@ id start
 id status_bar_latest_event_content
 id submenuarrow
 id submit_area
+id svClinicSearch
 id swIsEmployee
 id swLicensed
 id tabMode
@@ -919,7 +921,9 @@ layout activity_main
 layout activity_manage_availability
 layout activity_modify_empl_profile
 layout activity_register
+layout activity_search_clinic
 layout activity_welcome
+layout adapter_one_column_listview
 layout adapter_view_checked
 layout adapter_view_layout
 layout dialog_edit_service

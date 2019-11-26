@@ -1,4 +1,4 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.objects;
 
 public class MyTime {
     int month;

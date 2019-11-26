@@ -1,4 +1,4 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,22 +6,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.seg2105_project.objects.MyTime;
+import com.example.seg2105_project.R;
+
 import java.util.ArrayList;
 
-public class ServiceListAdapter extends ArrayAdapter<Service> {
+public class TimeListAdapter extends ArrayAdapter<MyTime> {
     private Context mContext;
     int mResource;
-    private TextView tvName;
-    private TextView tvRoleOfPerson;
+    private TextView tvDay;
+    private TextView tvTime;
     FragmentActivity fragmentActivity;
 
-    public ServiceListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Service> objects, FragmentActivity c) {
+    public TimeListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<MyTime> objects, FragmentActivity c) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -31,19 +33,17 @@ public class ServiceListAdapter extends ArrayAdapter<Service> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        String name = getItem(position).getName();
-        String roleOfPerson = getItem(position).getRoleOfPerson();
-
-        Service service = new Service(name, roleOfPerson);
+        String day = getItem(position).getMonth() + "/" + getItem(position).getDay();
+        String hourMinute = getItem(position).getTimeInterval();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        tvName = (TextView) convertView.findViewById(R.id.textView1);
-        tvRoleOfPerson = (TextView) convertView.findViewById(R.id.textView2);
+        tvDay = (TextView) convertView.findViewById(R.id.textView1);
+        tvTime = (TextView) convertView.findViewById(R.id.textView2);
 
-        tvName.setText(name);
-        tvRoleOfPerson.setText(roleOfPerson);
+        tvDay.setText(day);
+        tvTime.setText(hourMinute);
 
 //        convertView.setOnClickListener(new View.OnClickListener() {
 //            @Override

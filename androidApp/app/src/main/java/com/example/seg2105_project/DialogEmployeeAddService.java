@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.seg2105_project.objects.Service;
+
 import java.util.ArrayList;
 
 public class DialogEmployeeAddService extends AppCompatDialogFragment {

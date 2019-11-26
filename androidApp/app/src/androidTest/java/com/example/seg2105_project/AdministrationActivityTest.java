@@ -8,6 +8,8 @@ import org.junit.Rule;
 import androidx.test.annotation.UiThreadTest;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.seg2105_project.activities.AdministrationActivity;
+
 import static org.junit.Assert.*;
 
 public class AdministrationActivityTest {

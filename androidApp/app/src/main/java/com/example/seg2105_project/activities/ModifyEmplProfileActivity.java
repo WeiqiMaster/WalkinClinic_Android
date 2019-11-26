@@ -1,4 +1,4 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.seg2105_project.R;
 
 public class ModifyEmplProfileActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnSaveChanges;

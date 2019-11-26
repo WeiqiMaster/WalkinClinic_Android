@@ -1,28 +1,29 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.seg2105_project.R;
+import com.example.seg2105_project.objects.Service;
+
 import java.util.ArrayList;
 
-public class ServiceListAdapterEmployee extends ArrayAdapter<Service> {
+public class ServiceListAdapter extends ArrayAdapter<Service> {
     private Context mContext;
     int mResource;
-    private CheckedTextView tvName;
+    private TextView tvName;
     private TextView tvRoleOfPerson;
     FragmentActivity fragmentActivity;
 
-    public ServiceListAdapterEmployee(@NonNull Context context, int resource, @NonNull ArrayList<Service> objects, FragmentActivity c) {
+    public ServiceListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Service> objects, FragmentActivity c) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -35,12 +36,12 @@ public class ServiceListAdapterEmployee extends ArrayAdapter<Service> {
         String name = getItem(position).getName();
         String roleOfPerson = getItem(position).getRoleOfPerson();
 
-        Service service = new Service(name, roleOfPerson);
+        //Service service = new Service(name, roleOfPerson);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        tvName = convertView.findViewById(R.id.textView1);
+        tvName = (TextView) convertView.findViewById(R.id.textView1);
         tvRoleOfPerson = (TextView) convertView.findViewById(R.id.textView2);
 
         tvName.setText(name);

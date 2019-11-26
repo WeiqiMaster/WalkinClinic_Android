@@ -1,4 +1,4 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.seg2105_project.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import static com.example.seg2105_project.Hash_256.getSHA;
 import static com.example.seg2105_project.Hash_256.toHexString;
@@ -36,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView tvRegisterLink;
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
-    //TextView tvAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +51,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etPassword = (EditText) findViewById(R.id.etPassword);
         bLogin = (Button) findViewById(R.id.bLogin);
         tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
-        //tvAdmin = (Te)
 
         tvRegisterLink.setOnClickListener(this);
         bLogin.setOnClickListener(this);
-        //tvAdmin.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+//        DatabaseReference databaseReferenceClinics = FirebaseDatabase.getInstance().getReference().child("Employee");
+//        ArrayList<Integer> test = new ArrayList<Integer>();
+//        test.add(1);
+//        test.add(3);
+//        test.add(8);
+//        databaseReferenceClinics.child("idk").setValue(test);
     }
 
     @Override
@@ -96,20 +101,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
-                                mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
-
                                 final String email = fbUser.getEmail();
+
+                                mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
 
                                 mDatabase.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
-                                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                        for (DataSnapshot snapshot : dataSnapshot.child("Employee").getChildren()) {
                                             //User user = snapshot.getValue(User.class);
                                             if (snapshot.child("email").getValue().toString().equals(email)) {
-                                                if(snapshot.child("role").getValue().toString().equals("Employee"))
                                                 startActivity(new Intent(MainActivity.this, EmployeeActivity.class));
-                                                break;
+                                                return;
+                                            }
+                                        }
+
+                                        for (DataSnapshot snapshot : dataSnapshot.child("Patient").getChildren()) {
+                                            //User user = snapshot.getValue(User.class);
+                                            if (snapshot.child("email").getValue().toString().equals(email)) {
+                                                startActivity(new Intent(MainActivity.this, SearchClinicActivity.class));
+                                                return;
                                             }
                                         }
                                     }
@@ -117,7 +130,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     public void onCancelled(DatabaseError databaseError) {
                                     }
                                 });
-                                //startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
                             } else {
                                 Toast.makeText(getApplicationContext(),
                                         "Could not log in",

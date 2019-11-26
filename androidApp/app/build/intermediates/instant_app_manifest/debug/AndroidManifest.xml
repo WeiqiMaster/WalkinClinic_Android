@@ -21,14 +21,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.seg2105_project.SearchClinicActivity" />
-        <activity android:name="com.example.seg2105_project.ModifyEmplProfileActivity" />
-        <activity android:name="com.example.seg2105_project.EmployeeActivity" />
-        <activity android:name="com.example.seg2105_project.ManageAvailabilityActivity" />
-        <activity android:name="com.example.seg2105_project.AdministrationActivity" />
-        <activity android:name="com.example.seg2105_project.RegisterActivity" />
+        <activity android:name="com.example.seg2105_project.ClinicActivity" />
+        <activity android:name="com.example.seg2105_project.activities.SearchClinicActivity" />
+        <activity android:name="com.example.seg2105_project.activities.ModifyEmplProfileActivity" />
+        <activity android:name="com.example.seg2105_project.activities.EmployeeActivity" />
+        <activity android:name="com.example.seg2105_project.activities.ManageAvailabilityActivity" />
+        <activity android:name="com.example.seg2105_project.activities.AdministrationActivity" />
+        <activity android:name="com.example.seg2105_project.activities.RegisterActivity" />
         <activity android:name="com.example.seg2105_project.WelcomeActivity" />
-        <activity android:name="com.example.seg2105_project.MainActivity" >
+        <activity android:name="com.example.seg2105_project.activities.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

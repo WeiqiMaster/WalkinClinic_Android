@@ -1,4 +1,4 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,11 +11,14 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.seg2105_project.objects.Employee;
+import com.example.seg2105_project.objects.Patient;
+import com.example.seg2105_project.R;
+import com.example.seg2105_project.objects.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -78,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         String name = etName.getText().toString().trim();
         final boolean isEmployee = swIsEmployee.isChecked();
-        String email = etEmail.getText().toString().trim();
+        final String email = etEmail.getText().toString().trim();
         String password1 = etPassword.getText().toString().trim();
         String password2 = etConfirmPassword.getText().toString().trim();
         if (name.isEmpty()) {
@@ -114,8 +117,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        reff.child(String.valueOf(maxId + 1)).setValue(user);
-                        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+                        if (isEmployee) {
+                            reff = FirebaseDatabase.getInstance().getReference().child("Employee");
+                        } else {
+                            reff = FirebaseDatabase.getInstance().getReference().child("Patient");
+                        }
+                        reff.child(email.replace(".", "")).setValue(user);
+                        //reff.child(String.valueOf(maxId + 1)).setValue(user);
+                        //FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
 
                         Toast.makeText(getApplicationContext(),
                                 "You have successfully registered as " + (isEmployee ? "Employee" : "Patient"),

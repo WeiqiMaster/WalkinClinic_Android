@@ -1,16 +1,19 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.seg2105_project.DialogChangeService;
+import com.example.seg2105_project.R;
+import com.example.seg2105_project.objects.Service;
+import com.example.seg2105_project.adapters.ServiceListAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

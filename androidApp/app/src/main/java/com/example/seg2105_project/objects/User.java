@@ -1,4 +1,4 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.objects;
 
 public abstract class User {
     private String name, email;
