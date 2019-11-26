@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Your Name" />
+        android:text="Your Name"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/etName"
@@ -23,7 +24,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enable this if you are an employee" />
+        android:text="Enable this if you are an employee"
+        android:textSize="18sp" />
 
     <Switch
         android:id="@+id/swIsEmployee"
@@ -34,7 +36,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email" />
+        android:text="Email"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -46,7 +49,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Password" />
+        android:text="Password"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -58,7 +62,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Confirm Password" />
+        android:text="Confirm Password"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/etConfirmPassword"
@@ -69,7 +74,8 @@
     <Button
         android:id="@+id/bRegister"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
-        android:text="Register" />
+        android:text="Register"
+        android:textSize="18sp" />
 </LinearLayout>
