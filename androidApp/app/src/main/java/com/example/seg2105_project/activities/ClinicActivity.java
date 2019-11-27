@@ -2,18 +2,13 @@ package com.example.seg2105_project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.seg2105_project.R;
-import com.example.seg2105_project.TimePickerFragment;
 import com.example.seg2105_project.objects.Employee;
 import com.example.seg2105_project.objects.MyTime;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +27,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     //Button btnBookAppointment;
     Button btnCheckIn;
     ListView listViewWorkingHours;
-    DatabaseReference databaseReferenceClinics;
+    DatabaseReference databaseClinic;
 
     ArrayList<MyTime> timeList;
     Calendar date;
@@ -52,26 +47,30 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         timeList = new ArrayList<>();
         //listViewWorkingHours.setAdapter();
 
-        databaseReferenceClinics = FirebaseDatabase.getInstance().getReference()
-                .child("Employee");
+        databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(getIntent().getStringExtra("clinicName"));
         //tvWaitingPeople.setText(databaseReferenceClinic.child("waitingPeople").get);
-        databaseReferenceClinics.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if (snapshot.child("name").getValue().toString()
-                            .equals(getIntent().getStringExtra("clinicName"))) {
-                        Employee clinic = snapshot.getValue(Employee.class);
-                        tvWaitingPeople.setText(clinic.getWaitingPeople());
-                        tvClinicName.setText(clinic.getName());
-                        //tvWaitingPeople.setText(snapshot.child("waitingPeople").getValue().toString());
-                    }
-                }
+                Employee clinic = dataSnapshot.getValue(Employee.class);
+                tvWaitingPeople.setText(clinic.getWaitingPeople());
+                tvClinicName.setText(clinic.getName());
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    if (snapshot.child("name").getValue().toString()
+//                            .equals() {
+//                        Employee clinic = snapshot.getValue(Employee.class);
+//                        tvWaitingPeople.setText(clinic.getWaitingPeople());
+//                        tvClinicName.setText(clinic.getName());
+//                        //tvWaitingPeople.setText(snapshot.child("waitingPeople").getValue().toString());
+//                    }
+//                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+        //listViewWorkingHours.setAdapter();
 
     }
 

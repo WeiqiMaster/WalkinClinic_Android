@@ -52,7 +52,7 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         mListView = findViewById(R.id.listView);
 
         FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
-        String email = fbUser.getEmail();
+        String email = fbUser.getEmail().replace(".", "");
         databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(email);
         timeList = new ArrayList<>();
 
@@ -130,7 +130,7 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         String timeInterval2 = timeInterval + " - " + hour + ":" + minute;
         MyTime myTime = new MyTime(month, day, timeInterval2);
         timeList.add(myTime);
-        databaseClinic.child("myTime").setValue(timeList);
+        databaseClinic.child("workingHours").setValue(timeList);
         TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList,this);
         mListView.setAdapter(adapter);
     }
@@ -144,7 +144,7 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         timeInterval += " - " + hour + ":" + minute;
         MyTime myTime = new MyTime(month, day, timeInterval);
         timeList.set(position, myTime);
-        databaseClinic.child("myTime").setValue(timeList);
+        databaseClinic.child("workingHours").setValue(timeList);
         TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList,this);
         mListView.setAdapter(adapter);
     }
@@ -153,6 +153,7 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
     public void apply(final int position, boolean isDelete) {
         if (isDelete) {
             timeList.remove(position);
+            databaseClinic.child("workingHours").setValue(timeList);
             TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList,this);
             mListView.setAdapter(adapter);
         } else {

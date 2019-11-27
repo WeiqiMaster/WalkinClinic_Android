@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bLogin.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
-//        DatabaseReference databaseReferenceClinics = FirebaseDatabase.getInstance().getReference().child("Employee");
+//        DatabaseReference databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee");
 //        ArrayList<Integer> test = new ArrayList<Integer>();
 //        test.add(1);
 //        test.add(3);
 //        test.add(8);
-//        databaseReferenceClinics.child("idk").setValue(test);
+//        databaseClinic.child("idk").setValue(test);
     }
 
     @Override

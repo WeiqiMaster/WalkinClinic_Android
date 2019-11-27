@@ -25,7 +25,7 @@ public class DialogEditAvailability extends AppCompatDialogFragment {
         //LayoutInflater inflater = getActivity().getLayoutInflater();
         //View view = inflater.inflate(R.layout.dialog_edit_service, null);
 
-        builder.setTitle("Change Service")
+        builder.setTitle("Change WorkingHours")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
