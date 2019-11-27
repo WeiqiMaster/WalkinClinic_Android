@@ -84,7 +84,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         currentClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(email);
 
         services = new ArrayList<String>();
-        databaseServiceList.addValueEventListener(new ValueEventListener() {
+        databaseServiceList.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -152,9 +152,8 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 serviceList.add(service);
             }
         }
-        currentClinic.child("serviceList").setValue(serviceList);
-//        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
-//        mListView.setAdapter(adapter);
+        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList);
+        mListView.setAdapter(adapter);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
