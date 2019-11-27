@@ -43,7 +43,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
     Button btnManageAvailability;
     ArrayList<Service> serviceList;
 
-    ArrayList<String> serviceNames;
+    ArrayList<String> serviceNamesAll;
     DatabaseReference databaseServiceList;
     DatabaseReference databaseUserList;
     DatabaseReference currentClinic;
@@ -71,9 +71,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         btnManageAvailability = findViewById(R.id.btnManageAvailability);
         btnManageAvailability.setOnClickListener(this);
 
-
         serviceList = new ArrayList<>();
-
 
         databaseServiceList = FirebaseDatabase.getInstance().getReference().child(NODE_NAME_SERVICE);
         //databaseUserList = FirebaseDatabase.getInstance().getReference().child("User");
@@ -82,14 +80,15 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         String email = fbUser.getEmail().replace(".", "");
         currentClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(email);
 
-        currentClinic.addValueEventListener(new ValueEventListener() {
+        currentClinic.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 serviceList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child("serviceList").getChildren()) {
                     serviceList.add(snapshot.getValue(Service.class));
-                    //checkedItems[(Integer)snapshot.child("index").getValue()] = true;
                 }
+                ServiceListAdapter adapter = new ServiceListAdapter(getApplicationContext(),  R.layout.adapter_view_layout, serviceList);
+                mListView.setAdapter(adapter);
             }
 
             @Override
@@ -98,7 +97,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        serviceNames = new ArrayList<String>();
+        serviceNamesAll = new ArrayList<String>();
         databaseServiceList.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -106,12 +105,9 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                     //User user = snapshot.getValue(User.class);
                     String s = snapshot.child("name").getValue().toString()
                             + "      " + snapshot.child("roleOfPerson").getValue().toString();
-                    serviceNames.add(s);
-                    serviceList.add(snapshot.getValue(Service.class));
+                    serviceNamesAll.add(s);
                 }
-                ServiceListAdapter adapter = new ServiceListAdapter(getApplicationContext(),  R.layout.adapter_view_layout, serviceList);
-                mListView.setAdapter(adapter);
-                checkedItems = new boolean[serviceNames.size()];
+                checkedItems = new boolean[serviceNamesAll.size()];
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -133,11 +129,29 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 startActivityForResult(intent, 1);
                 break;
             case R.id.btnAddService:
+                currentClinic.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        serviceList = new ArrayList<>();
+                        for (DataSnapshot snapshot : dataSnapshot.child("serviceList").getChildren()) {
+                            serviceList.add(snapshot.getValue(Service.class));
+                            String s = snapshot.child("name").getValue().toString()
+                                    + "      " + snapshot.child("roleOfPerson").getValue().toString();
+                            checkedItems[serviceNamesAll.indexOf(s)] = true;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
                 //checkedItems = new boolean[services.size()];
-                String[] servicesArray = serviceNames.toArray(new String[serviceNames.size()]);
+                String[] servicesArray = serviceNamesAll.toArray(new String[serviceNamesAll.size()]);
 
                 DialogEmployeeAddService dialogUpdateServices = new DialogEmployeeAddService();
-                dialogUpdateServices.passValues(servicesArray, checkedItems, serviceNames, serviceList);
+                dialogUpdateServices.passValues(servicesArray, checkedItems, serviceNamesAll, serviceList);
                 dialogUpdateServices.show(getSupportFragmentManager(), "Choose Services");
                 break;
             case R.id.btnManageAvailability:
@@ -150,10 +164,10 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
     public void applyResult(boolean[] checkedItems) {
         this.checkedItems = checkedItems;
         serviceList = new ArrayList<Service>();
-        for (int i = 0; i < serviceNames.size(); i++) {
+        for (int i = 0; i < serviceNamesAll.size(); i++) {
             if (checkedItems[i]) {
                 //isAllFalse = false;
-                String[] temp = serviceNames.get(i).split("      ", 2);
+                String[] temp = serviceNamesAll.get(i).split("      ", 2);
                 Service service = new Service(temp[0], temp[1]);
                 serviceList.add(service);
             }
