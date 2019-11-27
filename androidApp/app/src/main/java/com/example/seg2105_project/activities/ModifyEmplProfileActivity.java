@@ -12,6 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.seg2105_project.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ModifyEmplProfileActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnSaveChanges;
@@ -20,6 +24,8 @@ public class ModifyEmplProfileActivity extends AppCompatActivity implements View
     TextView etCompany;
     Switch swLicensed;
     EditText etDescription;
+
+    DatabaseReference databaseClinic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +76,15 @@ public class ModifyEmplProfileActivity extends AppCompatActivity implements View
                     Toast.LENGTH_LONG).show();
             return;
         }
+        FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
+        String email = fbUser.getEmail().replace(".", "");
+        databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(email);
+        databaseClinic.child("address").setValue(address);
+        databaseClinic.child("phoneNumber").setValue(phoneNumber);
+        databaseClinic.child("company").setValue(company);
+        databaseClinic.child("licensed").setValue(swLicensed.isChecked());
+        databaseClinic.child("description").setValue(etDescription.getText().toString().trim());
+
         Intent intent = new Intent();
         intent.putExtra("address", address);
         intent.putExtra("phoneNumber", phoneNumber);

@@ -61,7 +61,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
         /*.........Set a custom title for picker........*/
         TextView tvTitle = new TextView(getActivity());
-        tvTitle.setText("Choose Time1");
+        tvTitle.setText("Choose Time");
         if (index == 1) {
             tvTitle.setText("Choose Time2");
         }

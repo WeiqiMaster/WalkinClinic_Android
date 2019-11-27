@@ -5,6 +5,10 @@ public class MyTime {
     int day;
     String timeInterval;
 
+    public MyTime() {
+
+    }
+
     public MyTime(int month, int day,
                   String timeInterval){
         this.month = month;

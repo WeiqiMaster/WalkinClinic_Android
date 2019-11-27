@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.seg2105_project.DialogEditAvailability;
 import com.example.seg2105_project.DialogEmployeeAddService;
 import com.example.seg2105_project.R;
+import com.example.seg2105_project.TimePickerFragment;
 import com.example.seg2105_project.adapters.TimeListAdapter;
 import com.example.seg2105_project.objects.Appointment;
 import com.example.seg2105_project.objects.Employee;
@@ -49,9 +50,10 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     int month;
     int day;
 
+    int servicePosition = -1;
     Appointment appointment;
     Patient loginPatient;
-    boolean[] checkedServices = new boolean[serviceNameList.size()];
+    //boolean[] checkedServices = new boolean[serviceNameList.size()];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,25 +71,33 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
         String email = fbUser.getEmail().replace(".", "");
         databasePatient = FirebaseDatabase.getInstance().getReference().child("Patient").child(email);
+        databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee");
+        final String clinicName = getIntent().getStringExtra("clinicName");
+
 
         databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                
+                //dataSnapshot.child("");
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
 
-        databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(getIntent().getStringExtra("clinicName"));
         //tvWaitingPeople.setText(databaseReferenceClinic.child("waitingPeople").get);
         databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Employee clinic = dataSnapshot.getValue(Employee.class);
-                tvWaitingPeople.setText(clinic.getWaitingPeople());
-                tvClinicName.setText(clinic.getName());
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    if (snapshot.child("name").getValue().toString()
+                            .equals(clinicName)) {
+                        Employee clinic = snapshot.getValue(Employee.class);
+                        tvWaitingPeople.setText(String.valueOf(clinic.getWaitingPeople()));
+                        tvClinicName.setText(clinic.getName());
+                        //tvWaitingPeople.setText(snapshot.child("waitingPeople").getValue().toString());
+                    }
+                }
 
                 serviceList = new ArrayList<>();
                 serviceNameList = new ArrayList<>();
@@ -114,21 +124,23 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         listViewWorkingHours.setAdapter(adapter);
         listViewWorkingHours.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ClinicActivity.this);
                 builder.setTitle("Choose a Service");
                 String[] servicesNameArray = serviceNameList.toArray(new String[serviceNameList.size()]);
+
                 builder.setSingleChoiceItems(servicesNameArray, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        return;
+                        servicePosition = which;
                     }
                 });
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        appointment = new Appointment();
-                        //listener.applyResult(checkedItems);
+                        appointment = new Appointment(getIntent().getStringExtra("clinicName"),
+                                serviceList.get(servicePosition));
+
                     }
                 });
                 builder.setNegativeButton("Cancel", null);
