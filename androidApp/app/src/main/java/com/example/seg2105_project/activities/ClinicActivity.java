@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ClinicActivity extends AppCompatActivity implements View.OnClickListener {
+    public final String NODE_NAME_SERVICE = "ServiceForDemo";
     TextView tvWaitingPeople;
     TextView tvClinicName;
     //Button btnBookAppointment;

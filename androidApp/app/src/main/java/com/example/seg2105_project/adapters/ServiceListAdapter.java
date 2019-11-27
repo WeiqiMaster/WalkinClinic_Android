@@ -47,24 +47,6 @@ public class ServiceListAdapter extends ArrayAdapter<Service> {
         tvName.setText(name);
         tvRoleOfPerson.setText(roleOfPerson);
 
-//        convertView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getContext(),
-//                        tvName.getText().toString(),
-//                        Toast.LENGTH_LONG).show();
-////                DialogChangeService dialogChangeService = new DialogChangeService();
-////                dialogChangeService.show(fragmentActivity.getSupportFragmentManager(), "Modify Services");
-////                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-////                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-////                    public void onClick(DialogInterface dialog, int id) {
-////                        // User clicked OK button
-////                    }
-////                });
-//
-//            }
-//        });
-
         return convertView;
     }
 }

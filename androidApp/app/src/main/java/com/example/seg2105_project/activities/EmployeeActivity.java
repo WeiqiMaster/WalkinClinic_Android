@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.seg2105_project.DialogEmployeeAddService;
 import com.example.seg2105_project.objects.Employee;
@@ -26,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class EmployeeActivity extends AppCompatActivity implements View.OnClickListener, DialogEmployeeAddService.DialogEmployeeServiceListener {
+    public final String NODE_NAME_SERVICE = "ServiceForDemo";
     Button btnEdit;
     TextView tvAddress;
     TextView tvPhoneNumber;
@@ -74,7 +76,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
 
 
 
-        databaseServiceList = FirebaseDatabase.getInstance().getReference().child("Service");
+        databaseServiceList = FirebaseDatabase.getInstance().getReference().child(NODE_NAME_SERVICE);
         databaseUserList = FirebaseDatabase.getInstance().getReference().child("User");
 
         FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -94,7 +96,9 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 ServiceListAdapter adapter = new ServiceListAdapter(getApplicationContext(),  R.layout.adapter_view_layout, serviceList);
                 mListView.setAdapter(adapter);
                 checkedItems = new boolean[services.size()];
-
+                Toast.makeText(getApplicationContext(),
+                    "Database changed",
+                    Toast.LENGTH_LONG).show();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

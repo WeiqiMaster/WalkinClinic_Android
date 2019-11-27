@@ -1,5 +1,6 @@
 package com.example.seg2105_project.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -14,12 +15,16 @@ import com.example.seg2105_project.DialogChangeService;
 import com.example.seg2105_project.R;
 import com.example.seg2105_project.objects.Service;
 import com.example.seg2105_project.adapters.ServiceListAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class AdministrationActivity extends AppCompatActivity implements DialogChangeService.DialogChangeServiceListener, View.OnClickListener{
+    public final String NODE_NAME_SERVICE = "ServiceForDemo";
     ListView mListView;
     EditText etServiceName;
     EditText etRoleOfPerson;
@@ -27,35 +32,54 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
     ArrayList<Service> serviceList;
     DatabaseReference reff;
 
+    Integer maxId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administration);
-
         mListView = (ListView) findViewById(R.id.listView);
         etServiceName = (EditText) findViewById(R.id.etServiceName);
         etRoleOfPerson = (EditText) findViewById(R.id.etRoleOfPerson);
         btnAddService = (Button) findViewById(R.id.btnAddService);
-
         btnAddService.setOnClickListener(this);
 
-        Service service1 = new Service("clean", "nurse");
-        Service service2 = new Service("clean2", "nurse");
-
-        serviceList = new ArrayList<>();
-        serviceList.add(service1);
-        serviceList.add(service2);
-
-        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList);
-        mListView.setAdapter(adapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        reff = FirebaseDatabase.getInstance().getReference().child(NODE_NAME_SERVICE);
+        reff.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DialogChangeService dialogChangeService = new DialogChangeService();
-                dialogChangeService.setPosition(position);
-                dialogChangeService.show(getSupportFragmentManager(), "Modify Services");
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                maxId = 0;
+                serviceList = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Service service = snapshot.getValue(Service.class);
+                    serviceList.add(service);
+                    maxId++;
+                }
+                ServiceListAdapter adapter = new ServiceListAdapter(getApplicationContext(),  R.layout.adapter_view_layout, serviceList);
+                mListView.setAdapter(adapter);
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        DialogChangeService dialogChangeService = new DialogChangeService();
+                        dialogChangeService.setPosition(position);
+                        dialogChangeService.show(getSupportFragmentManager(), "Modify Services");
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
+//        Service service1 = new Service("clean", "nurse");
+//        Service service2 = new Service("clean2", "nurse");
+//
+//        serviceList.add(service1);
+//        serviceList.add(service2);
+
+
 
     }
 
@@ -75,9 +99,11 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
                 return;
             }
         }
-        serviceList.set(position, new Service(serviceName, roleOfPerson));
-        ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
-        mListView.setAdapter(adapter);
+
+        reff.child(Integer.toString(position)).setValue(new Service(serviceName, roleOfPerson));
+//        serviceList.set(position, new Service(serviceName, roleOfPerson));
+//        ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
+//        mListView.setAdapter(adapter);
     }
 
     @Override
@@ -107,12 +133,13 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
                     return;
                 }
                 Service service = new Service(serviceName, roleOfPerson);
-                serviceList.add(service);
-                ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
-                mListView.setAdapter(adapter);
+//                serviceList.add(service);
+//                ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
+//                mListView.setAdapter(adapter);
 
-                reff = FirebaseDatabase.getInstance().getReference().child("Service");
-                reff.child(service.getName()).setValue(service);
+                //reff = FirebaseDatabase.getInstance().getReference().child(NODE_NAME_SERVICE);
+                reff.child(maxId.toString()).setValue(service);
+                maxId++;
 
                 break;
         }

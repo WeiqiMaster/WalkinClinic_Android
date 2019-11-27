@@ -12,6 +12,10 @@ public class Service {
 
     }
 
+    public Service() {
+
+    }
+
     public String getName() {
         return name;
     }
