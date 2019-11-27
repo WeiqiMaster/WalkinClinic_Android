@@ -10,9 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.seg2105_project.DialogEmployeeAddService;
+import com.example.seg2105_project.dialog.DialogEmployeeAddService;
 import com.example.seg2105_project.objects.Employee;
 import com.example.seg2105_project.R;
 import com.example.seg2105_project.objects.Service;

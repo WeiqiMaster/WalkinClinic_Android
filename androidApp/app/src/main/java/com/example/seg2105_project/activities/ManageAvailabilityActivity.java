@@ -3,7 +3,6 @@ package com.example.seg2105_project.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,19 +12,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.example.seg2105_project.DialogEditAvailability;
+import com.example.seg2105_project.dialog.DialogEditAvailability;
 import com.example.seg2105_project.objects.Employee;
 import com.example.seg2105_project.objects.MyTime;
 import com.example.seg2105_project.R;
-import com.example.seg2105_project.TimePickerFragment;
+import com.example.seg2105_project.dialog.TimePickerFragment;
 import com.example.seg2105_project.adapters.TimeListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -57,7 +53,7 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         timeList = new ArrayList<>();
 
 
-        TimeListAdapter adapter = new TimeListAdapter(this,  R.layout.adapter_view_layout, timeList, this);
+        TimeListAdapter adapter = new TimeListAdapter(this,  R.layout.adapter_view_layout, timeList);
         mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -131,7 +127,7 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         MyTime myTime = new MyTime(month, day, timeInterval2);
         timeList.add(myTime);
         databaseClinic.child("workingHours").setValue(timeList);
-        TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList,this);
+        TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList);
         mListView.setAdapter(adapter);
     }
 
@@ -145,7 +141,7 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         MyTime myTime = new MyTime(month, day, timeInterval);
         timeList.set(position, myTime);
         databaseClinic.child("workingHours").setValue(timeList);
-        TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList,this);
+        TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList);
         mListView.setAdapter(adapter);
     }
 
@@ -154,7 +150,7 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         if (isDelete) {
             timeList.remove(position);
             databaseClinic.child("workingHours").setValue(timeList);
-            TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList,this);
+            TimeListAdapter adapter = new TimeListAdapter(this, R.layout.adapter_view_layout, timeList);
             mListView.setAdapter(adapter);
         } else {
             final Calendar currentDate = Calendar.getInstance();

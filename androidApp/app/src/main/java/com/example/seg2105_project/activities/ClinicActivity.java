@@ -11,10 +11,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.seg2105_project.DialogEditAvailability;
-import com.example.seg2105_project.DialogEmployeeAddService;
+import com.example.seg2105_project.dialog.DialogEmployeeAddService;
 import com.example.seg2105_project.R;
-import com.example.seg2105_project.TimePickerFragment;
 import com.example.seg2105_project.adapters.TimeListAdapter;
 import com.example.seg2105_project.objects.Appointment;
 import com.example.seg2105_project.objects.Employee;
@@ -96,63 +94,58 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                         tvWaitingPeople.setText(String.valueOf(clinic.getWaitingPeople()));
                         tvClinicName.setText(clinic.getName());
                         //tvWaitingPeople.setText(snapshot.child("waitingPeople").getValue().toString());
+                        serviceList = new ArrayList<>();
+                        serviceNameList = new ArrayList<>();
+                        for (DataSnapshot snapshot1 : snapshot.child("serviceList").getChildren()) {
+                            serviceList.add(snapshot1.getValue(Service.class));
+                            serviceNameList.add(snapshot1.child("name").getValue().toString());
+                        }
+                        for (DataSnapshot snapshot2 : snapshot.child("workingHours").getChildren()) {
+                            timeList.add(snapshot2.getValue(MyTime.class));
+                        }
                     }
                 }
+                TimeListAdapter adapter = new TimeListAdapter(getApplicationContext(),  R.layout.adapter_view_layout, timeList);
+                listViewWorkingHours.setAdapter(adapter);
+                listViewWorkingHours.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ClinicActivity.this);
+                        builder.setTitle("Choose a Service");
+                        String[] servicesNameArray = serviceNameList.toArray(new String[serviceNameList.size()]);
 
-                serviceList = new ArrayList<>();
-                serviceNameList = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.child("serviceList").getChildren()) {
-                    serviceList.add(snapshot.getValue(Service.class));
-                    serviceNameList.add(snapshot.child("name").getValue().toString());
-                }
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    if (snapshot.child("name").getValue().toString()
-//                            .equals() {
-//                        Employee clinic = snapshot.getValue(Employee.class);
-//                        tvWaitingPeople.setText(clinic.getWaitingPeople());
-//                        tvClinicName.setText(clinic.getName());
-//                        //tvWaitingPeople.setText(snapshot.child("waitingPeople").getValue().toString());
-//                    }
-//                }
+                        builder.setSingleChoiceItems(servicesNameArray, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                servicePosition = which;
+                            }
+                        });
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                appointment = new Appointment(getIntent().getStringExtra("clinicName"),
+                                        serviceList.get(servicePosition));
+
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", null);
+
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
+//                DialogEditAvailability dialogEditAvailability = new DialogEditAvailability();
+//                dialogEditAvailability.setPosition(position);
+//                dialogEditAvailability.show(getSupportFragmentManager(),"Update Availability");
+                    }
+                });
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
 
-        TimeListAdapter adapter = new TimeListAdapter(this,  R.layout.adapter_view_layout, timeList, this);
-        listViewWorkingHours.setAdapter(adapter);
-        listViewWorkingHours.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ClinicActivity.this);
-                builder.setTitle("Choose a Service");
-                String[] servicesNameArray = serviceNameList.toArray(new String[serviceNameList.size()]);
 
-                builder.setSingleChoiceItems(servicesNameArray, -1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        servicePosition = which;
-                    }
-                });
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        appointment = new Appointment(getIntent().getStringExtra("clinicName"),
-                                serviceList.get(servicePosition));
 
-                    }
-                });
-                builder.setNegativeButton("Cancel", null);
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-
-//                DialogEditAvailability dialogEditAvailability = new DialogEditAvailability();
-//                dialogEditAvailability.setPosition(position);
-//                dialogEditAvailability.show(getSupportFragmentManager(),"Update Availability");
-            }
-        });
 
     }
 

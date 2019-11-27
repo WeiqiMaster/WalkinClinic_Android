@@ -1,4 +1,4 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import com.example.seg2105_project.R;
 
 public class DialogChangeService extends AppCompatDialogFragment {
     private EditText etServiceName;

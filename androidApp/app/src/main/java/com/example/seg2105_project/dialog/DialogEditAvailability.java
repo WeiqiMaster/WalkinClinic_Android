@@ -1,4 +1,4 @@
-package com.example.seg2105_project;
+package com.example.seg2105_project.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

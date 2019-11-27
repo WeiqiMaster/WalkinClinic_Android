@@ -23,11 +23,10 @@ public class TimeListAdapter extends ArrayAdapter<MyTime> {
     private TextView tvTime;
     FragmentActivity fragmentActivity;
 
-    public TimeListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<MyTime> objects, FragmentActivity c) {
+    public TimeListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<MyTime> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
-        fragmentActivity = c;
     }
 
     @NonNull

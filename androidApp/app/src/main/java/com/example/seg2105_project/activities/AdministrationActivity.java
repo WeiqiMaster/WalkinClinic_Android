@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.seg2105_project.DialogChangeService;
+import com.example.seg2105_project.dialog.DialogChangeService;
 import com.example.seg2105_project.R;
 import com.example.seg2105_project.objects.Service;
 import com.example.seg2105_project.adapters.ServiceListAdapter;
