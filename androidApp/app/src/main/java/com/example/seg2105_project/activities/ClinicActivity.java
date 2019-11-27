@@ -1,16 +1,27 @@
 package com.example.seg2105_project.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.seg2105_project.DialogEditAvailability;
+import com.example.seg2105_project.DialogEmployeeAddService;
 import com.example.seg2105_project.R;
+import com.example.seg2105_project.adapters.TimeListAdapter;
+import com.example.seg2105_project.objects.Appointment;
 import com.example.seg2105_project.objects.Employee;
 import com.example.seg2105_project.objects.MyTime;
+import com.example.seg2105_project.objects.Patient;
+import com.example.seg2105_project.objects.Service;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,19 +31,27 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class ClinicActivity extends AppCompatActivity implements View.OnClickListener {
+public class ClinicActivity extends AppCompatActivity implements View.OnClickListener, DialogEmployeeAddService.DialogEmployeeServiceListener {
     public final String NODE_NAME_SERVICE = "ServiceForDemo";
     TextView tvWaitingPeople;
     TextView tvClinicName;
     //Button btnBookAppointment;
     Button btnCheckIn;
     ListView listViewWorkingHours;
-    DatabaseReference databaseClinic;
 
+    DatabaseReference databaseClinic;
+    DatabaseReference databasePatient;
+
+    ArrayList<Service> serviceList;
+    ArrayList<String> serviceNameList;
     ArrayList<MyTime> timeList;
     Calendar date;
     int month;
     int day;
+
+    Appointment appointment;
+    Patient loginPatient;
+    boolean[] checkedServices = new boolean[serviceNameList.size()];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +66,20 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         timeList = new ArrayList<>();
         //listViewWorkingHours.setAdapter();
 
+        FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
+        String email = fbUser.getEmail().replace(".", "");
+        databasePatient = FirebaseDatabase.getInstance().getReference().child("Patient").child(email);
+
+        databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
         databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(getIntent().getStringExtra("clinicName"));
         //tvWaitingPeople.setText(databaseReferenceClinic.child("waitingPeople").get);
         databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -55,6 +88,13 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                 Employee clinic = dataSnapshot.getValue(Employee.class);
                 tvWaitingPeople.setText(clinic.getWaitingPeople());
                 tvClinicName.setText(clinic.getName());
+
+                serviceList = new ArrayList<>();
+                serviceNameList = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.child("serviceList").getChildren()) {
+                    serviceList.add(snapshot.getValue(Service.class));
+                    serviceNameList.add(snapshot.child("name").getValue().toString());
+                }
 //                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 //                    if (snapshot.child("name").getValue().toString()
 //                            .equals() {
@@ -70,7 +110,37 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
-        //listViewWorkingHours.setAdapter();
+        TimeListAdapter adapter = new TimeListAdapter(this,  R.layout.adapter_view_layout, timeList, this);
+        listViewWorkingHours.setAdapter(adapter);
+        listViewWorkingHours.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ClinicActivity.this);
+                builder.setTitle("Choose a Service");
+                String[] servicesNameArray = serviceNameList.toArray(new String[serviceNameList.size()]);
+                builder.setSingleChoiceItems(servicesNameArray, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        appointment = new Appointment();
+                        //listener.applyResult(checkedItems);
+                    }
+                });
+                builder.setNegativeButton("Cancel", null);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+//                DialogEditAvailability dialogEditAvailability = new DialogEditAvailability();
+//                dialogEditAvailability.setPosition(position);
+//                dialogEditAvailability.show(getSupportFragmentManager(),"Update Availability");
+            }
+        });
 
     }
 
@@ -124,5 +194,14 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
 //                }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
 //
 //        }
+    }
+
+    @Override
+    public void applyResult(boolean[] checkedItems) {
+
+    }
+
+    public class DialogBookAppointment {
+
     }
 }
