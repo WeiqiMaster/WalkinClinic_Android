@@ -131,7 +131,6 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
 //                ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
 //                mListView.setAdapter(adapter);
 
-                //reff = FirebaseDatabase.getInstance().getReference().child(NODE_NAME_SERVICE);
                 reff.child(maxId.toString()).setValue(service);
                 maxId++;
 

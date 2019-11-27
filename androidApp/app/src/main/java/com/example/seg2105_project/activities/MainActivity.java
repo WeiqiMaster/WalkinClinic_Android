@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-                                mDatabase.addValueEventListener(new ValueEventListener() {
+                                mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         for (DataSnapshot snapshot : dataSnapshot.child("Employee").getChildren()) {
