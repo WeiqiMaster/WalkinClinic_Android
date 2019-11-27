@@ -23,11 +23,11 @@ public class ServiceListAdapter extends ArrayAdapter<Service> {
     private TextView tvRoleOfPerson;
     FragmentActivity fragmentActivity;
 
-    public ServiceListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Service> objects, FragmentActivity c) {
+    public ServiceListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Service> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
-        fragmentActivity = c;
+        //fragmentActivity = c;
     }
 
     @NonNull

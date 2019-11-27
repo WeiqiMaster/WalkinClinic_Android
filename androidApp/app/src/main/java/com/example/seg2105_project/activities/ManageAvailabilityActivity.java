@@ -49,12 +49,13 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
         btnAddAvailability = findViewById(R.id.btnAddAvailability);
         btnAddAvailability.setOnClickListener(this);
 
-        mListView = (ListView) findViewById(R.id.listView);
-        timeList = new ArrayList<>();
+        mListView = findViewById(R.id.listView);
 
         FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
         String email = fbUser.getEmail();
         databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(email);
+        timeList = new ArrayList<>();
+
 
         TimeListAdapter adapter = new TimeListAdapter(this,  R.layout.adapter_view_layout, timeList, this);
         mListView.setAdapter(adapter);

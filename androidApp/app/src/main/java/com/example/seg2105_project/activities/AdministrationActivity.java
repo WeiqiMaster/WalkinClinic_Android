@@ -46,7 +46,7 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
         serviceList.add(service1);
         serviceList.add(service2);
 
-        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList, this);
+        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList);
         mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
     public void applyText(int position, String serviceName, String roleOfPerson) {
         if (serviceName == null) {
             serviceList.remove(position);
-            ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList,this);
+            ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
             mListView.setAdapter(adapter);
             return;
         }
@@ -76,7 +76,7 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
             }
         }
         serviceList.set(position, new Service(serviceName, roleOfPerson));
-        ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList,this);
+        ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
         mListView.setAdapter(adapter);
     }
 
@@ -108,7 +108,7 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
                 }
                 Service service = new Service(serviceName, roleOfPerson);
                 serviceList.add(service);
-                ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList,this);
+                ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
                 mListView.setAdapter(adapter);
 
                 reff = FirebaseDatabase.getInstance().getReference().child("Service");

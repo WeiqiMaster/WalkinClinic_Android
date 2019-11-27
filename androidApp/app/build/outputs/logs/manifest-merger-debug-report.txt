@@ -93,10 +93,10 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\86
 		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
 		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:11:9-40
-activity#com.example.seg2105_project.ClinicActivity
-ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:12:9-61
+activity#com.example.seg2105_project.activities.ClinicActivity
+ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:12:9-72
 	android:name
-		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:12:19-49
+		ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:12:19-60
 activity#com.example.seg2105_project.activities.SearchClinicActivity
 ADDED from C:\Users\86528\Desktop\New folder (2)\Project-SEG2105\androidApp\app\src\main\AndroidManifest.xml:13:9-69
 	android:name

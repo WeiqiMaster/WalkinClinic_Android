@@ -65,15 +65,13 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         etRoleOfPerson = (EditText) findViewById(R.id.etRoleOfPerson);
         btnAddService = (Button) findViewById(R.id.btnAddService);
         btnAddService.setOnClickListener(this);
-
         btnManageAvailability = findViewById(R.id.btnManageAvailability);
         btnManageAvailability.setOnClickListener(this);
 
 
         serviceList = new ArrayList<>();
 
-        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_layout, serviceList, this);
-        mListView.setAdapter(adapter);
+
 
 
         databaseServiceList = FirebaseDatabase.getInstance().getReference().child("Service");
@@ -93,6 +91,8 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                             + "      " + snapshot.child("roleOfPerson").getValue().toString();
                     services.add(s);
                 }
+                ServiceListAdapter adapter = new ServiceListAdapter(getApplicationContext(),  R.layout.adapter_view_layout, serviceList);
+                mListView.setAdapter(adapter);
                 checkedItems = new boolean[services.size()];
 
             }
@@ -100,22 +100,6 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-//        databaseUserList.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    //User user = snapshot.getValue(User.class);
-//                    if (snapshot.child("email").getValue().toString().equals(email)) {
-//                        currentEmployee = snapshot.getValue(Employee.class);
-//                        break;
-//                    }
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
 
 //        Toast.makeText(getApplicationContext(),
 //                Integer.toString(services.size()),
@@ -145,37 +129,6 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 DialogEmployeeAddService dialogUpdateServices = new DialogEmployeeAddService();
                 dialogUpdateServices.passValues(ss, checkedItems, services, serviceList);
                 dialogUpdateServices.show(getSupportFragmentManager(), "Choose Services");
-
-//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//                builder.setTitle("Choose Services");
-//                builder.setMultiChoiceItems(ss, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-//                        checkedItems[which] = isChecked;
-//                    }
-//                });
-//
-//                // add OK and Cancel buttons
-//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        for (int i = 0; i < services.size(); i++) {
-//                            if (checkedItems[i]) {
-//                                String[] temp = services.get(i).split("     ", 2);
-//                                Service service = new Service(temp[0], temp[1]);
-//                                serviceList.add(service);
-//                                ServiceListAdapter adapter = new ServiceListAdapter(EmployeeActivity.this,  R.layout.adapter_view_checked, serviceList, this);
-//                                mListView.setAdapter(adapter);
-//                            }
-//                        }
-//                    }
-//                });
-//                builder.setNegativeButton("Cancel", null);
-//
-//                // create and show the alert dialog
-//                AlertDialog dialog = builder.create();
-//                dialog.show();
-
                 break;
             case R.id.btnManageAvailability:
                 startActivity(new Intent(this, ManageAvailabilityActivity.class));
@@ -196,8 +149,8 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
             }
         }
         currentClinic.child("serviceList").setValue(serviceList);
-        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
-        mListView.setAdapter(adapter);
+//        ServiceListAdapter adapter = new ServiceListAdapter(this,  R.layout.adapter_view_checked, serviceList, this);
+//        mListView.setAdapter(adapter);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

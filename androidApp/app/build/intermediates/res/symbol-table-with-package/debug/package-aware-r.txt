@@ -733,6 +733,7 @@ id blocking
 id bottom
 id btnAddAvailability
 id btnAddService
+id btnCheckIn
 id btnEdit
 id btnManageAvailability
 id btnSaveChanges
@@ -796,6 +797,7 @@ id line3
 id listMode
 id listView
 id listViewSearch
+id listViewWorkingHours
 id list_item
 id media_actions
 id message
@@ -868,11 +870,14 @@ id title_template
 id top
 id topPanel
 id tvAddress
+id tvClinicName
 id tvCompany
 id tvDescription
+id tvHaveAppointment
 id tvLicensed
 id tvPhoneNumber
 id tvRegisterLink
+id tvWaitingPeople
 id tvWelcome
 id uniform
 id up
@@ -916,6 +921,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_administration
+layout activity_clinic
 layout activity_employee
 layout activity_main
 layout activity_manage_availability
