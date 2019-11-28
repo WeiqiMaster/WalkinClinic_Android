@@ -10,26 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c351b7a5-751a-44d7-a976-3d006c41a2f0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$id.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$integer.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$integer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$layout.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$mipmap.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$mipmap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$string.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$string.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$style.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$style.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$styleable.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/seg2105_project/R$styleable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/ClinicActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/ClinicActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/SearchClinicActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/SearchClinicActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_clinic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_clinic.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/AdministrationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/AdministrationActivity.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,6 +37,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/EmployeeActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-438">
+              <caret line="80" lean-forward="true" selection-start-line="79" selection-start-column="8" selection-end-line="80" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/ClinicActivity.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -96,8 +89,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/AdministrationActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="54" column="45" lean-forward="true" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
+            <state relative-caret-position="395">
+              <caret line="58" column="46" lean-forward="true" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -135,15 +128,6 @@
                 <element signature="e#2700#2701#0" expanded="true" />
                 <element signature="e#2740#2741#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/objects/Admin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -234,7 +218,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_one_column_listview.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/adapters/ServiceListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/objects/Service.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/AdministrationActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/EmployeeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/DialogEditAvailability.java" />
@@ -256,6 +239,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ratingbar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/ClinicActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_clinic.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/AdministrationActivity.java" />
       </list>
     </option>
   </component>
@@ -1031,16 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/EmployeeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="80" column="101" lean-forward="true" selection-start-line="79" selection-start-column="8" selection-end-line="80" selection-end-column="101" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/ModifyEmplProfileActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
@@ -1324,10 +1298,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/EmployeeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-438">
+          <caret line="80" lean-forward="true" selection-start-line="79" selection-start-column="8" selection-end-line="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/seg2105_project/activities/AdministrationActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="54" column="45" lean-forward="true" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
+        <state relative-caret-position="395">
+          <caret line="58" column="46" lean-forward="true" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
         </state>
       </provider>
     </entry>

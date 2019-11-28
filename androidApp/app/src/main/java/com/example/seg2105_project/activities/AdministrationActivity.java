@@ -53,7 +53,7 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Service service = snapshot.getValue(Service.class);
                     serviceList.add(service);
-                    maxId = service.getIndex() + 1;
+                    //maxId = service.getIndex() + 1;
                 }
                 ServiceListAdapter adapter = new ServiceListAdapter(getApplicationContext(),  R.layout.adapter_view_layout, serviceList);
                 mListView.setAdapter(adapter);
@@ -78,8 +78,9 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
     @Override
     public void applyText(final int position, String serviceName, String roleOfPerson) {
         if (serviceName == null) {
-            reff.child(Integer.toString(serviceList.get(position).getIndex())).removeValue();
-//            serviceList.remove(position);
+            //reff.child(Integer.toString(serviceList.get(position).getIndex())).removeValue();
+            serviceList.remove(position);
+            reff.setValue(serviceList);
 //            ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
 //            mListView.setAdapter(adapter);
             return;
@@ -93,8 +94,9 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
             }
         }
 
-        reff.child(Integer.toString(serviceList.get(position).getIndex())).setValue(new Service(serviceName, roleOfPerson));
-//        serviceList.set(position, new Service(serviceName, roleOfPerson));
+        //reff.child(Integer.toString(serviceList.get(position).getIndex())).setValue(new Service(serviceName, roleOfPerson));
+        serviceList.set(position, new Service(serviceName, roleOfPerson));
+        reff.setValue(serviceList);
 //        ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
 //        mListView.setAdapter(adapter);
     }
@@ -126,13 +128,14 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
                     return;
                 }
                 Service service = new Service(serviceName, roleOfPerson);
-                service.setIndex(maxId);
-//                serviceList.add(service);
+                //service.setIndex(maxId);
+                serviceList.add(service);
+                reff.setValue(serviceList);
 //                ServiceListAdapter adapter = new ServiceListAdapter(this, R.layout.adapter_view_layout, serviceList);
 //                mListView.setAdapter(adapter);
 
-                reff.child(maxId.toString()).setValue(service);
-                maxId++;
+                //reff.child(maxId.toString()).setValue(service);
+                //maxId++;
 
                 break;
         }
