@@ -244,13 +244,13 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         if (hourOfDay < Integer.parseInt(first.split(":")[0])
                 || (hourOfDay == Integer.parseInt(first.split(":")[0]) && minute < Integer.parseInt(first.split(":")[1]))) {
             Toast.makeText(getApplicationContext(),
-                    "Failed! Can't choose earlier time",
+                    "Failed! Choosing time is not in this clinic working hours",
                     Toast.LENGTH_LONG).show();
             return;
         } else if (hourOfDay > Integer.parseInt(second.split(":")[0])
                 || (hourOfDay == Integer.parseInt(second.split(":")[0]) && minute > Integer.parseInt(second.split(":")[1]))) {
             Toast.makeText(getApplicationContext(),
-                    "Failed! Can't choose later time",
+                    "Failed! Choosing time is not in this clinic working hours",
                     Toast.LENGTH_LONG).show();
             return;
         }

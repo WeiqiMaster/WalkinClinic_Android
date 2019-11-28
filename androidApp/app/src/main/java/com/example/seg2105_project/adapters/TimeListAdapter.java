@@ -32,7 +32,7 @@ public class TimeListAdapter extends ArrayAdapter<MyTime> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        String day = getItem(position).getMonth() + "/" + getItem(position).getDay();
+        String day = (getItem(position).getMonth() + 1) + "/" + getItem(position).getDay();
         String hourMinute = getItem(position).getTimeInterval();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);

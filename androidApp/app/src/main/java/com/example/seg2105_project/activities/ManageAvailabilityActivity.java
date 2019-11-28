@@ -1,5 +1,6 @@
 package com.example.seg2105_project.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -20,8 +21,11 @@ import com.example.seg2105_project.dialog.TimePickerFragment;
 import com.example.seg2105_project.adapters.TimeListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,22 +51,36 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
 
         mListView = findViewById(R.id.listView);
 
+
         FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
         String email = fbUser.getEmail().replace(".", "");
         databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee").child(email);
-        timeList = new ArrayList<>();
 
-
-        TimeListAdapter adapter = new TimeListAdapter(this,  R.layout.adapter_view_layout, timeList);
-        mListView.setAdapter(adapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        databaseClinic.child("workingHours").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DialogEditAvailability dialogEditAvailability = new DialogEditAvailability();
-                dialogEditAvailability.setPosition(position);
-                dialogEditAvailability.show(getSupportFragmentManager(),"Update Availability");
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                timeList = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    timeList.add(snapshot.getValue(MyTime.class));
+                }
+                TimeListAdapter adapter = new TimeListAdapter(getApplicationContext(),  R.layout.adapter_view_layout, timeList);
+                mListView.setAdapter(adapter);
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        DialogEditAvailability dialogEditAvailability = new DialogEditAvailability();
+                        dialogEditAvailability.setPosition(position);
+                        dialogEditAvailability.show(getSupportFragmentManager(),"Update Availability");
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
     }
 
     @Override
@@ -78,26 +96,29 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
                 date.set(year, monthOfYear, dayOfMonth);
                 month = date.get(Calendar.MONTH);
                 day = date.get(Calendar.DAY_OF_MONTH);
-                if (year < currentYear) {
+                if (year < currentYear || (year == currentYear && month < currentMonth)
+                        || (year == currentYear && month == currentMonth && day < currentDay)) {
                     Toast.makeText(getApplicationContext(),
                             "Failed! Can not choose time before current time",
                             Toast.LENGTH_LONG).show();
                     return;
-                } else {
-                    if (month < currentMonth) {
-                        Toast.makeText(getApplicationContext(),
-                                "Failed! Can not choose time before current time",
-                                Toast.LENGTH_LONG).show();
-                        return;
-                    } else {
-                        if (day < currentDay) {
-                            Toast.makeText(getApplicationContext(),
-                                    "Failed! Can not choose time before current time",
-                                    Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                    }
                 }
+
+//                else {
+//                    if (month < currentMonth) {
+//                        Toast.makeText(getApplicationContext(),
+//                                "Failed! Can not choose time before current time",
+//                                Toast.LENGTH_LONG).show();
+//                        return;
+//                    } else {
+//                        if (day < currentDay) {
+//                            Toast.makeText(getApplicationContext(),
+//                                    "Failed! Can not choose time before current time",
+//                                    Toast.LENGTH_LONG).show();
+//                            return;
+//                        }
+//                    }
+//                }
 
                 TimePickerFragment timePickerFragment2 = new TimePickerFragment();
                 timePickerFragment2.setIsAdding(true, 1);
@@ -164,26 +185,29 @@ public class ManageAvailabilityActivity extends AppCompatActivity implements Vie
                     date.set(year, monthOfYear, dayOfMonth);
                     month = date.get(Calendar.MONTH);
                     day = date.get(Calendar.DAY_OF_MONTH);
-                    if (year < currentYear) {
+                    if (year < currentYear || (year == currentYear && month < currentMonth)
+                            || (year == currentYear && month == currentMonth && day < currentDay)) {
                         Toast.makeText(getApplicationContext(),
                                 "Failed! Can not choose time before current time",
                                 Toast.LENGTH_LONG).show();
                         return;
-                    } else {
-                        if (month < currentMonth) {
-                            Toast.makeText(getApplicationContext(),
-                                    "Failed! Can not choose time before current time",
-                                    Toast.LENGTH_LONG).show();
-                            return;
-                        } else {
-                            if (day < currentDay) {
-                                Toast.makeText(getApplicationContext(),
-                                        "Failed! Can not choose time before current time",
-                                        Toast.LENGTH_LONG).show();
-                                return;
-                            }
-                        }
                     }
+
+//                    else {
+//                        if (month < currentMonth) {
+//                            Toast.makeText(getApplicationContext(),
+//                                    "Failed! Can not choose time before current time",
+//                                    Toast.LENGTH_LONG).show();
+//                            return;
+//                        } else {
+//                            if (day < currentDay) {
+//                                Toast.makeText(getApplicationContext(),
+//                                        "Failed! Can not choose time before current time",
+//                                        Toast.LENGTH_LONG).show();
+//                                return;
+//                            }
+//                        }
+//                    }
 
                     TimePickerFragment timePickerFragment2 = new TimePickerFragment();
                     timePickerFragment2.setPosition(position);

@@ -102,6 +102,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 tvCompany.setText(dataSnapshot.child("company").getValue().toString());
                 tvPhoneNumber.setText(dataSnapshot.child("phoneNumber").getValue().toString());
                 tvDescription.setText(dataSnapshot.child("description").getValue().toString());
+                tvLicensed.setText(Boolean.valueOf(dataSnapshot.child("licensed").getValue().toString()) ? "Yes" : "No");
                 serviceList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child("serviceList").getChildren()) {
                     serviceList.add(snapshot.getValue(Service.class));
