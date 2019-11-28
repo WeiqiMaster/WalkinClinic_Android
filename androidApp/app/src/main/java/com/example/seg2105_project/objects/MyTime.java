@@ -3,6 +3,8 @@ package com.example.seg2105_project.objects;
 public class MyTime {
     int month;
     int day;
+    int hours;
+    int minute;
     String timeInterval;
 
     public MyTime() {
@@ -14,6 +16,21 @@ public class MyTime {
         this.month = month;
         this.day = day;
         this.timeInterval = timeInterval;
+    }
+
+    public MyTime(int month, int day, int hours, int minute, String timeInterval) {
+        this.month = month;
+        this.day = day;
+        this.hours = hours;
+        this.minute = minute;
+        this.timeInterval = timeInterval;
+    }
+
+    public MyTime(int month, int day, int hours, int minute) {
+        this.month = month;
+        this.day = day;
+        this.hours = hours;
+        this.minute = minute;
     }
 
     public String getTimeInterval() {

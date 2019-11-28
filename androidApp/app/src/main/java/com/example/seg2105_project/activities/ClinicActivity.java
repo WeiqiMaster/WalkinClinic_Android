@@ -3,17 +3,28 @@ package com.example.seg2105_project.activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.format.DateFormat;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.seg2105_project.dialog.DialogEmployeeAddService;
 import com.example.seg2105_project.R;
 import com.example.seg2105_project.adapters.TimeListAdapter;
+import com.example.seg2105_project.dialog.OneTimeTimePicker;
+import com.example.seg2105_project.dialog.TimePickerFragment;
 import com.example.seg2105_project.objects.Appointment;
 import com.example.seg2105_project.objects.Employee;
 import com.example.seg2105_project.objects.MyTime;
@@ -27,13 +38,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class ClinicActivity extends AppCompatActivity implements View.OnClickListener, DialogEmployeeAddService.DialogEmployeeServiceListener {
+public class ClinicActivity extends AppCompatActivity implements View.OnClickListener {
     public final String NODE_NAME_SERVICE = "ServiceForDemo";
     TextView tvWaitingPeople;
     TextView tvClinicName;
+    TextView tvHaveAppointment;
     //Button btnBookAppointment;
     Button btnCheckIn;
     ListView listViewWorkingHours;
@@ -44,9 +57,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     ArrayList<Service> serviceList;
     ArrayList<String> serviceNameList;
     ArrayList<MyTime> timeList;
-    Calendar date;
-    int month;
-    int day;
+    String email;
 
     int servicePosition = -1;
     Appointment appointment;
@@ -60,6 +71,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
 
         tvWaitingPeople = findViewById(R.id.tvWaitingPeople);
         tvClinicName = findViewById(R.id.tvClinicName);
+        tvHaveAppointment = findViewById(R.id.tvHaveAppointment);
         //btnBookAppointment =findViewById(R.id.btnBookAppointment);
         btnCheckIn = findViewById(R.id.btnCheckIn);
         listViewWorkingHours = findViewById(R.id.listViewWorkingHours);
@@ -67,21 +79,21 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         //listViewWorkingHours.setAdapter();
 
         FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
-        String email = fbUser.getEmail().replace(".", "");
-        databasePatient = FirebaseDatabase.getInstance().getReference().child("Patient").child(email);
+        email = fbUser.getEmail().replace(".", "");
+        databasePatient = FirebaseDatabase.getInstance().getReference().child("Patient").child(email).child("appointment");
         databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee");
         final String clinicName = getIntent().getStringExtra("clinicName");
 
 
-        databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //dataSnapshot.child("");
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
+//        databasePatient.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                tvHaveAppointment.setText("You have an appointment at this clinic on " + dataSnapshot.child("time").child());
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
 
         //tvWaitingPeople.setText(databaseReferenceClinic.child("waitingPeople").get);
         databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -125,6 +137,9 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                             public void onClick(DialogInterface dialog, int which) {
                                 appointment = new Appointment(getIntent().getStringExtra("clinicName"),
                                         serviceList.get(servicePosition));
+                                OneTimeTimePicker oneTimeTimePicker = new OneTimeTimePicker();
+                                oneTimeTimePicker.setPosition(position);
+                                oneTimeTimePicker.show(getFragmentManager(), "TIME");
 
                             }
                         });
@@ -133,9 +148,6 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                         AlertDialog dialog = builder.create();
                         dialog.show();
 
-//                DialogEditAvailability dialogEditAvailability = new DialogEditAvailability();
-//                dialogEditAvailability.setPosition(position);
-//                dialogEditAvailability.show(getSupportFragmentManager(),"Update Availability");
                     }
                 });
             }
@@ -149,64 +161,21 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    // check in
     @Override
     public void onClick(View v) {
 
 //        switch (v.getId()) {
-//            case R.id.btnBookAppointment:
-//                final Calendar currentDate = Calendar.getInstance();
-//                date = Calendar.getInstance();
-//                final int currentYear = date.get(Calendar.YEAR);
-//                final int currentMonth = date.get(Calendar.MONTH);
-//                final int currentDay = date.get(Calendar.DAY_OF_MONTH);
-//                new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-//                    @Override
-//                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//                        date.set(year, monthOfYear, dayOfMonth);
-//                        month = date.get(Calendar.MONTH);
-//                        day = date.get(Calendar.DAY_OF_MONTH);
-//                        if (year < currentYear) {
-//                            Toast.makeText(getApplicationContext(),
-//                                    "Failed! Can not choose time before current time",
-//                                    Toast.LENGTH_LONG).show();
-//                            return;
-//                        } else {
-//                            if (month < currentMonth) {
-//                                Toast.makeText(getApplicationContext(),
-//                                        "Failed! Can not choose time before current time",
-//                                        Toast.LENGTH_LONG).show();
-//                                return;
-//                            } else {
-//                                if (day < currentDay) {
-//                                    Toast.makeText(getApplicationContext(),
-//                                            "Failed! Can not choose time before current time",
-//                                            Toast.LENGTH_LONG).show();
-//                                    return;
-//                                }
-//                            }
-//                        }
-//
-//                        TimePickerFragment timePickerFragment2 = new TimePickerFragment();
-//                        timePickerFragment2.setIsAdding(true, 1);
-//                        timePickerFragment2.show(getFragmentManager(), "TIME");
-//
-//                        TimePickerFragment timePickerFragment = new TimePickerFragment();
-//                        timePickerFragment.setIsAdding(true, 0);
-//                        timePickerFragment.show(getFragmentManager(), "TIME");
-//
-//                        //currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE);
-//                    }
-//                }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
-//
-//        }
     }
 
-    @Override
-    public void applyResult(boolean[] checkedItems) {
-
+    public void applyPickedTime (int position, int hourOfDay, int minute) {
+        MyTime time = new MyTime(timeList.get(position).getMonth(),
+                timeList.get(position).getDay(), hourOfDay, minute);
+        appointment.setTime(time);
+        databasePatient.setValue(appointment);
+        Toast.makeText(getApplicationContext(),
+                "Successfully book the appointment!",
+                Toast.LENGTH_LONG).show();
     }
 
-    public class DialogBookAppointment {
-
-    }
 }

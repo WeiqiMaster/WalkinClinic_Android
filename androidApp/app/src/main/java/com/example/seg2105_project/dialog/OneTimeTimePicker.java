@@ -12,20 +12,14 @@ import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.seg2105_project.activities.ClinicActivity;
 import com.example.seg2105_project.activities.ManageAvailabilityActivity;
 
 import java.util.Calendar;
 
-public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
-    ManageAvailabilityActivity listener;
+public class OneTimeTimePicker extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
+    ClinicActivity listener;
     private int position;
-    private boolean isAdding;
-    private int index;
-
-    public void setIsAdding(boolean b, int n) {
-        isAdding = b;
-        index = n;
-    }
 
     public void setPosition(int position) {
         this.position = position;
@@ -37,31 +31,11 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
 
-        //Create and return a new instance of TimePickerDialog
-        /*
-            public constructor.....
-            TimePickerDialog(Context context, int theme,
-             TimePickerDialog.OnTimeSetListener callBack, int hourOfDay, int minute, boolean is24HourView)
-
-            The 'theme' parameter allow us to specify the theme of TimePickerDialog
-
-            .......List of Themes.......
-            THEME_DEVICE_DEFAULT_DARK
-            THEME_DEVICE_DEFAULT_LIGHT
-            THEME_HOLO_DARK
-            THEME_HOLO_LIGHT
-            THEME_TRADITIONAL
-
-         */
-
         TimePickerDialog tpd = new TimePickerDialog(getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_DARK
                 ,this, hour, minute, DateFormat.is24HourFormat(getActivity()));
 
         TextView tvTitle = new TextView(getActivity());
-        tvTitle.setText("Choose Time");
-        if (index == 1) {
-            tvTitle.setText("Choose Time2");
-        }
+        tvTitle.setText("Pick a Time");
         tvTitle.setBackgroundColor(Color.parseColor("#EEE8AA"));
         tvTitle.setPadding(5, 3, 5, 3);
         tvTitle.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -76,9 +50,9 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         super.onAttach(context);
 
         try {
-            listener = (ManageAvailabilityActivity) context;
+            listener = (ClinicActivity) context;
         } catch (ClassCastException e) {
-            //throw new ClassCastException(context.toString());
+            throw new ClassCastException(context.toString());
         }
     }
     //onTimeSet() callback method
@@ -105,18 +79,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 //            return;
 //        }
 
-
-        if (isAdding) {
-            if (index == 0)
-                listener.addTime0(hourOfDay, minute);
-            else
-                listener.addTime(hourOfDay, minute);
-        } else {
-            if (index == 0)
-                listener.applyTime0(position, hourOfDay, minute);
-            else
-                listener.applyTime(position, hourOfDay, minute);
-        }
+        listener.applyPickedTime(position, hourOfDay, minute);
 
         //tv.setText("Your chosen time is...\n\n");
 //        tv.setText(tv.getText()+ String.valueOf(currentHour)

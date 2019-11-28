@@ -5,7 +5,7 @@ import java.sql.Time;
 public class Appointment {
     private String clinicName;
     private Service service;
-    private Time time;
+    private MyTime time;
 
     public Appointment() {
 
@@ -15,6 +15,12 @@ public class Appointment {
         this.clinicName = clinicName;
         this.service = service;
         //this.time = time;
+    }
+
+    public Appointment(String clinicName, Service service, MyTime time) {
+        this.clinicName = clinicName;
+        this.service = service;
+        this.time = time;
     }
 
     public String getClinic() {
@@ -33,11 +39,11 @@ public class Appointment {
         this.service = service;
     }
 
-    public Time getTime() {
+    public MyTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(MyTime time) {
         this.time = time;
     }
 }
