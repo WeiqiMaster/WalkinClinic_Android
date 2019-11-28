@@ -14,6 +14,8 @@ public class Employee extends User {
     private ArrayList<MyTime> workingHours;
     int waitingPeople;
     private float rating;
+    private ArrayList<Rating> ratings;
+
     private int totalRatingPeople;
 
     public Employee() {
@@ -115,5 +117,13 @@ public class Employee extends User {
 
     public void setTotalRatingPeople(int totalRatingPeople) {
         this.totalRatingPeople = totalRatingPeople;
+    }
+
+    public ArrayList<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(ArrayList<Rating> ratings) {
+        this.ratings = ratings;
     }
 }

@@ -135,6 +135,24 @@
         android:layout_marginTop="10dp"
         android:text="Edit" />
 
+    <Button
+        android:id="@+id/btnManageAvailability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Set Working Hours" />
+
+    <Button
+        android:id="@+id/btnAddService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Update Service" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Uncheck the service in the popup dialog to remove that service." />
 
     <TextView
         android:layout_width="match_parent"
@@ -170,24 +188,6 @@
         android:layout_width="match_parent"
         android:layout_height="255dp" />
 
-    <Button
-        android:id="@+id/btnAddService"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Update Service" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="Uncheck the service in the dialog to remove that service." />
-
-    <Button
-        android:id="@+id/btnManageAvailability"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Set Working Hours" />
 
 </LinearLayout>
 </ScrollView>
