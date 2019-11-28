@@ -1,5 +1,6 @@
 package com.example.seg2105_project.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -47,8 +49,10 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     TextView tvWaitingPeople;
     TextView tvClinicName;
     TextView tvHaveAppointment;
+    TextView tvRating;
     Button btnCancelAppointment;
     Button btnCheckIn;
+    Button btnRate;
     ListView listViewWorkingHours;
 
     DatabaseReference databaseClinic;
@@ -72,8 +76,10 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         tvWaitingPeople = findViewById(R.id.tvWaitingPeople);
         tvClinicName = findViewById(R.id.tvClinicName);
         tvHaveAppointment = findViewById(R.id.tvHaveAppointment);
+        tvRating = findViewById(R.id.tvRating);
         btnCancelAppointment =findViewById(R.id.btnCancelAppointment);
         btnCheckIn = findViewById(R.id.btnCheckIn);
+        btnRate = findViewById(R.id.btnRate);
         listViewWorkingHours = findViewById(R.id.listViewWorkingHours);
         timeList = new ArrayList<>();
         //listViewWorkingHours.setAdapter();
@@ -95,6 +101,22 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+        databaseClinic.child("rating").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot == null) {
+                    tvRating.setText("No Rating for this clinic");
+                } else {
+                    tvRating.setText("Rating: " + dataSnapshot.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 
@@ -167,10 +189,22 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     // check in
     @Override
     public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.btnCancelAppointment:
-//
-//        }
+        switch (v.getId()) {
+            case R.id.btnCancelAppointment:
+                break;
+            case  R.id.btnRate:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                final RatingBar ratingBar = new RatingBar(this);
+                ratingBar.setNumStars(5);
+                builder.setTitle("Rate This Clinic");
+                builder.setView(ratingBar);
+                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        databaseClinic.child("rating").setValue(ratingBar.getRating());
+                    }
+                });
+        }
     }
 
     public void applyPickedTime (int position, int hourOfDay, int minute) {

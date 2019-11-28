@@ -733,9 +733,11 @@ id blocking
 id bottom
 id btnAddAvailability
 id btnAddService
+id btnCancelAppointment
 id btnCheckIn
 id btnEdit
 id btnManageAvailability
+id btnRate
 id btnSaveChanges
 id buttonPanel
 id cancel_action
@@ -876,6 +878,7 @@ id tvDescription
 id tvHaveAppointment
 id tvLicensed
 id tvPhoneNumber
+id tvRating
 id tvRegisterLink
 id tvWaitingPeople
 id tvWelcome

@@ -8,12 +8,28 @@
     android:layout_height="match_parent"
     tools:context=".activities.ClinicActivity">
 
-    <TextView
-        android:id="@+id/tvClinicName"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Clinic" />
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvClinicName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Clinic"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:textAlignment="textStart"
+            android:layout_weight="50"/>
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Rating: "
+            android:layout_weight="50"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvWaitingPeople"
@@ -31,12 +47,18 @@
         android:text="empty" />
 
 
+    <Button
+        android:id="@+id/btnRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Rate this clinic" />
 
     <Button
         android:id="@+id/btnCancelAppointment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="Cancel current appointment" />
 
     <Button
