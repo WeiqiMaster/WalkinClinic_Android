@@ -114,7 +114,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                         Employee clinic = snapshot.getValue(Employee.class);
                         String waitingText = "The number of people waiting: "
                                 + String.valueOf(clinic.getWaitingPeople())
-                                + ". Expected Waiting Time: " + Integer.toString(clinic.getWaitingPeople() * 15);
+                                + ". Expected Waiting Time: " + Integer.toString(clinic.getWaitingPeople() * 15) + "minutes";
                         tvWaitingPeople.setText(waitingText);
                         tvClinicName.setText(clinic.getName().toUpperCase());
                         if (snapshot.child("rating").getValue() == null) {
