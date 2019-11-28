@@ -47,7 +47,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     TextView tvWaitingPeople;
     TextView tvClinicName;
     TextView tvHaveAppointment;
-    //Button btnBookAppointment;
+    Button btnCancelAppointment;
     Button btnCheckIn;
     ListView listViewWorkingHours;
 
@@ -72,7 +72,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         tvWaitingPeople = findViewById(R.id.tvWaitingPeople);
         tvClinicName = findViewById(R.id.tvClinicName);
         tvHaveAppointment = findViewById(R.id.tvHaveAppointment);
-        //btnBookAppointment =findViewById(R.id.btnBookAppointment);
+        btnCancelAppointment =findViewById(R.id.btnCancelAppointment);
         btnCheckIn = findViewById(R.id.btnCheckIn);
         listViewWorkingHours = findViewById(R.id.listViewWorkingHours);
         timeList = new ArrayList<>();
@@ -85,15 +85,18 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         final String clinicName = getIntent().getStringExtra("clinicName");
 
 
-//        databasePatient.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                tvHaveAppointment.setText("You have an appointment at this clinic on " + dataSnapshot.child("time").child());
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
+        databasePatient.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                dataSnapshot = dataSnapshot.child("time");
+                tvHaveAppointment.setText("You have an appointment at this clinic on "
+                        + dataSnapshot.child("day").getValue() + " / " + dataSnapshot.child("month").getValue()
+                        + " at " + dataSnapshot.child("hours").getValue() + " : " + dataSnapshot.child("minute").getValue());
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
 
         //tvWaitingPeople.setText(databaseReferenceClinic.child("waitingPeople").get);
         databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -164,18 +167,23 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     // check in
     @Override
     public void onClick(View v) {
-
 //        switch (v.getId()) {
+//            case R.id.btnCancelAppointment:
+//
+//        }
     }
 
     public void applyPickedTime (int position, int hourOfDay, int minute) {
+        Toast.makeText(getApplicationContext(),
+                Integer.toString(hourOfDay) + Integer.toString(minute),
+                Toast.LENGTH_LONG).show();
         MyTime time = new MyTime(timeList.get(position).getMonth(),
                 timeList.get(position).getDay(), hourOfDay, minute);
         appointment.setTime(time);
         databasePatient.setValue(appointment);
-        Toast.makeText(getApplicationContext(),
-                "Successfully book the appointment!",
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(),
+//                "Successfully book the appointment!",
+//                Toast.LENGTH_LONG).show();
     }
 
 }

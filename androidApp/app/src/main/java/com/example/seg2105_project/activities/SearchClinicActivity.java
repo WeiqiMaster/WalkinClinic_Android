@@ -45,7 +45,7 @@ public class SearchClinicActivity extends AppCompatActivity {
         svClinicSearch = findViewById(R.id.svClinicSearch);
         clinicNameList = new ArrayList<>();
         databaseReferenceClinics = FirebaseDatabase.getInstance().getReference().child("Employee");
-        databaseReferenceClinics.addValueEventListener(new ValueEventListener() {
+        databaseReferenceClinics.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
