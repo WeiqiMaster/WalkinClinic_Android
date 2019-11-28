@@ -144,7 +144,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
                 intent.putExtra("address", tvAddress.getText().toString().trim());
                 intent.putExtra("phoneNumber", tvPhoneNumber.getText().toString().trim());
                 intent.putExtra("company", tvCompany.getText().toString().trim());
-                intent.putExtra("licensed", tvLicensed.getText().toString().trim().equals("Yes"));
+                intent.putExtra("licensed", tvLicensed.getText().toString().trim());
                 intent.putExtra("description", tvDescription.getText().toString().trim());
                 startActivityForResult(intent, 1);
                 break;

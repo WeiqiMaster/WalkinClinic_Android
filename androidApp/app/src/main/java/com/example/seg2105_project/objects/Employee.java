@@ -1,7 +1,5 @@
 package com.example.seg2105_project.objects;
 
-import android.util.Pair;
-
 import java.util.ArrayList;
 
 public class Employee extends User {
@@ -9,7 +7,7 @@ public class Employee extends User {
     private String phoneNumber;
     private String company;
     private boolean isLicensed;
-    private String decription;
+    private String description;
     private ArrayList<Service> serviceList;
     private ArrayList<MyTime> workingHours;
     int waitingPeople;
@@ -23,20 +21,20 @@ public class Employee extends User {
         phoneNumber = "";
         company = "";
         isLicensed = false;
-        decription = "";
+        description = "";
     }
 
     public Employee(String name, String email) {
         super(name, email);
     }
 
-    public Employee(String name, String email, String address, String phoneNumber, String company, boolean isLicensed, String decription, ArrayList<Service> serviceList, ArrayList<MyTime> workingHours, int waitingPeople, float rating) {
+    public Employee(String name, String email, String address, String phoneNumber, String company, boolean isLicensed, String description, ArrayList<Service> serviceList, ArrayList<MyTime> workingHours, int waitingPeople, float rating) {
         super(name, email);
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.company = company;
         this.isLicensed = isLicensed;
-        this.decription = decription;
+        this.description = description;
         this.serviceList = serviceList;
         this.workingHours = workingHours;
         this.waitingPeople = waitingPeople;
@@ -99,12 +97,12 @@ public class Employee extends User {
         isLicensed = licensed;
     }
 
-    public String getDecription() {
-        return decription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public float getRating() {
