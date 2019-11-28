@@ -14,8 +14,10 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -62,6 +64,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     ArrayList<String> serviceNameList;
     ArrayList<MyTime> timeList;
     String email;
+    String clinicName;
 
     int servicePosition = -1;
     Appointment appointment;
@@ -91,37 +94,39 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         email = fbUser.getEmail().replace(".", "");
         databasePatient = FirebaseDatabase.getInstance().getReference().child("Patient").child(email).child("appointment");
         databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee");
-        final String clinicName = getIntent().getStringExtra("clinicName");
-
+        clinicName = getIntent().getStringExtra("clinicName");
 
         databasePatient.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                dataSnapshot = dataSnapshot.child("time");
-                tvHaveAppointment.setText("You have an appointment at this clinic on "
-                        + dataSnapshot.child("day").getValue() + " / " + dataSnapshot.child("month").getValue()
-                        + " at " + dataSnapshot.child("hours").getValue() + " : " + dataSnapshot.child("minute").getValue() + ".");
+                if (dataSnapshot.child("clinic").getValue().toString().equals(clinicName)) {
+                    dataSnapshot = dataSnapshot.child("time");
+                    String appointmentText = "You have an appointment at this clinic on "
+                            + dataSnapshot.child("day").getValue() + " / " + dataSnapshot.child("month").getValue()
+                            + " at " + dataSnapshot.child("hours").getValue() + " : " + dataSnapshot.child("minute").getValue() + ".";
+                    tvHaveAppointment.setText(appointmentText);
+                }
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
 
-        databaseClinic.child("rating").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null) {
-                    tvRating.setText("No Rating for this clinic");
-                } else {
-                    tvRating.setText("Rating: " + dataSnapshot.getValue().toString());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        databaseClinic.child(clinicName).child("rating").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.getValue() == null) {
+//                    tvRating.setText("No Rating for this clinic");
+//                } else {
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
         //tvWaitingPeople.setText(databaseReferenceClinic.child("waitingPeople").get);
         databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -131,11 +136,16 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                     if (snapshot.child("name").getValue().toString()
                             .equals(clinicName)) {
                         Employee clinic = snapshot.getValue(Employee.class);
-                        tvWaitingPeople.setText("The number of people waiting: "
+                        String waitingText = "The number of people waiting: "
                                 + String.valueOf(clinic.getWaitingPeople())
-                                + ". Expected Waiting Time: " + Integer.toString(clinic.getWaitingPeople() * 15));
+                                + ". Expected Waiting Time: " + Integer.toString(clinic.getWaitingPeople() * 15);
+                        tvWaitingPeople.setText(waitingText);
                         tvClinicName.setText(clinic.getName().toUpperCase());
-                        //tvWaitingPeople.setText(snapshot.child("waitingPeople").getValue().toString());
+                        if (snapshot.child("rating").getValue() == null) {
+                            tvRating.setText("No Rating for this clinic");
+                        } else {
+                            tvRating.setText("Rating: " + snapshot.child("rating").getValue().toString());
+                        }
                         serviceList = new ArrayList<>();
                         serviceNameList = new ArrayList<>();
                         for (DataSnapshot snapshot1 : snapshot.child("serviceList").getChildren()) {
@@ -200,14 +210,42 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
             case  R.id.btnRate:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 final RatingBar ratingBar = new RatingBar(this);
+                //ratingBar.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT; // LayoutParams: android.view.ViewGroup.LayoutParams
+                //ratingBar.requestLayout();
                 ratingBar.setMax(5);
                 ratingBar.setNumStars(5);
+                ratingBar.setStepSize(0.1f);
+                ratingBar.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
+                LinearLayout parent = new LinearLayout(this);
+                parent.setGravity(Gravity.CENTER);
+                parent.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+                parent.addView(ratingBar);
+
+                //builder.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                //    ViewGroup.LayoutParams.WRAP_CONTENT));
                 builder.setTitle("Rate This Clinic");
-                builder.setView(ratingBar);
+                builder.setView(parent);
                 builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        databaseClinic.child("rating").setValue(ratingBar.getRating());
+                        databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    if (snapshot.child("name").getValue().toString().equals(clinicName)) {
+                                        email = snapshot.child("email").getValue().toString().replace(".", "");;
+                                    }
+                                }
+                                databaseClinic.child(email).child("rating").setValue(ratingBar.getRating());
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                         //databaseClinic.child("");
                     }
                 });

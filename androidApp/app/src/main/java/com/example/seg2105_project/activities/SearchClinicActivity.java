@@ -59,7 +59,7 @@ public class SearchClinicActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(getApplicationContext(), ClinicActivity.class);
-                        intent.putExtra("clinicName", clinicNameList.get(position));
+                        intent.putExtra("clinicName", listAdapter.getItem(position));
                         startActivityForResult(intent, 1);
                     }
                 });
@@ -94,13 +94,11 @@ public class SearchClinicActivity extends AppCompatActivity {
         private Context mContext;
         int mResource;
         private TextView tvClinicName;
-        //FragmentActivity fragmentActivity;
 
         public ClinicListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<String> objects) {
             super(context, resource, objects);
             mContext = context;
             mResource = resource;
-            //fragmentActivity = c;
         }
 
         @NonNull
