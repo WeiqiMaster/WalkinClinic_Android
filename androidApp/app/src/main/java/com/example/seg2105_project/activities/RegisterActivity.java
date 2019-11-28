@@ -42,6 +42,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     FirebaseDatabase mDatabase;
 
     static long maxId;
+    Employee e;
+    Patient p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,9 +104,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         } else if (password1.equals(password2)) {
 
             if (isEmployee) {
-                user = new Employee(name, email);
+                e = new Employee();
+                e.setEmail(email);
+                e.setName(name);
             } else {
-                user = new Patient(name, email);
+                p = new Patient();
+                p.setEmail(email);
+                p.setName(name);
             }
 
             String password = "";
@@ -119,10 +125,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     if (task.isSuccessful()) {
                         if (isEmployee) {
                             reff = FirebaseDatabase.getInstance().getReference().child("Employee");
+                            reff.child(email.replace(".", "")).setValue(e);
                         } else {
                             reff = FirebaseDatabase.getInstance().getReference().child("Patient");
+                            reff.child(email.replace(".", "")).setValue(p);
                         }
-                        reff.child(email.replace(".", "")).setValue(user);
+                        //reff;
                         //reff.child(String.valueOf(maxId + 1)).setValue(user);
                         //FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
 

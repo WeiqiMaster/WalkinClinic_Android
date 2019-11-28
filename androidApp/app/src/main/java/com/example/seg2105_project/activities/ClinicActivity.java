@@ -105,22 +105,6 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
-//        databaseClinic.child(clinicName).child("rating").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.getValue() == null) {
-//                    tvRating.setText("No Rating for this clinic");
-//                } else {
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
-        //tvWaitingPeople.setText(databaseReferenceClinic.child("waitingPeople").get);
         databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -253,9 +237,24 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void applyPickedTime (int position, int hourOfDay, int minute) {
-//        Toast.makeText(getApplicationContext(),
-//                Integer.toString(hourOfDay) + Integer.toString(minute),
-//                Toast.LENGTH_LONG).show();
+        // time restriction
+        String[] hoursMinute= timeList.get(position).getTimeInterval().split(" - ");
+        String first = hoursMinute[0];
+        String second = hoursMinute[1];
+        if (hourOfDay < Integer.parseInt(first.split(":")[0])
+                || (hourOfDay == Integer.parseInt(first.split(":")[0]) && minute < Integer.parseInt(first.split(":")[1]))) {
+            Toast.makeText(getApplicationContext(),
+                    "Failed! Can't choose earlier time",
+                    Toast.LENGTH_LONG).show();
+            return;
+        } else if (hourOfDay > Integer.parseInt(second.split(":")[0])
+                || (hourOfDay == Integer.parseInt(second.split(":")[0]) && minute > Integer.parseInt(second.split(":")[1]))) {
+            Toast.makeText(getApplicationContext(),
+                    "Failed! Can't choose later time",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
         MyTime time = new MyTime(timeList.get(position).getMonth(),
                 timeList.get(position).getDay(), hourOfDay, minute);
         appointment.setTime(time);

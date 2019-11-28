@@ -82,6 +82,26 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
         currentClinic.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                Object address = dataSnapshot.child("address").getValue();
+//                if (address != null) {
+//                    tvAddress.setText(address.toString());
+//                }
+//                Object company = dataSnapshot.child("company").getValue();
+//                if (address != null) {
+//                    tvCompany.setText(company.toString());
+//                }
+//                Object phoneNumber = dataSnapshot.child("phoneNumber").getValue();
+//                if (address != null) {
+//                    tvPhoneNumber.setText(phoneNumber.toString());
+//                }
+//                Object address = dataSnapshot.child("address").getValue();
+//                if (address != null) {
+//                    tvAddress.setText(address.toString());
+//                }
+                tvAddress.setText(dataSnapshot.child("address").getValue().toString());
+                tvCompany.setText(dataSnapshot.child("company").getValue().toString());
+                tvPhoneNumber.setText(dataSnapshot.child("phoneNumber").getValue().toString());
+                tvDescription.setText(dataSnapshot.child("description").getValue().toString());
                 serviceList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child("serviceList").getChildren()) {
                     serviceList.add(snapshot.getValue(Service.class));

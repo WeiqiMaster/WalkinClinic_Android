@@ -19,7 +19,11 @@ public class Employee extends User {
     private int totalRatingPeople;
 
     public Employee() {
-
+        address = "";
+        phoneNumber = "";
+        company = "";
+        isLicensed = false;
+        decription = "";
     }
 
     public Employee(String name, String email) {
