@@ -32,8 +32,6 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
     ArrayList<Service> serviceList;
     DatabaseReference reff;
 
-    Integer maxId;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +41,6 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
         etRoleOfPerson = (EditText) findViewById(R.id.etRoleOfPerson);
         btnAddService = (Button) findViewById(R.id.btnAddService);
         btnAddService.setOnClickListener(this);
-        maxId = 0;
 
         reff = FirebaseDatabase.getInstance().getReference().child(NODE_NAME_SERVICE);
         reff.addValueEventListener(new ValueEventListener() {
@@ -53,7 +50,6 @@ public class AdministrationActivity extends AppCompatActivity implements DialogC
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Service service = snapshot.getValue(Service.class);
                     serviceList.add(service);
-                    //maxId = service.getIndex() + 1;
                 }
                 ServiceListAdapter adapter = new ServiceListAdapter(getApplicationContext(),  R.layout.adapter_view_layout, serviceList);
                 mListView.setAdapter(adapter);

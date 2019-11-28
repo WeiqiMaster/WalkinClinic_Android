@@ -4,14 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.seg2105_project.dialog.DialogEmployeeAddService;
 import com.example.seg2105_project.R;
 import com.example.seg2105_project.adapters.TimeListAdapter;
 import com.example.seg2105_project.dialog.OneTimeTimePicker;
-import com.example.seg2105_project.dialog.TimePickerFragment;
 import com.example.seg2105_project.objects.Appointment;
 import com.example.seg2105_project.objects.Employee;
 import com.example.seg2105_project.objects.MyTime;
@@ -42,9 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class ClinicActivity extends AppCompatActivity implements View.OnClickListener {
     public final String NODE_NAME_SERVICE = "ServiceForDemo";
@@ -58,7 +47,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     ListView listViewWorkingHours;
 
     DatabaseReference databaseClinic;
-    DatabaseReference databasePatient;
+    DatabaseReference databasePatientAppointment;
 
     ArrayList<Service> serviceList;
     ArrayList<String> serviceNameList;
@@ -69,7 +58,6 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     int servicePosition = -1;
     Appointment appointment;
     Patient loginPatient;
-    //boolean[] checkedServices = new boolean[serviceNameList.size()];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,13 +80,17 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
 
         FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
         email = fbUser.getEmail().replace(".", "");
-        databasePatient = FirebaseDatabase.getInstance().getReference().child("Patient").child(email).child("appointment");
+        databasePatientAppointment = FirebaseDatabase.getInstance().getReference().child("Patient").child(email).child("appointment");
         databaseClinic = FirebaseDatabase.getInstance().getReference().child("Employee");
         clinicName = getIntent().getStringExtra("clinicName");
 
-        databasePatient.addValueEventListener(new ValueEventListener() {
+        databasePatientAppointment.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("clinic").getValue() == null) {
+                    tvHaveAppointment.setText("You have no appointment with this clinic.");
+                    return;
+                }
                 if (dataSnapshot.child("clinic").getValue().toString().equals(clinicName)) {
                     dataSnapshot = dataSnapshot.child("time");
                     String appointmentText = "You have an appointment at this clinic on "
@@ -206,6 +198,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnCancelAppointment:
+                databasePatientAppointment.removeValue();
                 break;
             case  R.id.btnRate:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -214,7 +207,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                 //ratingBar.requestLayout();
                 ratingBar.setMax(5);
                 ratingBar.setNumStars(5);
-                ratingBar.setStepSize(0.1f);
+                //ratingBar.setStepSize(0.1f);
                 ratingBar.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT));
                 LinearLayout parent = new LinearLayout(this);
@@ -246,28 +239,30 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
 
                             }
                         });
-                        //databaseClinic.child("");
                     }
                 });
                 builder.create();
                 builder.show();
                 break;
             case R.id.btnCheckIn:
+                Toast.makeText(getApplicationContext(),
+                        "You have checked in.",
+                        Toast.LENGTH_LONG).show();
                 break;
         }
     }
 
     public void applyPickedTime (int position, int hourOfDay, int minute) {
-        Toast.makeText(getApplicationContext(),
-                Integer.toString(hourOfDay) + Integer.toString(minute),
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(),
+//                Integer.toString(hourOfDay) + Integer.toString(minute),
+//                Toast.LENGTH_LONG).show();
         MyTime time = new MyTime(timeList.get(position).getMonth(),
                 timeList.get(position).getDay(), hourOfDay, minute);
         appointment.setTime(time);
-        databasePatient.setValue(appointment);
-//        Toast.makeText(getApplicationContext(),
-//                "Successfully book the appointment!",
-//                Toast.LENGTH_LONG).show();
+        databasePatientAppointment.setValue(appointment);
+        Toast.makeText(getApplicationContext(),
+                "Successfully book the appointment!",
+                Toast.LENGTH_LONG).show();
     }
 
 }

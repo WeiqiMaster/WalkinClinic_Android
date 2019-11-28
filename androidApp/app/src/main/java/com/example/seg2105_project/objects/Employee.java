@@ -1,5 +1,7 @@
 package com.example.seg2105_project.objects;
 
+import android.util.Pair;
+
 import java.util.ArrayList;
 
 public class Employee extends User {

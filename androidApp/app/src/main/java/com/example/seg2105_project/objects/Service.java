@@ -3,7 +3,7 @@ package com.example.seg2105_project.objects;
 public class Service {
     private String name;
     private String roleOfPerson;
-    private int index;
+    //private int index;
 
     public Service(String name, String roleOfPerson) {
         this.name = name;
@@ -31,11 +31,11 @@ public class Service {
         this.roleOfPerson = roleOfPerson;
     }
 
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
+//    public int getIndex() {
+//        return index;
+//    }
+//
+//    public void setIndex(int index) {
+//        this.index = index;
+//    }
 }
