@@ -80,6 +80,9 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         btnCancelAppointment =findViewById(R.id.btnCancelAppointment);
         btnCheckIn = findViewById(R.id.btnCheckIn);
         btnRate = findViewById(R.id.btnRate);
+        btnRate.setOnClickListener(this);
+        btnCancelAppointment.setOnClickListener(this);
+        btnCheckIn.setOnClickListener(this);
         listViewWorkingHours = findViewById(R.id.listViewWorkingHours);
         timeList = new ArrayList<>();
         //listViewWorkingHours.setAdapter();
@@ -97,7 +100,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                 dataSnapshot = dataSnapshot.child("time");
                 tvHaveAppointment.setText("You have an appointment at this clinic on "
                         + dataSnapshot.child("day").getValue() + " / " + dataSnapshot.child("month").getValue()
-                        + " at " + dataSnapshot.child("hours").getValue() + " : " + dataSnapshot.child("minute").getValue());
+                        + " at " + dataSnapshot.child("hours").getValue() + " : " + dataSnapshot.child("minute").getValue() + ".");
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -107,7 +110,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         databaseClinic.child("rating").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot == null) {
+                if (dataSnapshot.getValue() == null) {
                     tvRating.setText("No Rating for this clinic");
                 } else {
                     tvRating.setText("Rating: " + dataSnapshot.getValue().toString());
@@ -128,8 +131,10 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                     if (snapshot.child("name").getValue().toString()
                             .equals(clinicName)) {
                         Employee clinic = snapshot.getValue(Employee.class);
-                        tvWaitingPeople.setText(String.valueOf(clinic.getWaitingPeople()));
-                        tvClinicName.setText(clinic.getName());
+                        tvWaitingPeople.setText("The number of people waiting: "
+                                + String.valueOf(clinic.getWaitingPeople())
+                                + ". Expected Waiting Time: " + Integer.toString(clinic.getWaitingPeople() * 15));
+                        tvClinicName.setText(clinic.getName().toUpperCase());
                         //tvWaitingPeople.setText(snapshot.child("waitingPeople").getValue().toString());
                         serviceList = new ArrayList<>();
                         serviceNameList = new ArrayList<>();
@@ -195,6 +200,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
             case  R.id.btnRate:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 final RatingBar ratingBar = new RatingBar(this);
+                ratingBar.setMax(5);
                 ratingBar.setNumStars(5);
                 builder.setTitle("Rate This Clinic");
                 builder.setView(ratingBar);
@@ -202,8 +208,14 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         databaseClinic.child("rating").setValue(ratingBar.getRating());
+                        //databaseClinic.child("");
                     }
                 });
+                builder.create();
+                builder.show();
+                break;
+            case R.id.btnCheckIn:
+                break;
         }
     }
 
