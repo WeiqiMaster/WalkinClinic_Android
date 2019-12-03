@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ClinicActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvClinicName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Clinic"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:textAlignment="textStart"
+            android:layout_weight="50"/>
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Rating: "
+            android:gravity="center"
+            android:layout_weight="50"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvWaitingPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="empty" />
+
+    <TextView
+        android:id="@+id/tvHaveAppointment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="You have no appointment with this clinic." />
+
+
+    <Button
+        android:id="@+id/btnRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Rate this clinic" />
+
+    <Button
+        android:id="@+id/btnCancelAppointment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Cancel current appointment" />
+
+    <Button
+        android:id="@+id/btnCheckIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Check in now" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Click a row to book an appointment. (One can only have one appointment)" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Clinic Working Hours" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Month/Day"
+            android:gravity="center"
+            android:paddingLeft="60dp"
+            android:layout_weight="30"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Time Interval"
+            android:gravity="center"
+            android:layout_weight="50"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listViewWorkingHours"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        />
+
+</LinearLayout>
+</ScrollView>

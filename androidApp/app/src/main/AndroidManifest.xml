@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ModifyEmplProfileActivity"></activity>
-        <activity android:name=".EmployeeActivity" />
-        <activity android:name=".ManageAvailabilityActivity" />
-        <activity android:name=".AdministrationActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".activities.ClinicActivity"></activity>
+        <activity android:name=".activities.SearchClinicActivity" />
+        <activity android:name=".activities.ModifyEmplProfileActivity" />
+        <activity android:name=".activities.EmployeeActivity" />
+        <activity android:name=".activities.ManageAvailabilityActivity" />
+        <activity android:name=".activities.AdministrationActivity" />
+        <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
