@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Employee extends User {
     private String address;
     private String phoneNumber;
+
     private String company;
     private boolean isLicensed;
     private String description;

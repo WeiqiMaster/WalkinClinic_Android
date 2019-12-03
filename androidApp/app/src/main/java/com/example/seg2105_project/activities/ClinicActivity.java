@@ -94,7 +94,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                 if (dataSnapshot.child("clinic").getValue().toString().equals(clinicName)) {
                     dataSnapshot = dataSnapshot.child("time");
                     String appointmentText = "You have an appointment at this clinic on "
-                            + dataSnapshot.child("day").getValue() + " / " + dataSnapshot.child("month").getValue()
+                            + (Integer.parseInt(dataSnapshot.child("month").getValue().toString()) + 1) + " / " + dataSnapshot.child("day").getValue()
                             + " at " + dataSnapshot.child("hours").getValue() + " : " + dataSnapshot.child("minute").getValue() + ".";
                     tvHaveAppointment.setText(appointmentText);
                 }
