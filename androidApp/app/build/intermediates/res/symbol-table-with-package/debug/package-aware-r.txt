@@ -736,7 +736,6 @@ id btnAddService
 id btnCancelAppointment
 id btnCheckIn
 id btnEdit
-id btnLeaveComment
 id btnManageAvailability
 id btnRate
 id btnSaveChanges
