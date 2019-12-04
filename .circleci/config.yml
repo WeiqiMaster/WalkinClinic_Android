@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /Project-SEG2105/androidApp/
+    working_directory: ~/androidApp/
     docker:
       - image: circleci/android:api-28-alpha
     environment:
