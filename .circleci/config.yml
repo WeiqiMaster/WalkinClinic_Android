@@ -19,13 +19,13 @@ jobs:
           command: ./gradlew androidDependencies
       - save_cache:
           paths:
-            - ~/.gradle
+            - ~/androidApp/.gradle
           key: jars-{{ checksum "androidApp/build.gradle" }}-{{ checksum  "androidApp/app/build.gradle" }}
       - run:
           name: Run UnitTest
           command: ./androidApp/gradlew test
       - store_artifacts:
-          path: app/build/outputs/apk/debug/
+          path: androidApp/app/build/outputs/apk/debug/
           destination: androidApp/apks/
       - store_test_results:
           path: androidApp/app/build/test-results
