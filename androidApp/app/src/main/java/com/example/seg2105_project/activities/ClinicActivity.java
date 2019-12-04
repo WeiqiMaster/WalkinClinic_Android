@@ -191,7 +191,7 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                 databasePatientAppointment.removeValue();
                 break;
             case  R.id.btnRate:
-                databaseClinic.child(clinic.getEmail()).child("rating").addValueEventListener(new ValueEventListener() {
+                databaseClinic.child(clinic.getEmail().replace(".", "")).child("rating").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         tvRating.setText(dataSnapshot.getValue().toString());
@@ -253,8 +253,8 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnLeaveComment:
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ClinicActivity.this);
-                alertDialog.setTitle("PASSWORD");
-                alertDialog.setMessage("Enter Password");
+                alertDialog.setTitle("Leave a Comment");
+                //alertDialog.setMessage("Enter Password");
 
                 final EditText input = new EditText(ClinicActivity.this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -268,11 +268,11 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                             public void onClick(DialogInterface dialog, int which) {
                                 String comment = input.getText().toString();
                                     Toast.makeText(getApplicationContext(),
-                                            "Successfully ", Toast.LENGTH_LONG).show();
+                                            "Successfully Leave the Comment", Toast.LENGTH_LONG).show();
                             }
                         });
 
-                alertDialog.setNegativeButton("NO",
+                alertDialog.setNegativeButton("CANCEL",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
