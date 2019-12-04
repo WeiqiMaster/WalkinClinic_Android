@@ -8,38 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.SearchClinicActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Serach By"
-        ></TextView>
-
-    <RadioGroup
-        android:id="@+id/radioSex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <RadioButton
-            android:id="@+id/radioName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:checked="false" />
-
-        <RadioButton
-            android:id="@+id/radioAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Address"
-            android:checked="false" />
-
-        <RadioButton
-            android:id="@+id/radioFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="type of services provided" />
-
-    </RadioGroup>
     <SearchView
         android:id="@+id/svClinicSearch"
         android:layout_width="wrap_content"
