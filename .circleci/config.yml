@@ -9,6 +9,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
+          working_directory: ~/Project-SEG2105/androidApp
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
          name: Chmod permissions  
