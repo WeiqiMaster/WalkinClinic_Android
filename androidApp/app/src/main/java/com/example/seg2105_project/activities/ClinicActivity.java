@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -44,6 +45,8 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     Button btnCancelAppointment;
     Button btnCheckIn;
     Button btnRate;
+    Button btnLeaveComment;
+    //Button btnCheckComments;
     ListView listViewWorkingHours;
 
     DatabaseReference databaseClinic;
@@ -54,10 +57,10 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
     ArrayList<MyTime> timeList;
     String email;
     String clinicName;
+    Employee clinic;
 
     int servicePosition = -1;
     Appointment appointment;
-    Patient loginPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +74,11 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
         btnCancelAppointment =findViewById(R.id.btnCancelAppointment);
         btnCheckIn = findViewById(R.id.btnCheckIn);
         btnRate = findViewById(R.id.btnRate);
+        btnLeaveComment = findViewById(R.id.btnLeaveComment);
         btnRate.setOnClickListener(this);
         btnCancelAppointment.setOnClickListener(this);
         btnCheckIn.setOnClickListener(this);
+        btnLeaveComment.setOnClickListener(this);
         listViewWorkingHours = findViewById(R.id.listViewWorkingHours);
         timeList = new ArrayList<>();
         //listViewWorkingHours.setAdapter();
@@ -105,13 +110,14 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
+
         databaseClinic.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     if (snapshot.child("name").getValue().toString()
                             .equals(clinicName)) {
-                        Employee clinic = snapshot.getValue(Employee.class);
+                        clinic = snapshot.getValue(Employee.class);
                         String waitingText = "The number of people waiting: "
                                 + String.valueOf(clinic.getWaitingPeople())
                                 + ". Expected Waiting Time: " + Integer.toString(clinic.getWaitingPeople() * 15) + "minutes";
@@ -185,6 +191,17 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                 databasePatientAppointment.removeValue();
                 break;
             case  R.id.btnRate:
+                databaseClinic.child(clinic.getEmail()).child("rating").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        tvRating.setText(dataSnapshot.getValue().toString());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 final RatingBar ratingBar = new RatingBar(this);
                 //ratingBar.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT; // LayoutParams: android.view.ViewGroup.LayoutParams
@@ -230,8 +247,39 @@ public class ClinicActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnCheckIn:
                 Toast.makeText(getApplicationContext(),
-                        "You have checked in.",
+                        "You have checked in. Please go meeting your doctor",
                         Toast.LENGTH_LONG).show();
+                databasePatientAppointment.removeValue();
+                break;
+            case R.id.btnLeaveComment:
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(ClinicActivity.this);
+                alertDialog.setTitle("PASSWORD");
+                alertDialog.setMessage("Enter Password");
+
+                final EditText input = new EditText(ClinicActivity.this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
+                alertDialog.setView(input);
+
+                alertDialog.setPositiveButton("SUBMIT",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String comment = input.getText().toString();
+                                    Toast.makeText(getApplicationContext(),
+                                            "Successfully ", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                alertDialog.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                alertDialog.show();
                 break;
         }
     }

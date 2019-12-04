@@ -63,6 +63,20 @@
         android:text="Rate this clinic" />
 
     <Button
+        android:id="@+id/btnLeaveComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Leave a comment about this clinic" />
+
+<!--    <Button-->
+<!--        android:id="@+id/btnCheckComments"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="Check out comments about this clinic" />-->
+
+    <Button
         android:id="@+id/btnCancelAppointment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
