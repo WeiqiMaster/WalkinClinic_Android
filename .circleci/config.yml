@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/androidApp/
+    working_directory: ~/Project-SEG2105
     docker:
       - image: circleci/android:api-28-alpha
     environment:
@@ -10,25 +10,25 @@ jobs:
       - checkout
       - restore_cache:
           # working_directory: ~/Project-SEG2105/androidApp
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "androidApp/build.gradle" }}-{{ checksum  "androidApp/app/build.gradle" }}
       - run:
          name: Chmod permissions  
-         command: sudo chmod +x ./gradlew
+         command: sudo chmod +x ./androidApp/gradlew
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies
+          command: ./androidApp/gradlew androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "androidApp/build.gradle" }}-{{ checksum  "androidApp/app/build.gradle" }}
       - run:
           name: Run UnitTest
-          command: ./gradlew test
+          command: ./androidApp/gradlew test
       - store_artifacts:
           path: app/build/outputs/apk/debug/
-          destination: apks/
+          destination: androidApp/apks/
       - store_test_results:
-          path: app/build/test-results
+          path: androidApp/app/build/test-results
  
 
 # # Java Gradle CircleCI 2.0 configuration file
