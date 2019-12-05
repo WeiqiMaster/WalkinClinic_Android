@@ -28,4 +28,4 @@ jobs:
           path: androidApp/app/build/outputs/apk/debug/
           destination: androidApp/apks/
       - store_test_results:
-          path: androidApp/app/build/test-results
+          path: androidApp/app/build/test-results 
