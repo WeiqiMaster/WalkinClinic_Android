@@ -7,10 +7,10 @@
 | Andrew Forward | 1484511  |
 | Andrew Forward | 1929204  |
 | Ayana Nurse | 2128439 |
-| Jingyi Pan | 300066475|25%|25%|
-| Eric Gao| 300076901|25%|25%|25%|
-| Virgil Lin| 300076911|25%|25%|
-| dahong he| 300063385|25%|25%|
+| Jingyi Pan | 300066475|||
+| Eric Gao| 300076901||||
+| Virgil Lin| 300076911|||
+| dahong he| 300063385|||
 
 How to login as Admin:  
 In the main screen, Input "admin" in the email bar, and "123" in the password bar.。
